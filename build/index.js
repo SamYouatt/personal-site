@@ -10,4 +10,4 @@ app.get('/', (req, res) => res.send('Test'));
 app.listen(PORT, () => {
     console.log(`⚡️[server]: Server started on http://localhost:${PORT}`);
 });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index.js.mapz 
