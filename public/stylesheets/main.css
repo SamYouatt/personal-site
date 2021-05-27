@@ -1,7 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: #121212;
+  color: #fff;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+
+.nav-logo {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-item {
+  list-style: none;
+  margin-left: 3rem;
+}
+
+.nav-link {
+  text-decoration: none;
+}
+
+.hamburger {
+  display: none;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+    padding-left: 0;
+  }
+  .nav-menu {
+    position: fixed;
+    /* left: -100%; */
+    top: -100%;
+    flex-direction: column;
+    background-color: #222;
+    width: 100%;
+    /* border-radius: 10px; */
+    text-align: center;
+    transition: 0.3s;
+    /* box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05); */
+  }
+
+  .nav-menu.active {
+    top: 0;
+  }
+
+  .nav-item {
+    margin: 1.5rem 0;
+  }
+
+  .nav-logo {
+    padding: 1rem 1.5rem;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
 }
 
 .greeting {
   color: #fff;
+}
+
+.gradient {
+  animation: text-glow 15s ease-in-out infinite;
+  background: linear-gradient(-60deg, #8a2387, #e94057, #8a2387, #f27121);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-hover {
+  animation: text-glow 5s ease-in-out infinite;
+  background: linear-gradient(-60deg, #8a2387, #e94057, #f27121);
+  background-size: 0%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: #fff;
+  color: #fff;
+  transition: 0.3s linear;
+  -webkit-transition: 0.3s linear;
+}
+
+.gradient-hover:hover {
+  background-size: 300%;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+@keyframes text-glow {
+  0% {
+    background-position: 0 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
+  }
 }
