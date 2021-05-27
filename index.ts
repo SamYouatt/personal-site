@@ -20,7 +20,15 @@ app.engine('ejs', ejs);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/', (req, res) => res.render('home'));
+
+app.get('/about', (req, res) => res.render('contact'));
+
+app.get('/projects', (req, res) => res.render('projects'));
+
+app.get('/contact', (req, res) => res.render('contact'));
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page not found', 404))

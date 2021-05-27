@@ -1,2 +1,39 @@
-<% layout('partials/boilerplate') %>
-<h1>Home</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam Youatt</title>
+
+    <link rel="stylesheet" href="/stylesheets/main.css">
+</head>
+
+<body>
+    <header>
+        <%- include('./partials/navbar') %>
+    </header>
+    <section class="greeting">
+        <h3>Hi, I'm</h3>
+        <h1 class="name">Sam</h1>
+        <div>
+            I'm a student excited to solve problems and bring ideas to life as a software engineer.
+        </div>
+    </section>
+
+    <section>
+        <h2>Projects</h2>
+    </section>
+
+    <section>
+        <h2>Contact me</h2>
+    </section>
+
+    <footer>
+        <div>
+            <span>🚀️ Created by me, 2021</span>
+        </div>
+    </footer>
+</body>
+
+</html>
