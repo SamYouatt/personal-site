@@ -120,3 +120,6 @@ dist
 # TS Config
 tsconfig.json
 tslint.json
+
+# prettier
+.prettierrc

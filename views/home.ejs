@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sam Youatt</title>
 
-    <link rel="stylesheet" href="/stylesheets/main.css">
-    <link rel="stylesheet" href="/stylesheets/navbar.css">
-</head>
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link rel="stylesheet" href="/stylesheets/navbar.css" />
+  </head>
 
-<body>
-    <header>
-        <%- include('./partials/navbar') %>
-    </header>
-    <section class="intro">
-        <h1 class="greeting">Hi, I'm <span class="name gradient">Sam</span></h1>
+  <body>
+    <header><%- include('./partials/navbar') %></header>
+    <main>
+      <section class="intro">
+        <h1 class="greeting">
+          Hi, I'm
+          <span class="name gradient">Sam</span>
+        </h1>
+
         <div>
-            I'm a student excited to solve problems and bring ideas to life as a software engineer.
+          I'm a student excited to solve problems and bring ideas to life as a
+          software engineer.
         </div>
-    </section>
+      </section>
 
-    <section>
+      <section>
         <h2 class="gradient-hover">Projects</h2>
-    </section>
+      </section>
 
-    <section>
+      <section>
         <h2>Contact me</h2>
-    </section>
+      </section>
+    </main>
 
-    <footer>
-        <div>
-            <span>🚀️ Created by me, 2021</span>
-        </div>
-    </footer>
-</body>
+    <!-- <footer>
+      <div>
+        <span>🚀️ Created by me, 2021</span>
+      </div>
+    </footer> -->
+  </body>
 
-<script src="/scripts/navbar.js"></script>
+  <script src="/scripts/navbar.js"></script>
 </html>

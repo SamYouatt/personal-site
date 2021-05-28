@@ -1,27 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sam Youatt</title>
 
-    <link rel="stylesheet" href="/stylesheets/main.css">
-    <link rel="stylesheet" href="/stylesheets/navbar.css">
-</head>
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link rel="stylesheet" href="/stylesheets/navbar.css" />
+  </head>
 
-<body>
+  <body>
+    <header><%- include('./navbar') %></header>
 
-    <header>
-        <%- include('./navbar') %>
-    </header>
+    <main><%- body %></main>
 
-    <main>
-        <%- body %>
-    </main>
+    <!-- <%- include('../partials/footer') %> -->
+  </body>
 
-    <%- include('../partials/footer') %>
-</body>
-
-<script src="/scripts/navbar.js"></script>
+  <script src="/scripts/navbar.js"></script>
 </html>

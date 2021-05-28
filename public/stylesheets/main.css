@@ -1,3 +1,10 @@
+/* @font-face {
+  font-family: "Space Mono";
+  src: url("")
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:ital,wght@0,200;0,400;0,600;0,700;1,400;1,600;1,700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -9,8 +16,27 @@ body {
   color: #fff;
 }
 
+main {
+  height: 100vh;
+  overflow: auto;
+  scroll-snap-type: y mandatory;
+}
+
+section {
+  height: 100vh;
+  scroll-snap-align: center;
+}
+
 .greeting {
+  font-weight: 400;
   color: #fff;
+  font-size: clamp(5rem, 15vw, 9rem);
+  font-family: "Work Sans", sans-serif;
+}
+
+.name {
+  font-weight: 700;
+  font-size: clamp(5rem, 15vw, 10rem);
 }
 
 .gradient {
