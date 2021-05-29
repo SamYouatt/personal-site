@@ -3,16 +3,15 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.5rem;
+  animation: fade-in-nav 5s;
 }
 
 .nav-logo {
   color: #fff;
   text-decoration: none;
   font-family: "Space Mono", monospace;
-  font-weight: 400;
-  font-size: clamp(15px, 25% + 20px, 500px);
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👆️</text></svg>"),
-    auto;
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 
 .nav-menu {
@@ -31,8 +30,6 @@
 
 .nav-link {
   text-decoration: none;
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👆️</text></svg>"),
-    auto;
 }
 
 .hamburger {
@@ -93,5 +90,17 @@
 
   .hamburger.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+@keyframes fade-in-nav {
+  from {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
   }
 }

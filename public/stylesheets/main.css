@@ -23,20 +23,61 @@ main {
 }
 
 section {
-  height: 100vh;
+  height: 100%;
   scroll-snap-align: center;
+  padding-left: clamp(5%, 3vw, 15%);
+  padding-right: clamp(5%, 3vw, 15%);
+  width: 100%;
+}
+
+.intro {
+  padding-top: 50px;
 }
 
 .greeting {
   font-weight: 400;
+  width: 100%;
   color: #fff;
   font-size: clamp(5rem, 15vw, 9rem);
   font-family: "Work Sans", sans-serif;
+  animation: fade-in 3s;
 }
 
 .name {
   font-weight: 700;
   font-size: clamp(5rem, 15vw, 10rem);
+  /* font-family: "Space Mono", monospace; */
+}
+
+.sub-greeting {
+  width: min(500px, 100%);
+  margin-top: min(50px, 2vh);
+  margin-left: 1vw;
+  animation: fade-in-delayed 3s;
+}
+
+.sub-greeting-text {
+  font-family: "Work Sans", sans-serif;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+}
+
+.emph {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+}
+
+.scroll-prompt {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-left: 1vw;
+  margin-top: 2vh;
+}
+
+.scroll-icon {
+  animation: fade-in-delayed 5s;
 }
 
 .gradient {
@@ -66,6 +107,11 @@ section {
   color: transparent;
 }
 
+.emoji-cursor {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>👆️</text></svg>"),
+    auto;
+}
+
 @keyframes text-glow {
   0% {
     background-position: 0 50%;
@@ -77,5 +123,38 @@ section {
 
   100% {
     background-position: 0 50%;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+@keyframes fade-in-delayed {
+  0% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+@keyframes fade-in-scroll {
+  0% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 50%;
+  }
+  to {
+    opacity: 100%;
   }
 }

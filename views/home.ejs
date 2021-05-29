@@ -7,20 +7,29 @@
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
     <link rel="stylesheet" href="/stylesheets/navbar.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
   </head>
 
   <body>
     <header><%- include('./partials/navbar') %></header>
     <main>
       <section class="intro">
-        <h1 class="greeting">
-          Hi, I'm
-          <span class="name gradient">Sam</span>
-        </h1>
-
-        <div>
-          I'm a student excited to solve problems and bring ideas to life as a
-          software engineer.
+        <h1 class="greeting">Hi, I'm <span class="name gradient">Sam</span></h1>
+        <div class="sub-greeting">
+          <p class="sub-greeting-text">
+            I'm a <span class="emph">student</span> excited to solve problems
+            and bring ideas to life as a
+            <span class="emph">software engineer</span>.
+          </p>
+        </div>
+        <div class="scroll-prompt">
+          <!-- <p class="scroll-text">Scroll down</p> -->
+          <i class="material-icons scroll-icon" style="font-size: 32px"
+            >expand_more</i
+          >
         </div>
       </section>
 
