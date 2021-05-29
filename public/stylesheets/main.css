@@ -40,7 +40,7 @@ section {
   color: #fff;
   font-size: clamp(5rem, 15vw, 9rem);
   font-family: "Work Sans", sans-serif;
-  animation: fade-in 3s;
+  animation: fade-in 2s;
 }
 
 .name {
@@ -53,12 +53,16 @@ section {
   width: min(500px, 100%);
   margin-top: min(50px, 2vh);
   margin-left: 1vw;
-  animation: fade-in-delayed 3s;
+  animation: fade-in-delayed 2s;
 }
 
 .sub-greeting-text {
   font-family: "Work Sans", sans-serif;
   font-size: clamp(1.5rem, 2vw, 2rem);
+}
+
+.sub-greeting-link {
+  text-decoration: none;
 }
 
 .emph {
@@ -77,7 +81,8 @@ section {
 }
 
 .scroll-icon {
-  animation: fade-in-delayed 5s;
+  margin-top: 0px;
+  animation: fade-in-delayed 3.5s, bounce 3s infinite;
 }
 
 .gradient {
@@ -156,5 +161,20 @@ section {
   }
   to {
     opacity: 100%;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    margin-top: 0px;
+  }
+  70% {
+    margin-top: 0px;
+  }
+  85% {
+    margin-top: 5px;
+  }
+  100% {
+    margin-top: 0px;
   }
 }
