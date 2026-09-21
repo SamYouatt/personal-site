@@ -15,6 +15,8 @@ defmodule PersonalSiteWeb.Endpoint do
     websocket: [connect_info: [session: @session_options]],
     longpoll: [connect_info: [session: @session_options]]
 
+  plug :redirect_apex
+
   # Serve at "/" the static files from "priv/static" directory.
   #
   # When code reloading is disabled (e.g., in production),
@@ -46,4 +48,15 @@ defmodule PersonalSiteWeb.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
   plug PersonalSiteWeb.Router
+
+  defp redirect_apex(%Plug.Conn{host: "samyouatt.dev"} = conn, _opts) do
+    query = if conn.query_string == "", do: "", else: "?" <> conn.query_string
+
+    conn
+    |> put_resp_header("location", "https://www.samyouatt.dev" <> conn.request_path <> query)
+    |> send_resp(308, "")
+    |> halt()
+  end
+
+  defp redirect_apex(conn, _opts), do: conn
 end
