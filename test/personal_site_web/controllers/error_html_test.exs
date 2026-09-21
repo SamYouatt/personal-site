@@ -16,6 +16,9 @@ defmodule PersonalSiteWeb.ErrorHTMLTest do
 
     assert document |> LazyHTML.query("a") |> Enum.count() == 0
     assert document |> LazyHTML.query("link[rel=stylesheet]") |> Enum.count() == 1
+
+    assert document |> LazyHTML.query("link[rel=icon]") |> LazyHTML.attribute("href") ==
+             ["/favicon.ico"]
   end
 
   test "renders 500.html" do
