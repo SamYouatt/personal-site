@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+packages=(libncurses6 libssl3 inotify-tools unzip)
+missing=()
+for package in "${packages[@]}"; do
+  dpkg-query -W -f='${Status}' "$package" 2>/dev/null | grep -q 'install ok installed' || missing+=("$package")
+done
+if ((${#missing[@]})); then
+  sudo apt-get update -qq
+  sudo apt-get install -y "${missing[@]}"
+fi
+
+otp_dir=/opt/erlang-29.1
+elixir_dir=/opt/elixir-1.20.4
+
+if [[ ! -x "$otp_dir/bin/erl" ]]; then
+  archive=$(mktemp)
+  # The Ubuntu 22.04 build uses glibc/OpenSSL versions compatible with Debian 12.
+  curl -fsSL https://builds.hex.pm/builds/otp/amd64/ubuntu-22.04/OTP-29.1.tar.gz -o "$archive"
+  sudo mkdir -p "$otp_dir"
+  sudo tar xzf "$archive" --strip-components=1 -C "$otp_dir"
+  sudo sh -c 'cd "$1" && ./Install -sasl "$1"' sh "$otp_dir"
+  rm "$archive"
+fi
+
+if [[ ! -x "$elixir_dir/bin/mix" ]]; then
+  archive=$(mktemp)
+  curl -fsSL https://github.com/elixir-lang/elixir/releases/download/v1.20.4/elixir-otp-29.zip -o "$archive"
+  sudo unzip -qo "$archive" -d "$elixir_dir"
+  rm "$archive"
+fi
+
+sudo ln -sf "$otp_dir"/bin/{erl,erlc,escript,epmd,dialyzer,typer,ct_run} /usr/local/bin/
+sudo ln -sf "$elixir_dir"/bin/{elixir,elixirc,iex,mix} /usr/local/bin/
+elixir --version
+
+# Refresh Hex as archives compiled under older OTP versions may not load on OTP 29.
+mix local.hex --force
+mix local.rebar --force --if-missing
+mix setup

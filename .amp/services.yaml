@@ -1,0 +1,8 @@
+services:
+  web:
+    command: mix phx.server
+    port: 4000
+    health: /
+    portal:
+      title: Sam Youatt — blog preview
+      description: Five migrated posts, rendered by Phoenix.

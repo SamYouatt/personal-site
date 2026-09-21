@@ -35,3 +35,6 @@ personal_site-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Orb-generated portal metadata and review captures.
+/.amp/portals/
+/.amp/in/
