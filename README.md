@@ -39,7 +39,39 @@ rebuilding and deploying the app; no database is used.
 
 Run `mix precommit` for compilation, formatting, and tests. In an orb, run
 `.agents/setup`, then `amp orb services ensure` for the supervised preview and portal URL.
-No production deployment or domain changes are included in this migration.
+
+## Deploying to Fly.io
+
+The `samyouatt-site` app runs one always-on shared-CPU machine with 256 MB RAM in
+London. There is no database or persistent volume. The public address is
+https://www.samyouatt.dev. The apex domain redirects to `www`, preserving paths
+and queries. https://samyouatt-site.fly.dev remains available for diagnostics.
+
+The Docker build installs npm dependencies, compiles posts and assets, and packages
+an Elixir release. Only the release and runtime libraries enter the final image.
+`SECRET_KEY_BASE` is stored as a Fly secret, never in the repository or image.
+
+After installing `flyctl` and authenticating with an app-scoped deploy token:
+
+```sh
+mix precommit
+fly deploy --remote-only --ha=false
+fly status
+fly checks list
+```
+
+Keep `--ha=false` on deployments to avoid provisioning a spare machine. There is
+no automatic deployment on Git pushes. In Amp, if the setup credential is named
+`FLY_ORG_TOKEN`, pass it as `FLY_API_TOKEN` to Fly commands without printing it.
+Replace the temporary organisation token with an app-scoped token after setup.
+
+Keep the `_acme-challenge` CNAME records for both the apex and `www` so Fly can
+renew their certificates. Preserve unrelated DNS records, particularly mail records.
+
+To roll back to the retained GitHub Pages deployment, first verify that its custom
+domain and HTTPS certificate are ready, then restore the `www` CNAME to
+`samyouatt.github.io` and the saved apex DNS configuration. Keep Fly running while
+cached DNS records expire. Copy any new Phoenix-only posts back to Zola if needed.
 
 ## Learn more
 
