@@ -5,10 +5,21 @@ defmodule PersonalSiteWeb.ErrorHTMLTest do
   import Phoenix.Template, only: [render_to_string: 4]
 
   test "renders 404.html" do
-    assert render_to_string(PersonalSiteWeb.ErrorHTML, "404", "html", []) == "Not Found"
+    document =
+      PersonalSiteWeb.ErrorHTML
+      |> render_to_string("404", "html", [])
+      |> LazyHTML.from_document()
+
+    assert document
+           |> LazyHTML.query("h1#not-found-title.font-hero > span")
+           |> Enum.map(&LazyHTML.text/1) == ["404", "Not 'ere"]
+
+    assert document |> LazyHTML.query("a") |> Enum.count() == 0
+    assert document |> LazyHTML.query("link[rel=stylesheet]") |> Enum.count() == 1
   end
 
   test "renders 500.html" do
-    assert render_to_string(PersonalSiteWeb.ErrorHTML, "500", "html", []) == "Internal Server Error"
+    assert render_to_string(PersonalSiteWeb.ErrorHTML, "500", "html", []) ==
+             "Internal Server Error"
   end
 end
