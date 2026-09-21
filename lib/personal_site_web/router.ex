@@ -15,9 +15,14 @@ defmodule PersonalSiteWeb.Router do
   end
 
   scope "/", PersonalSiteWeb do
+    get "/sitemap.xml", SitemapController, :index
+  end
+
+  scope "/", PersonalSiteWeb do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/:slug", BlogController, :show
   end
 
   # Other scopes may use custom stacks.
