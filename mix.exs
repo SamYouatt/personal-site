@@ -5,7 +5,7 @@ defmodule PersonalSite.MixProject do
     [
       app: :personal_site,
       version: "0.1.0",
-      elixir: "~> 1.15",
+      elixir: "~> 1.20.4",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -43,8 +43,10 @@ defmodule PersonalSite.MixProject do
       {:phoenix, "~> 1.8.1"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 1.1.0"},
+      {:phoenix_live_view, "~> 1.2.12"},
       {:lazy_html, ">= 0.1.0", only: :test},
+      {:nimble_publisher, "~> 2.1", runtime: false},
+      {:lumis, "~> 0.8.0", runtime: false},
       {:esbuild, "~> 0.10", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.3", runtime: Mix.env() == :dev},
       {:heroicons,
@@ -56,9 +58,9 @@ defmodule PersonalSite.MixProject do
        depth: 1},
       {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},
-      {:gettext, "~> 0.26"},
+      {:gettext, "~> 1.0"},
       {:jason, "~> 1.2"},
-      {:dns_cluster, "~> 0.2.0"},
+      {:dns_cluster, "~> 0.3.0"},
       {:bandit, "~> 1.5"}
     ]
   end
@@ -72,14 +74,18 @@ defmodule PersonalSite.MixProject do
   defp aliases do
     [
       setup: ["deps.get", "assets.setup", "assets.build"],
-      "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
+      "assets.setup": [
+        "cmd --cd assets npm ci",
+        "tailwind.install --if-missing",
+        "esbuild.install --if-missing"
+      ],
       "assets.build": ["compile", "tailwind personal_site", "esbuild personal_site"],
       "assets.deploy": [
         "tailwind personal_site --minify",
         "esbuild personal_site --minify",
         "phx.digest"
       ],
-      precommit: ["compile --warning-as-errors", "deps.unlock --unused", "format", "test"]
+      precommit: ["compile --warnings-as-errors", "deps.unlock --unused", "format", "test"]
     ]
   end
 end
