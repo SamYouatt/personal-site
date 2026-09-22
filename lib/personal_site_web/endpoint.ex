@@ -26,7 +26,8 @@ defmodule PersonalSiteWeb.Endpoint do
     at: "/",
     from: :personal_site,
     gzip: not code_reloading?,
-    only: PersonalSiteWeb.static_paths()
+    only: PersonalSiteWeb.static_paths(),
+    only_matching: ["favicon-"]
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

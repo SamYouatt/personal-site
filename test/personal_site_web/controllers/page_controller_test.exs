@@ -27,4 +27,14 @@ defmodule PersonalSiteWeb.PageControllerTest do
     assert response(icon, 200) == File.read!("priv/static/favicon.ico")
     assert binary_part(icon.resp_body, 0, 4) == <<0, 0, 1, 0>>
   end
+
+  test "versioned favicon filenames are served as static assets", %{conn: conn} do
+    filename = "favicon-test-#{System.unique_integer([:positive])}.ico"
+    path = Application.app_dir(:personal_site, "priv/static/#{filename}")
+    icon = File.read!("priv/static/favicon.ico")
+    on_exit(fn -> File.rm!(path) end)
+    File.write!(path, icon)
+
+    assert conn |> get("/#{filename}?vsn=d") |> response(200) == icon
+  end
 end
