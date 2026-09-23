@@ -20,14 +20,21 @@
 
 html { overflow-y: scroll; color-scheme: light dark; }
 .post-summary:last-child > hr { display: none; }
-.prose { overflow-wrap: anywhere; }
+.prose {
+  overflow-wrap: anywhere;
+  --tw-prose-invert-headings: var(--color-zinc-100);
+  --tw-prose-invert-links: var(--color-zinc-200);
+  --tw-prose-invert-bold: var(--color-zinc-200);
+  --tw-prose-invert-code: var(--color-zinc-200);
+  --tw-prose-invert-kbd: var(--color-zinc-200);
+}
 .prose pre code { white-space: pre; overflow-wrap: normal; }
 .prose iframe { width: 100%; margin-block: 2rem 1rem; }
 .prose .l-line.highlighted { background-color: #fbbf2450; border-radius: 2px; }
 
 /* Override Lumis's inline background, preserving the theme's syntax colors. */
 .prose pre.lumis {
-  background-color: light-dark(var(--color-stone-100), var(--color-stone-900)) !important;
+  background-color: light-dark(var(--color-zinc-100), var(--color-zinc-900)) !important;
 }
 
 @custom-variant phx-click-loading (.phx-click-loading&, .phx-click-loading &);

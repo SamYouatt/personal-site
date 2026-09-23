@@ -8,7 +8,7 @@
     </p>
     <div id="posts" class="mt-8">
       <div :for={post <- @posts} id={"post-#{post.slug}"} class="post-summary">
-        <h2 class="mb-1 text-xl font-medium text-stone-900 dark:text-stone-200">
+        <h2 class="mb-1 text-xl font-medium text-zinc-900 dark:text-zinc-200">
           <.link
             href={~p"/#{post.slug}/"}
             class="underline decoration-cyan-500 decoration-dashed underline-offset-4 hover:decoration-solid dark:decoration-cyan-400"
@@ -16,13 +16,13 @@
             {post.title}
           </.link>
         </h2>
-        <p class="text-xs font-light text-stone-500 dark:text-stone-400">
+        <p class="text-xs font-light text-zinc-500 dark:text-zinc-400">
           <time datetime={Date.to_iso8601(post.date)}>
             {Calendar.strftime(post.date, "%B %d, %Y")}
           </time>
         </p>
-        <p class="my-2 leading-relaxed text-stone-700 dark:text-stone-300">{post.description}</p>
-        <hr class="my-4 border-gray-200 dark:border-stone-600" />
+        <p class="my-2 leading-relaxed text-zinc-700 dark:text-zinc-300">{post.description}</p>
+        <hr class="my-4 border-gray-200 dark:border-zinc-600" />
       </div>
     </div>
   </div>

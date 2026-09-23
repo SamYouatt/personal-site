@@ -38,7 +38,7 @@ defmodule PersonalSiteWeb.Layouts do
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:p-4">Skip to content</a>
     <nav aria-label="Home" class="mb-8 flex flex-row justify-center p-4">
       <.link href={~p"/"} id="back-to-posts">
-        <span class="self-center font-hero text-2xl text-stone-800 md:text-3xl dark:text-stone-200">
+        <span class="self-center font-hero text-2xl text-zinc-800 md:text-3xl dark:text-zinc-200">
           Sam Youatt
         </span>
       </.link>
@@ -46,7 +46,7 @@ defmodule PersonalSiteWeb.Layouts do
     <main id="main" class="flex-1">
       {render_slot(@inner_block)}
     </main>
-    <footer class="pt-4 pb-8 text-center text-sm text-stone-300 dark:text-stone-600">
+    <footer class="pt-4 pb-8 text-center text-sm text-zinc-300 dark:text-zinc-600">
       Made by <a href="https://github.com/samyouatt" class="underline font-semibold">me</a> in York
     </footer>
     <.flash_group flash={@flash} />

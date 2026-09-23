@@ -1,16 +1,16 @@
 <Layouts.app flash={@flash}>
   <article
     id={"post-#{@post.slug}"}
-    class="prose prose-stone m-auto px-4 dark:prose-invert prose-a:text-cyan-500 prose-img:m-auto prose-hr:my-8 md:p-0 dark:prose-a:text-cyan-400"
+    class="prose prose-zinc m-auto px-4 dark:prose-invert prose-a:text-cyan-500 prose-img:m-auto prose-hr:my-8 md:p-0 dark:prose-a:text-cyan-400"
   >
     <header>
       <h1 class="mb-2">{@post.title}</h1>
-      <p class="m-0 text-stone-400 dark:text-stone-500">
+      <p class="m-0 text-zinc-400 dark:text-zinc-500">
         <time datetime={Date.to_iso8601(@post.date)}>
           {Calendar.strftime(@post.date, "%B %d, %Y")}
         </time>
       </p>
-      <hr class="dark:border-stone-600" />
+      <hr class="dark:border-zinc-600" />
     </header>
     <section id="post-body">{raw(@post.body)}</section>
   </article>
