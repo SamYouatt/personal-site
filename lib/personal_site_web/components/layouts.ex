@@ -36,9 +36,44 @@ defmodule PersonalSiteWeb.Layouts do
   def app(assigns) do
     ~H"""
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:p-4">Skip to content</a>
+    <svg aria-hidden="true" width="0" height="0" class="absolute" focusable="false">
+      <defs>
+        <filter
+          :for={theme <- ["light", "dark"]}
+          id={"wordmark-#{theme}"}
+          x="-20%"
+          y="-60%"
+          width="140%"
+          height="220%"
+          color-interpolation-filters="sRGB"
+        >
+          <%!-- Invert dark ink before splitting, then invert back after recombining. --%>
+          <feComponentTransfer in="SourceGraphic" result="ink">
+            <feFuncR type="table" tableValues={if theme == "light", do: "1 0", else: "0 1"} />
+            <feFuncG type="table" tableValues={if theme == "light", do: "1 0", else: "0 1"} />
+            <feFuncB type="table" tableValues={if theme == "light", do: "1 0", else: "0 1"} />
+          </feComponentTransfer>
+          <feColorMatrix in="ink" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" />
+          <feOffset data-chroma-offset="1.2" />
+          <feGaussianBlur data-chroma-blur="1.2" stdDeviation="0" result="red" />
+          <feColorMatrix in="ink" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="green" />
+          <feColorMatrix in="ink" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" />
+          <feOffset data-chroma-offset="-0.8" />
+          <feGaussianBlur data-chroma-blur="1" stdDeviation="0" result="blue" />
+          <feBlend in="red" in2="green" mode="screen" result="red-green" />
+          <feBlend in="red-green" in2="blue" mode="screen" />
+          <feComponentTransfer>
+            <feFuncR type="table" tableValues={if theme == "light", do: "1 0", else: "0 1"} />
+            <feFuncG type="table" tableValues={if theme == "light", do: "1 0", else: "0 1"} />
+            <feFuncB type="table" tableValues={if theme == "light", do: "1 0", else: "0 1"} />
+            <feFuncA type="linear" slope="1.2" />
+          </feComponentTransfer>
+        </filter>
+      </defs>
+    </svg>
     <nav aria-label="Home" class="mb-8 flex flex-row justify-center px-4 pt-4">
-      <.link href={~p"/"} id="back-to-posts">
-        <span class="self-center font-hero text-2xl text-zinc-800 md:text-3xl dark:text-zinc-200">
+      <.link href={~p"/"} id="back-to-posts" class="inline-flex">
+        <span class="chromatic-wordmark inline-block self-center font-hero text-[2.5rem] leading-none tracking-wide text-zinc-800 md:text-[3.25rem] dark:text-zinc-200">
           Sam Youatt
         </span>
       </.link>

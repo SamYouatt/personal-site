@@ -19,6 +19,21 @@
 }
 
 html { overflow-y: scroll; color-scheme: light dark; }
+.chromatic-wordmark {
+  letter-spacing: calc(0.025em + var(--hover-tracking, 0em));
+}
+.chromatic-wordmark[data-chroma-active] {
+  filter: url(#wordmark-light);
+}
+@media (prefers-color-scheme: dark) {
+  .chromatic-wordmark[data-chroma-active] { filter: url(#wordmark-dark); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chromatic-wordmark { letter-spacing: 0.025em; }
+  .chromatic-wordmark[data-chroma-active] { filter: none; }
+}
+
 .prose {
   overflow-wrap: anywhere;
   --tw-prose-invert-headings: var(--color-zinc-100);
