@@ -19,7 +19,6 @@
 }
 
 html { overflow-y: scroll; color-scheme: light dark; }
-.post-summary:last-child > hr { display: none; }
 .prose {
   overflow-wrap: anywhere;
   --tw-prose-invert-headings: var(--color-zinc-100);

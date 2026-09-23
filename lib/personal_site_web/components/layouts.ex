@@ -36,7 +36,7 @@ defmodule PersonalSiteWeb.Layouts do
   def app(assigns) do
     ~H"""
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:p-4">Skip to content</a>
-    <nav aria-label="Home" class="mb-8 flex flex-row justify-center p-4">
+    <nav aria-label="Home" class="mb-8 flex flex-row justify-center px-4 pt-4">
       <.link href={~p"/"} id="back-to-posts">
         <span class="self-center font-hero text-2xl text-zinc-800 md:text-3xl dark:text-zinc-200">
           Sam Youatt
