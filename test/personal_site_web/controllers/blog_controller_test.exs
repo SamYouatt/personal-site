@@ -68,7 +68,7 @@ defmodule PersonalSiteWeb.BlogControllerTest do
     end
   end
 
-  test "sitemap lists the homepage and all article URLs with dates", %{conn: conn} do
+  test "sitemap lists the homepage, photos and all article URLs with dates", %{conn: conn} do
     response = conn |> put_req_header("accept", "application/xml") |> get("/sitemap.xml")
     assert response.status == 200
     assert [content_type] = get_resp_header(response, "content-type")
@@ -79,7 +79,8 @@ defmodule PersonalSiteWeb.BlogControllerTest do
 
     assert Enum.sort(locations) ==
              Enum.sort([
-               "https://www.samyouatt.dev/"
+               "https://www.samyouatt.dev/",
+               "https://www.samyouatt.dev/photos"
                | Enum.map(@posts, fn {slug, _, _} -> "https://www.samyouatt.dev/#{slug}/" end)
              ])
 
