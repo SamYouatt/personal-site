@@ -200,8 +200,8 @@ defmodule PersonalSite.Photos.Publisher do
       "--retries",
       "3",
       "--s3-no-check-bucket",
-      "--metadata-set",
-      "cache-control=public,max-age=31536000,immutable"
+      "--header-upload",
+      "Cache-Control: public,max-age=31536000,immutable"
     ])
   end
 

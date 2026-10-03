@@ -7,6 +7,7 @@ primary_region = "lhr"
 [env]
   PHX_HOST = "www.samyouatt.dev"
   PORT = "4000"
+  PHOTO_BASE_URL = "https://photos.samyouatt.dev"
 
 [http_service]
   internal_port = 4000

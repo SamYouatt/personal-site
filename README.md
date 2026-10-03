@@ -51,12 +51,15 @@ Debian, `icc-profiles-free` supplies `/usr/share/color/icc/sRGB.icc`; ensure you
 ImageMagick installation is version 7. Use `--srgb-profile /path/to/sRGB.icc` or
 `PHOTO_SRGB_PROFILE` if the profile is elsewhere.
 
+Uploads require an existing bucket and a privately configured rclone remote
+(`rclone config`; see [R2 configuration](https://rclone.org/s3/#cloudflare-r2)).
+
 ```sh
 # Generate locally: no credentials or network access required.
 mix photos.publish /path/to/summit.jpg --dry-run
 mix photos.publish /path/to/*.jpg --group bealach --dry-run
 
-# After configuring the bucket and rclone (below), this uploads derivatives.
+# Upload derivatives to the configured remote and bucket.
 export PHOTO_R2_DEST=r2:site-photos
 mix photos.publish /path/to/summit.jpg
 mix photos.publish /path/to/*.jpg --group bealach
@@ -110,37 +113,12 @@ batch may leave unreferenced objects but no partially published manifest. Run on
 publisher at a time per checkout. After a hard kill, remove
 `tmp/photos/.publish-lock` only once you have confirmed no publisher is running.
 
-### Cloudflare setup (one time, performed by the account owner)
-
-1. Enable **R2 Object Storage** and create a **Standard** bucket, e.g. `site-photos`,
-   dedicated to public web derivatives. Leave public access disabled initially.
-2. In R2 → Account Details → API Tokens → Manage, create a token with **Object
-   Read & Write**, scoped **only to that bucket**. Save the **Access Key ID** and
-   **Secret Access Key** privately; these are the S3 credentials, not the generic
-   Cloudflare API token. Copy the bucket's S3 API endpoint from the dashboard.
-3. On the publishing machine, run `rclone config` interactively. Create a remote
-   named `r2`, storage type `s3`, provider `Cloudflare`, region `auto`, and use the
-   dashboard's endpoint. Enter credentials only in that private local setup, not
-   in chat, shell commands or repository files. Protect the rclone config file;
-   use rclone config encryption if appropriate. If Amp will upload instead, use
-   Amp's private secret input after explicitly authorizing that upload.
-4. To serve photos, attach a custom domain such as `photos.samyouatt.dev` under
-   the bucket's **Settings → Custom Domains**. This exposes bucket objects
-   publicly, so do not store private files there. The zone must be in the same
-   Cloudflare account. If DNS is hosted elsewhere, plan that change separately
-   and preserve Fly certificate and mail records. Keep `r2.dev` disabled for
-   production. No Worker or Cloudflare Images subscription is needed.
-
 The task sets `Cache-Control: public,max-age=31536000,immutable` on derivatives;
 rclone infers their image content types. Once connected, verify actual response
 headers and cache behavior on the custom domain. No CORS configuration is needed
 for ordinary cross-origin `<img>` display (canvas/fetch use would be separate).
 Live R2 credentials, permissions, headers and CDN delivery must be checked against
 the configured bucket; local processing alone does not validate those.
-
-References: [R2 credentials](https://developers.cloudflare.com/r2/api/tokens/),
-[custom domains](https://developers.cloudflare.com/r2/buckets/public-buckets/),
-[rclone S3 configuration](https://rclone.org/s3/#cloudflare-r2).
 
 ## Deploying to Fly.io
 
