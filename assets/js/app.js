@@ -25,9 +25,12 @@ import {LiveSocket} from "phoenix_live_view"
 import {hooks as colocatedHooks} from "phoenix-colocated/personal_site"
 import topbar from "topbar"
 import {initChromaticWordmark} from "./chromatic_wordmark"
+import {initPhotoLightbox} from "./photo_lightbox"
 
 initChromaticWordmark()
 window.addEventListener("phx:page-loading-stop", initChromaticWordmark)
+initPhotoLightbox()
+window.addEventListener("phx:page-loading-stop", initPhotoLightbox)
 
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 const liveSocket = new LiveSocket("/live", Socket, {

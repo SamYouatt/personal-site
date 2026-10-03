@@ -6,6 +6,15 @@
         Gearset
       </a>
     </p>
+    <p class="mt-4">
+      <.link
+        href={~p"/photos"}
+        id="photos-link"
+        class="text-cyan-500 underline underline-offset-4 dark:text-cyan-400"
+      >
+        Photos
+      </.link>
+    </p>
     <div id="posts" class="mt-8 space-y-6">
       <div :for={post <- @posts} id={"post-#{post.slug}"} class="post-summary">
         <h2 class="mb-1 text-xl font-medium text-zinc-900 dark:text-zinc-200">

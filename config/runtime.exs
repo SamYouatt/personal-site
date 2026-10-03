@@ -20,6 +20,8 @@ if System.get_env("PHX_SERVER") do
   config :personal_site, PersonalSiteWeb.Endpoint, server: true
 end
 
+config :personal_site, :photo_base_url, System.get_env("PHOTO_BASE_URL")
+
 if config_env() == :prod do
   # The secret key base is used to sign/encrypt cookies and other secrets.
   # A default value is used in config/dev.exs and config/test.exs but you

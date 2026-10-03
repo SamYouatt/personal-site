@@ -87,8 +87,18 @@ variants with `key`, `width`, `height`, `format`, `role` and byte count. The `ke
 is relative to the bucket; join it to the public image domain for a URL. Grouped
 keys start with `photos/<group>/`; ungrouped keys use `photos/_ungrouped/`. Output
 content hashes make URLs immutable. Consumers should deduplicate equal widths in
-`srcset` for small inputs. This initial task does not yet add a Phoenix photo
-component, lightbox or Markdown integration.
+`srcset` for small inputs.
+
+The `/photos` page displays `nc500-skye-hill` from the ungrouped manifest, with
+responsive WebP/JPEG sources and a full-image dialog. The larger JPEG is requested
+only when opened; the image link still works without JavaScript. Set
+`PHOTO_BASE_URL` to the bucket's public HTTPS origin when starting Phoenix, e.g.
+`PHOTO_BASE_URL=https://photos.samyouatt.dev mix phx.server` **after** connecting
+that domain in Cloudflare. The S3 API endpoint is authenticated storage access,
+not a public image origin. Without `PHOTO_BASE_URL`, the page shows a placeholder
+message. No credentials are needed by Phoenix or sent to browsers. Publishing a
+manifest does not deploy it; page/manifest changes still need the usual release.
+Markdown photo integration is not included yet.
 
 Reruns regenerate variants, but rclone skips checksum-matching uploaded files.
 Changed source contents under an existing ID require `--replace`. Files omitted

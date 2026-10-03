@@ -1,0 +1,81 @@
+<Layouts.app flash={@flash}>
+  <section id="photos" class="mx-auto max-w-[65ch] px-4 pb-12 md:px-0">
+    <header class="mb-8 flex items-baseline justify-between gap-4">
+      <h1 class="text-2xl font-medium text-zinc-900 dark:text-zinc-100">Photos</h1>
+      <.link
+        href={~p"/"}
+        class="text-sm text-cyan-600 underline underline-offset-4 dark:text-cyan-400"
+      >
+        Back to writing
+      </.link>
+    </header>
+
+    <figure :if={@photo_base_url} id="photo-nc500-skye-hill">
+      <a
+        id="photo-open"
+        href={photo_url(@photo_base_url, photo_variant(@photo, "lightbox", "jpg"))}
+        data-photo-open
+        class="group block cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-500"
+        aria-label="View Skye photograph larger"
+      >
+        <picture>
+          <source
+            type="image/webp"
+            srcset={photo_srcset(@photo_base_url, @photo, "webp")}
+            sizes="(min-width: 65ch) 65ch, calc(100vw - 2rem)"
+          />
+          <img
+            id="photo-image"
+            src={photo_url(@photo_base_url, photo_variant(@photo, "responsive", "jpg"))}
+            srcset={photo_srcset(@photo_base_url, @photo, "jpg")}
+            sizes="(min-width: 65ch) 65ch, calc(100vw - 2rem)"
+            width={@photo["width"]}
+            height={@photo["height"]}
+            alt="A sheer grassy cliff above the sea on Skye, beneath a cloudy sky"
+            fetchpriority="high"
+            class="h-auto w-full bg-zinc-200 transition-opacity group-hover:opacity-95 dark:bg-zinc-900"
+          />
+        </picture>
+      </a>
+      <figcaption class="mt-4 flex items-baseline justify-between gap-4 text-sm">
+        <span>Skye</span>
+        <span class="text-xs text-zinc-500 dark:text-zinc-400">Select to view larger</span>
+      </figcaption>
+    </figure>
+
+    <p
+      :if={!@photo_base_url}
+      id="photos-unavailable"
+      class="py-12 text-zinc-500 dark:text-zinc-400"
+    >
+      Photographs will be available here soon.
+    </p>
+  </section>
+
+  <dialog
+    :if={@photo_base_url}
+    id="photo-lightbox"
+    aria-label="Skye photograph"
+    class="fixed inset-0 m-auto h-dvh max-h-none w-screen max-w-none items-center justify-center bg-zinc-950 p-4 text-white open:flex backdrop:bg-zinc-950 sm:p-8"
+  >
+    <form method="dialog" class="absolute top-4 right-4 z-10">
+      <button
+        id="photo-close"
+        type="submit"
+        autofocus
+        aria-label="Close photograph"
+        class="flex size-11 cursor-pointer items-center justify-center rounded-full bg-zinc-900/90 transition-colors hover:bg-zinc-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      >
+        <.icon name="hero-x-mark" class="size-6" />
+      </button>
+    </form>
+    <img
+      id="photo-lightbox-image"
+      data-src={photo_url(@photo_base_url, photo_variant(@photo, "lightbox", "jpg"))}
+      width={@photo["width"]}
+      height={@photo["height"]}
+      alt="A sheer grassy cliff above the sea on Skye, beneath a cloudy sky"
+      class="h-full w-auto max-w-full object-contain"
+    />
+  </dialog>
+</Layouts.app>

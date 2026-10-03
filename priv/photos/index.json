@@ -1,0 +1,78 @@
+{
+  "group": null,
+  "photos": {
+    "nc500-skye-hill": {
+      "height": 7728,
+      "recipe": "web-v1",
+      "source_sha256": "208de33dedb443f460b182f28f83dea5dc0f9ddb0193f7755866b48730348d6f",
+      "variants": [
+        {
+          "bytes": 27434,
+          "format": "webp",
+          "height": 960,
+          "key": "photos/_ungrouped/nc500-skye-hill/662cd9bcad960a02c6ee563ad6a3e9066bea9877d9edbc1653998485d18c55e3/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 63920,
+          "format": "jpg",
+          "height": 960,
+          "key": "photos/_ungrouped/nc500-skye-hill/2c7bf634d72beb3f805a25de22e203c9e9a91de42f04373f83c8e1cd2a24a403/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 104010,
+          "format": "webp",
+          "height": 1920,
+          "key": "photos/_ungrouped/nc500-skye-hill/500b290a35580a97b64bd21b67cfa51d5aff807f8dac2c860cf3509ca399b6a0/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 277598,
+          "format": "jpg",
+          "height": 1920,
+          "key": "photos/_ungrouped/nc500-skye-hill/cd38bc9e66b8f0f9fd2e3dd3efc25cfa6f2ee2ce18d6ba0f3ca5f529ffc9d192/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 444442,
+          "format": "webp",
+          "height": 2880,
+          "key": "photos/_ungrouped/nc500-skye-hill/d135152b1d1c144dce58a49c02681bcf12b7456eac1ee1cd67569abadb1a0c0f/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 761150,
+          "format": "jpg",
+          "height": 2880,
+          "key": "photos/_ungrouped/nc500-skye-hill/bb883a77dfbc47ce535ac2449462d304c1159d70326293e30c40f7119b27d39e/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 667366,
+          "format": "webp",
+          "height": 3200,
+          "key": "photos/_ungrouped/nc500-skye-hill/ee83d6b6a539911c48defcc5e71a73096dd5c4a2674e3a6ee705689b091a231d/lightbox.webp",
+          "role": "lightbox",
+          "width": 2133
+        },
+        {
+          "bytes": 1012139,
+          "format": "jpg",
+          "height": 3200,
+          "key": "photos/_ungrouped/nc500-skye-hill/47d7dcb170ff8240a5d43d40e072229294352525f8b880d5e3b4134eb203ad04/lightbox.jpg",
+          "role": "lightbox",
+          "width": 2133
+        }
+      ],
+      "width": 5152
+    }
+  },
+  "version": 1
+}

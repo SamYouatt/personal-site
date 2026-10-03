@@ -22,6 +22,7 @@ defmodule PersonalSiteWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/photos", PageController, :photos
     get "/:slug", BlogController, :show
   end
 
