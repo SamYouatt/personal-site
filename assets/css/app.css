@@ -42,6 +42,16 @@ html { overflow-y: scroll; color-scheme: light dark; }
   --tw-prose-invert-code: var(--color-zinc-200);
   --tw-prose-invert-kbd: var(--color-zinc-200);
 }
+.prose pre {
+  border: 1.5px solid light-dark(var(--color-zinc-300), var(--color-zinc-700));
+  border-radius: 12px;
+}
+@supports (corner-shape: squircle) {
+  .prose pre {
+    border-radius: 20px;
+    corner-shape: squircle;
+  }
+}
 .prose pre code { white-space: pre; overflow-wrap: normal; }
 .prose iframe { width: 100%; margin-block: 2rem 1rem; }
 .prose .l-line.highlighted { background-color: #fbbf2450; border-radius: 2px; }
