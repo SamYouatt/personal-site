@@ -40,6 +40,98 @@ rebuilding and deploying the app; no database is used.
 Run `mix precommit` for compilation, formatting, and tests. In an orb, run
 `.agents/setup`, then `amp orb services ensure` for the supervised preview and portal URL.
 
+## Publishing photographs to R2
+
+Run the publisher from this checkout on the machine holding your selected exports.
+It needs **ImageMagick 7** (`magick`, with JPEG/WebP and LCMS support), an **sRGB ICC
+profile**, and **rclone** (1.60 or newer) for uploads. These are publishing tools,
+not dependencies of the deployed Phoenix server. On macOS, `brew install
+imagemagick rclone` supplies the tools and the system supplies the profile. On
+Debian, `icc-profiles-free` supplies `/usr/share/color/icc/sRGB.icc`; ensure your
+ImageMagick installation is version 7. Use `--srgb-profile /path/to/sRGB.icc` or
+`PHOTO_SRGB_PROFILE` if the profile is elsewhere.
+
+```sh
+# Generate locally: no credentials or network access required.
+mix photos.publish /path/to/summit.jpg --dry-run
+mix photos.publish /path/to/*.jpg --group bealach --dry-run
+
+# After configuring the bucket and rclone (below), this uploads derivatives.
+export PHOTO_R2_DEST=r2:site-photos
+mix photos.publish /path/to/summit.jpg
+mix photos.publish /path/to/*.jpg --group bealach
+```
+
+Use edited JPEG, PNG, TIFF or WebP exports, not RAW files. IDs come from filename
+stems and must contain lowercase letters, digits and hyphens, e.g. `summit.jpg`.
+Groups follow the same naming rule; `index` is reserved. Duplicate IDs in a batch
+are rejected. IDs can repeat in different groups or in the ungrouped collection.
+For multi-frame inputs, only the first frame is used.
+
+The task applies orientation, converts embedded ICC colour to sRGB, strips source
+metadata (including EXIF GPS, XMP, comments and copyright), and reattaches only the
+sRGB profile. Untagged exports are assumed to be sRGB. Add public captions, credit
+and alt text explicitly in your page content. Input files are never changed or
+uploaded. Each photo produces JPEG and WebP at 640, 1280 and 1920 px widths, plus
+an uncropped lightbox version bounded by 3200 × 3200 px. Images are never upscaled.
+
+Generated files live under ignored `tmp/photos/`. A dry run writes a preview
+manifest to `tmp/photos/manifests/index.json` (or `<group>.json`) and never modifies
+the published manifest. After a successful upload, the task merges photo entries
+into `priv/photos/index.json` (or `<group>.json`). Commit these small manifests
+with the page content; **do not commit photo originals or credentials**.
+
+Each manifest contains `version`, `group` and a `photos` map keyed by readable ID.
+Photo entries contain source SHA-256, recipe version, oriented dimensions and
+variants with `key`, `width`, `height`, `format`, `role` and byte count. The `key`
+is relative to the bucket; join it to the public image domain for a URL. Grouped
+keys start with `photos/<group>/`; ungrouped keys use `photos/_ungrouped/`. Output
+content hashes make URLs immutable. Consumers should deduplicate equal widths in
+`srcset` for small inputs. This initial task does not yet add a Phoenix photo
+component, lightbox or Markdown integration.
+
+Reruns regenerate variants, but rclone skips checksum-matching uploaded files.
+Changed source contents under an existing ID require `--replace`. Files omitted
+from a command are retained; old object versions are not deleted. Uploads retry
+three times. Rerunning an interrupted batch skips completed matching objects and
+retries remaining files; this is not a promise of byte-level resume after process
+exit. The manifest changes only after all selected uploads succeed, so a failed
+batch may leave unreferenced objects but no partially published manifest. Run one
+publisher at a time per checkout. After a hard kill, remove
+`tmp/photos/.publish-lock` only once you have confirmed no publisher is running.
+
+### Cloudflare setup (one time, performed by the account owner)
+
+1. Enable **R2 Object Storage** and create a **Standard** bucket, e.g. `site-photos`,
+   dedicated to public web derivatives. Leave public access disabled initially.
+2. In R2 → Account Details → API Tokens → Manage, create a token with **Object
+   Read & Write**, scoped **only to that bucket**. Save the **Access Key ID** and
+   **Secret Access Key** privately; these are the S3 credentials, not the generic
+   Cloudflare API token. Copy the bucket's S3 API endpoint from the dashboard.
+3. On the publishing machine, run `rclone config` interactively. Create a remote
+   named `r2`, storage type `s3`, provider `Cloudflare`, region `auto`, and use the
+   dashboard's endpoint. Enter credentials only in that private local setup, not
+   in chat, shell commands or repository files. Protect the rclone config file;
+   use rclone config encryption if appropriate. If Amp will upload instead, use
+   Amp's private secret input after explicitly authorizing that upload.
+4. To serve photos, attach a custom domain such as `photos.samyouatt.dev` under
+   the bucket's **Settings → Custom Domains**. This exposes bucket objects
+   publicly, so do not store private files there. The zone must be in the same
+   Cloudflare account. If DNS is hosted elsewhere, plan that change separately
+   and preserve Fly certificate and mail records. Keep `r2.dev` disabled for
+   production. No Worker or Cloudflare Images subscription is needed.
+
+The task sets `Cache-Control: public,max-age=31536000,immutable` on derivatives;
+rclone infers their image content types. Once connected, verify actual response
+headers and cache behavior on the custom domain. No CORS configuration is needed
+for ordinary cross-origin `<img>` display (canvas/fetch use would be separate).
+Live R2 credentials, permissions, headers and CDN delivery must be checked against
+the configured bucket; local processing alone does not validate those.
+
+References: [R2 credentials](https://developers.cloudflare.com/r2/api/tokens/),
+[custom domains](https://developers.cloudflare.com/r2/buckets/public-buckets/),
+[rclone S3 configuration](https://rclone.org/s3/#cloudflare-r2).
+
 ## Deploying to Fly.io
 
 The `samyouatt-site` app runs one always-on shared-CPU machine with 256 MB RAM in
