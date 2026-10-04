@@ -103,6 +103,24 @@ message. No credentials are needed by Phoenix or sent to browsers. Publishing a
 manifest does not deploy it; page/manifest changes still need the usual release.
 Markdown photo integration is not included yet.
 
+Set the optional `mat` attribute on `<.photo_print>` in
+`lib/personal_site_web/controllers/page_html/photos.html.heex` to add white digital
+matting in the lightbox. Values are percentages of the **unmatted image width**
+on every side, so equal numbers mean equal border widths even on portrait photos:
+
+- Omit `mat` or use `mat={0}` for no mat.
+- `mat={6}` or `mat={[6]}` gives 6% on every side.
+- `mat={[4, 6]}` gives 4% top/bottom and 6% left/right.
+- `mat={[4, 6, 10]}` gives 4% top, 6% left/right, 10% bottom.
+- `mat={[4, 6, 10, 8]}` gives top/right/bottom/left individually.
+
+Use non-negative numbers; fractional values are supported. The photo and mat
+scale as one composition to fit the lightbox, without cropping. The mat stays
+white in either theme and does not affect the gallery thumbnail or uploaded
+files. These inline settings survive republishing because they are not stored in
+the generated manifest. The no-JavaScript image link still opens the original
+unmatted derivative. This does not add zoom controls.
+
 Reruns regenerate variants, but rclone skips checksum-matching uploaded files.
 Changed source contents under an existing ID require `--replace`. Files omitted
 from a command are retained; old object versions are not deleted. Uploads retry

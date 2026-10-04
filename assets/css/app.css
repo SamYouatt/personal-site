@@ -19,6 +19,29 @@
 }
 
 html { overflow-y: scroll; color-scheme: light dark; }
+
+.photo-lightbox {
+  --photo-gutter: 1rem;
+  padding: var(--photo-gutter);
+}
+@media (min-width: 40rem) {
+  .photo-lightbox { --photo-gutter: 2rem; }
+}
+.photo-print {
+  position: relative;
+  flex: none;
+  width: min(100%, calc((100dvh - 2 * var(--photo-gutter)) * var(--photo-ratio)));
+  aspect-ratio: var(--photo-ratio);
+  background: #fff;
+}
+.photo-print img {
+  position: absolute;
+  top: var(--photo-top);
+  left: var(--photo-left);
+  width: var(--photo-width);
+  height: var(--photo-height);
+}
+
 .chromatic-wordmark {
   letter-spacing: calc(0.025em + var(--hover-tracking, 0em));
 }
