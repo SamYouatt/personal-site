@@ -18,6 +18,45 @@
   font-style: normal;
 }
 
+/* Libron v0.25, SIL Open Font License (see /fonts/libron/OFL.txt). */
+@font-face {
+  font-family: "Libron";
+  src: url("/fonts/libron/Libron-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Libron";
+  src: url("/fonts/libron/Libron-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Libron";
+  src: url("/fonts/libron/Libron-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Libron";
+  src: url("/fonts/libron/Libron-BoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Geist Mono v1.7.2, SIL Open Font License (see /fonts/geist-mono/OFL.txt). */
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/fonts/geist-mono/GeistMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 html { overflow-y: scroll; color-scheme: light dark; }
 
 .photo-lightbox {
@@ -57,6 +96,27 @@ html { overflow-y: scroll; color-scheme: light dark; }
   .chromatic-wordmark[data-chroma-active] { filter: none; }
 }
 
+#post-body {
+  font-family: "Libron", Georgia, serif;
+}
+#post-body :where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-sans);
+}
+#post-body code {
+  font-family: "Geist Mono", var(--font-mono);
+}
+#post-body code:not(pre code) {
+  font-size: 0.97em;
+  color: #E08E1D;
+}
+#post-body code:not(pre code)::before,
+#post-body code:not(pre code)::after {
+  content: none;
+}
+@media (prefers-color-scheme: dark) {
+  #post-body code:not(pre code) { color: #E0AF69; }
+}
+
 .prose {
   overflow-wrap: anywhere;
   --tw-prose-invert-headings: var(--color-zinc-100);
@@ -66,14 +126,8 @@ html { overflow-y: scroll; color-scheme: light dark; }
   --tw-prose-invert-kbd: var(--color-zinc-200);
 }
 .prose pre {
-  border: 1.5px solid light-dark(var(--color-zinc-300), var(--color-zinc-700));
-  border-radius: 12px;
-}
-@supports (corner-shape: squircle) {
-  .prose pre {
-    border-radius: 20px;
-    corner-shape: squircle;
-  }
+  border: 1.5px solid light-dark(var(--color-zinc-200), var(--color-zinc-800));
+  border-radius: 4px;
 }
 .prose pre code { white-space: pre; overflow-wrap: normal; }
 .prose iframe { width: 100%; margin-block: 2rem 1rem; }

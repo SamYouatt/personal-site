@@ -5,8 +5,6 @@
 }
 ---
 
-This post is currently WIP
-
 # Basics of Rendering
 
 In order to draw to the screen in Ratatui we call `terminal.draw` on the terminal struct we create with Ratatui. `draw` accepts a closure of a `frame` which is where we can write all our rendering logic.
