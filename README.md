@@ -53,6 +53,7 @@ ImageMagick installation is version 7. Use `--srgb-profile /path/to/sRGB.icc` or
 
 Uploads require an existing bucket and a privately configured rclone remote
 (`rclone config`; see [R2 configuration](https://rclone.org/s3/#cloudflare-r2)).
+This site uses the `personal-site-images` bucket with the `r2` remote.
 
 ```sh
 # Generate locally: no credentials or network access required.
@@ -60,7 +61,7 @@ mix photos.publish /path/to/summit.jpg --dry-run
 mix photos.publish /path/to/*.jpg --group bealach --dry-run
 
 # Upload derivatives to the configured remote and bucket.
-export PHOTO_R2_DEST=r2:site-photos
+export PHOTO_R2_DEST=r2:personal-site-images
 mix photos.publish /path/to/summit.jpg
 mix photos.publish /path/to/*.jpg --group bealach
 ```

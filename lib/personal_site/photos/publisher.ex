@@ -25,6 +25,8 @@ defmodule PersonalSite.Photos.Publisher do
     try do
       manifest_path = Path.join(directory, "#{group || "index"}.json")
       existing = read_manifest(manifest_path, group)
+      total = length(files)
+      IO.puts("Reading #{total} photos...")
       inputs = Enum.map(files, &input!/1)
       ids = Enum.map(inputs, & &1.id)
 
@@ -46,13 +48,20 @@ defmodule PersonalSite.Photos.Publisher do
       destination = if !opts[:dry_run], do: destination!()
 
       photos =
-        Map.new(inputs, fn input ->
+        inputs
+        |> Enum.with_index(1)
+        |> Map.new(fn {input, index} ->
+          IO.puts("Generating [#{index}/#{total}] #{input.id}")
           {input.id, generate!(input, group, output, profile)}
         end)
 
       unless opts[:dry_run] do
-        for {_id, photo} <- photos, variant <- photo["variants"] do
-          upload!(Path.join(output, variant["key"]), "#{destination}/#{variant["key"]}")
+        for {id, index} <- Enum.with_index(ids, 1) do
+          IO.puts("Uploading [#{index}/#{total}] #{id}")
+
+          for variant <- photos[id]["variants"] do
+            upload!(Path.join(output, variant["key"]), "#{destination}/#{variant["key"]}")
+          end
         end
       end
 
