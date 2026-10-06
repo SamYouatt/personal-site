@@ -1,66 +1,72 @@
 <Layouts.app flash={@flash}>
-  <section id="photos" class="mx-auto max-w-[65ch] px-4 pb-12 md:px-0">
-    <header class="mb-8 flex items-baseline justify-between gap-4">
-      <h1 class="text-2xl font-medium text-zinc-900 dark:text-zinc-100">Photos</h1>
-      <.link
-        href={~p"/"}
-        class="text-sm text-cyan-600 underline underline-offset-4 dark:text-cyan-400"
-      >
-        Back to writing
-      </.link>
+  <section id="photos" aria-labelledby="photos-title" class="px-4 pb-12 sm:px-8">
+    <header class="mx-auto mb-8 max-w-[97.5ch]">
+      <h1 id="photos-title" class="text-2xl font-medium text-zinc-900 dark:text-zinc-100">
+        North Coast 500
+      </h1>
     </header>
 
-    <figure :if={@photo_base_url} id="photo-nc500-skye-hill">
-      <a
-        id="photo-open"
-        href={photo_url(@photo_base_url, photo_variant(@photo, "lightbox", "jpg"))}
-        data-photo-open
-        class="group block cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-500"
-        aria-label="View Skye photograph larger"
+    <div
+      :if={@photo_base_url}
+      id="photo-gallery"
+      class="mx-auto grid max-w-[97.5ch] grid-cols-1 items-start gap-4 md:grid-cols-2"
+    >
+      <figure
+        :for={{{id, photo}, index} <- Enum.with_index(@photos)}
+        id={"photo-#{id}"}
+        class={[photo["width"] >= photo["height"] && "md:col-span-2"]}
       >
-        <picture>
-          <source
-            type="image/webp"
-            srcset={photo_srcset(@photo_base_url, @photo, "webp")}
-            sizes="(min-width: 65ch) 65ch, calc(100vw - 2rem)"
-          />
-          <img
-            id="photo-image"
-            src={photo_url(@photo_base_url, photo_variant(@photo, "responsive", "jpg"))}
-            srcset={photo_srcset(@photo_base_url, @photo, "jpg")}
-            sizes="(min-width: 65ch) 65ch, calc(100vw - 2rem)"
-            width={@photo["width"]}
-            height={@photo["height"]}
-            alt="A sheer grassy cliff above the sea on Skye, beneath a cloudy sky"
-            fetchpriority="high"
-            class="h-auto w-full bg-zinc-200 transition-opacity group-hover:opacity-95 dark:bg-zinc-900"
-          />
-        </picture>
-      </a>
-      <figcaption class="mt-4 flex items-baseline justify-between gap-4 text-sm">
-        <span>Skye</span>
-        <span class="text-xs text-zinc-500 dark:text-zinc-400">Select to view larger</span>
-      </figcaption>
-    </figure>
+        <a
+          id={"photo-open-#{id}"}
+          href={photo_url(@photo_base_url, photo_variant(photo, "lightbox", "jpg"))}
+          data-photo-open={"photo-lightbox-#{id}"}
+          class="group block cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-500"
+          aria-label={"View larger: #{photo_alt(id)}"}
+          aria-haspopup="dialog"
+          aria-controls={"photo-lightbox-#{id}"}
+        >
+          <picture>
+            <source
+              type="image/webp"
+              srcset={photo_srcset(@photo_base_url, photo, "webp")}
+              sizes={photo_sizes(photo)}
+            />
+            <img
+              id={"photo-image-#{id}"}
+              src={photo_url(@photo_base_url, photo_variant(photo, "responsive", "jpg"))}
+              srcset={photo_srcset(@photo_base_url, photo, "jpg")}
+              sizes={photo_sizes(photo)}
+              width={photo["width"]}
+              height={photo["height"]}
+              alt={photo_alt(id)}
+              loading={if index == 0, do: "eager", else: "lazy"}
+              decoding="async"
+              class="h-auto w-full bg-zinc-200 transition-opacity group-hover:opacity-95 dark:bg-zinc-900"
+            />
+          </picture>
+        </a>
+      </figure>
+    </div>
 
     <p
       :if={!@photo_base_url}
       id="photos-unavailable"
-      class="py-12 text-zinc-500 dark:text-zinc-400"
+      class="mx-auto max-w-[65ch] py-12 text-zinc-500 dark:text-zinc-400"
     >
       Photographs will be available here soon.
     </p>
   </section>
 
   <dialog
+    :for={{id, photo} <- @photos}
     :if={@photo_base_url}
-    id="photo-lightbox"
-    aria-label="Skye photograph"
+    id={"photo-lightbox-#{id}"}
+    aria-label={photo_alt(id)}
     class="photo-lightbox fixed inset-0 m-auto h-dvh max-h-none w-screen max-w-none items-center justify-center bg-zinc-950 text-white open:flex backdrop:bg-zinc-950"
   >
     <form method="dialog" class="absolute top-4 right-4 z-10">
       <button
-        id="photo-close"
+        id={"photo-close-#{id}"}
         type="submit"
         autofocus
         aria-label="Close photograph"
@@ -71,10 +77,11 @@
     </form>
     <%!-- Mat: percentages of image width, in CSS top/right/bottom/left order. Omit for none. --%>
     <.photo_print
-      photo={@photo}
+      id={"photo-print-#{id}"}
+      photo={photo}
       base_url={@photo_base_url}
-      mat={6}
-      alt="A sheer grassy cliff above the sea on Skye, beneath a cloudy sky"
+      mat={photo_mat(id, photo)}
+      alt={photo_alt(id)}
     />
   </dialog>
 </Layouts.app>

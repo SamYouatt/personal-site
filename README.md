@@ -93,9 +93,18 @@ keys start with `photos/<group>/`; ungrouped keys use `photos/_ungrouped/`. Outp
 content hashes make URLs immutable. Consumers should deduplicate equal widths in
 `srcset` for small inputs.
 
-The `/photos` page displays `nc500-skye-hill` from the ungrouped manifest, with
-responsive WebP/JPEG sources and a full-image dialog. The larger JPEG is requested
-only when opened; the image link still works without JavaScript. Set
+The `/photos` page displays photos from the manifest, with new IDs appended after
+the curated `@photo_order` in ID order. Page metadata is collection-agnostic; the
+current collection heading is “North Coast 500”. Photos are deduplicated by source
+SHA-256, excluding the similar Whaligoe
+boat shot (`nc500-whaligoe-boat`) without deleting its uploaded assets. The gallery pairs portraits
+side by side and gives landscapes the full width on wider screens; narrow screens
+use one column. The curated order in `PageController` spaces portrait pairs between
+landscape runs, opens with Eilean Donan, and puts Neist Point in the first portrait
+pair. Black-and-white images fall every third desktop row, with the castles together. The gallery is capped
+at 1.5× the body-text width. Each photo has responsive WebP/JPEG sources and a full-image dialog. The
+larger JPEG is requested only when opened; the image link still works without JavaScript.
+Set
 `PHOTO_BASE_URL` to the bucket's public HTTPS origin when starting Phoenix, e.g.
 `PHOTO_BASE_URL=https://photos.samyouatt.dev mix phx.server` **after** connecting
 that domain in Cloudflare. The S3 API endpoint is authenticated storage access,
@@ -106,7 +115,11 @@ Markdown photo integration is not included yet.
 
 Set the optional `mat` attribute on `<.photo_print>` in
 `lib/personal_site_web/controllers/page_html/photos.html.heex` to add white digital
-matting in the lightbox. Values are percentages of the **unmatted image width**
+matting in the lightbox. `photo_mat/2` in `PageHTML` selects 3% for landscapes and
+6% for portraits, except Eilean Donan, Ard Neackie, Base of Storr, Strathy Beach,
+Dunrobin, the waterfall, the blue-sky lighthouse, the black-and-white Chanonry boat,
+and Rhue lighthouse, which have no mat.
+Values are percentages of the **unmatted image width**
 on every side, so equal numbers mean equal border widths even on portrait photos:
 
 - Omit `mat` or use `mat={0}` for no mat.
