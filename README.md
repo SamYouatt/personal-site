@@ -104,6 +104,8 @@ landscape runs, opens with Eilean Donan, and puts Neist Point in the first portr
 pair. Black-and-white images fall every third desktop row, with the castles together. The gallery is capped
 at 1.5× the body-text width. Each photo has responsive WebP/JPEG sources and a full-image dialog. The
 larger JPEG is requested only when opened; the image link still works without JavaScript.
+While a dialog is open, Left/Right arrow keys move through the gallery without wrapping
+past the first or last photo. Escape closes it and returns focus to the current photo.
 Set
 `PHOTO_BASE_URL` to the bucket's public HTTPS origin when starting Phoenix, e.g.
 `PHOTO_BASE_URL=https://photos.samyouatt.dev mix phx.server` **after** connecting
