@@ -1,9 +1,19 @@
 <Layouts.app flash={@flash}>
-  <section id="photos" aria-labelledby="photos-title" class="px-4 pb-12 sm:px-8">
+  <section id="photos" aria-labelledby="photos-title" class="px-4 pt-16 pb-12 sm:px-8 sm:pt-24">
     <header class="mx-auto mb-8 max-w-[97.5ch]">
-      <h1 id="photos-title" class="text-2xl font-medium text-zinc-900 dark:text-zinc-100">
+      <h1
+        id="photos-title"
+        class="photo-title text-center text-xl leading-tight font-light text-black sm:text-[1.75rem] dark:text-white"
+      >
         North Coast 500
       </h1>
+      <div
+        id="photo-title-rule"
+        class="photo-title-rule mt-2 text-black sm:-mt-3 dark:text-white"
+        aria-hidden="true"
+      >
+        <span class="photo-title-castle"></span>
+      </div>
     </header>
 
     <div

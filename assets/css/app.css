@@ -57,7 +57,34 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Crimson Pro";
+  src: url("/fonts/CrimsonPro-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
 html { overflow-y: scroll; color-scheme: light dark; }
+
+.photo-title { font-family: "Crimson Pro", Georgia, serif; }
+.photo-title-rule {
+  display: flex;
+  align-items: flex-end;
+}
+.photo-title-rule::before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+}
+.photo-title-castle {
+  flex: none;
+  width: 150px;
+  height: 38px;
+  background: currentColor;
+  mask: url("/images/nc500-castle.svg") center / contain no-repeat;
+}
 
 .photo-lightbox {
   --photo-gutter: 1rem;

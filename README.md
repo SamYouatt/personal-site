@@ -154,6 +154,43 @@ for ordinary cross-origin `<img>` display (canvas/fetch use would be separate).
 Live R2 credentials, permissions, headers and CDN delivery must be checked against
 the configured bucket; local processing alone does not validate those.
 
+### Photo heading artwork
+
+The castle rule uses the Painter → AutoTrace **centreline** pipeline recovered from
+the [NC500 map experiment](https://ampcode.com/threads/T-01a0cf92-411b-744f-a5e3-fc8ebf343d9a).
+`assets/art/nc500-castle-source.png` is the `300x76+1120+485` crop of option B in
+the [selected Painter sheet](https://ampcode.com/user-content/attachments/e76b3ea0a8e70463e7ab06ed377e5352ea012b75fff19c7dbcf08d07da10ea32-file.png).
+`scripts/build_photo_rule.py` resizes it to 1200px, thresholds at 65%, traces with
+six filter iterations and error threshold 2, and rounds coordinates to one decimal.
+The tighter fit preserves the battlements; no castle paths are hand-redrawn.
+CSS extends the baseline and uses the generated SVG as a theme-aware mask.
+
+To regenerate, install ImageMagick 7 plus these AutoTrace build dependencies:
+`build-essential autoconf automake libtool pkg-config intltool autopoint gettext
+libglib2.0-dev libpng-dev`. Then:
+
+```sh
+git clone https://github.com/autotrace/autotrace /tmp/autotrace
+git -C /tmp/autotrace checkout fca2c54a2dbd0518fd78595d8d7bc20326fd9094
+(cd /tmp/autotrace && ./autogen.sh &&
+  ./configure --prefix=/tmp/autotrace-install --without-magick --without-pstoedit &&
+  make -j4 && make install)
+python3 scripts/build_photo_rule.py --autotrace /tmp/autotrace-install/bin/autotrace
+```
+
+Use `--error-threshold 6 --output /tmp/castle-smooth.svg` to compare a smoother fit.
+Only the resulting `priv/static/images/nc500-castle.svg` is needed at runtime.
+
+The heading uses self-hosted Crimson Pro Light (300), selected as option 7 in the
+blind serif comparison. Its SIL Open Font License is at
+`priv/static/fonts/CrimsonPro-OFL.txt`. The WOFF2 contains the Latin subset;
+other characters fall back to Georgia or the browser's serif font.
+To download the same font file:
+
+```sh
+curl -fsSL 'https://fonts.gstatic.com/s/crimsonpro/v28/q5uUsoa5M_tv7IihmnkabC5XiXCAlXGks1WZkG1MP5s-.woff2' -o priv/static/fonts/CrimsonPro-Light.woff2
+```
+
 ## Deploying to Fly.io
 
 The `samyouatt-site` app runs one always-on shared-CPU machine with 256 MB RAM in
