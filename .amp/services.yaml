@@ -1,8 +1,8 @@
 services:
   web:
-    command: mix phx.server
+    command: PHOTO_BASE_URL=${PHOTO_BASE_URL:-https://photos.samyouatt.dev} mix phx.server
     port: 4000
     health: /
     portal:
-      title: Sam Youatt — blog preview
-      description: Five migrated posts, rendered by Phoenix.
+      title: Sam Youatt — site preview
+      description: Writing and the North Coast 500 photo gallery.
