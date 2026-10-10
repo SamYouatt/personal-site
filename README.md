@@ -94,14 +94,18 @@ content hashes make URLs immutable. Consumers should deduplicate equal widths in
 `srcset` for small inputs.
 
 The `/photos` page displays photos from the manifest, with new IDs appended after
-the curated `@photo_order` in ID order. Page metadata is collection-agnostic; the
-current collection heading is “North Coast 500”. Photos are deduplicated by source
+the curated `@photo_order` in ID order within each section. IDs prefixed `sf-`
+appear under “San Francisco”, after the “North Coast 500” section. Page metadata
+is collection-agnostic. Photos are deduplicated by source
 SHA-256, excluding the similar Whaligoe
 boat shot (`nc500-whaligoe-boat`) without deleting its uploaded assets. The gallery pairs portraits
 side by side and gives landscapes the full width on wider screens; narrow screens
 use one column. The curated order in `PageController` spaces portrait pairs between
-landscape runs, opens with Eilean Donan, and puts Neist Point in the first portrait
-pair. Black-and-white images fall every third desktop row, with the castles together. The gallery is capped
+landscape runs. NC500 opens with Eilean Donan and puts Neist Point in the first portrait
+pair; black-and-white images fall every third desktop row, with the castles together.
+San Francisco opens with the man crossing the bay-view street and closes with the
+Golden Gate Bridge at night. Its four portrait pairs occupy desktop rows 3, 7, 11,
+and 14; black-and-white images fall on rows 3, 6, 10, and 14. The gallery is capped
 at 1.5× the body-text width. Each photo has responsive WebP/JPEG sources and a full-image dialog. The
 larger JPEG is requested only when opened; the image link still works without JavaScript.
 While a dialog is open, Left/Right arrow keys move through the gallery without wrapping
@@ -121,6 +125,9 @@ matting in the lightbox. `photo_mat/2` in `PageHTML` selects 3% for landscapes a
 6% for portraits, except Eilean Donan, Ard Neackie, Base of Storr, Strathy Beach,
 Dunrobin, the waterfall, the blue-sky lighthouse, the black-and-white Chanonry boat,
 and Rhue lighthouse, which have no mat.
+For San Francisco, only California Street, Alcatraz Island, the hillside convertible,
+the Golden Gate Bridge portrait, Lime Point lighthouse, and the Palace of Fine Arts
+have mats; the other thirteen SF photographs have none.
 Values are percentages of the **unmatted image width**
 on every side, so equal numbers mean equal border widths even on portrait photos:
 
@@ -180,6 +187,17 @@ python3 scripts/build_photo_rule.py --autotrace /tmp/autotrace-install/bin/autot
 
 Use `--error-threshold 6 --output /tmp/castle-smooth.svg` to compare a smoother fit.
 Only the resulting `priv/static/images/nc500-castle.svg` is needed at runtime.
+
+The San Francisco header uses the same pipeline, with the bridge on the left.
+`assets/art/sf-bridge-source.png` is the `850x150+58+268` crop of the
+[approved Painter drawing](https://ampcode.com/user-content/attachments/0ed380fac1ff74e6dac7331bbea665eb9d0c0d10128bf57beb4273977f934729-file.png).
+The crop retains the bridge and a short baseline; CSS extends the line to the right.
+The script flattens transparent input onto white before thresholding. Regenerate with:
+
+```sh
+python3 scripts/build_photo_rule.py --autotrace /tmp/autotrace-install/bin/autotrace \
+  --source assets/art/sf-bridge-source.png --output priv/static/images/sf-bridge.svg
+```
 
 The heading uses self-hosted Crimson Pro Light (300), selected as option 7 in the
 blind serif comparison. Its SIL Open Font License is at

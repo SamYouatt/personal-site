@@ -16,47 +16,13 @@
       </div>
     </header>
 
-    <div
+    <.photo_gallery
       :if={@photo_base_url}
       id="photo-gallery"
-      class="mx-auto grid max-w-[97.5ch] grid-cols-1 items-start gap-4 md:grid-cols-2"
-    >
-      <figure
-        :for={{{id, photo}, index} <- Enum.with_index(@photos)}
-        id={"photo-#{id}"}
-        class={[photo["width"] >= photo["height"] && "md:col-span-2"]}
-      >
-        <a
-          id={"photo-open-#{id}"}
-          href={photo_url(@photo_base_url, photo_variant(photo, "lightbox", "jpg"))}
-          data-photo-open={"photo-lightbox-#{id}"}
-          class="group block cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-500"
-          aria-label={"View larger: #{photo_alt(id)}"}
-          aria-haspopup="dialog"
-          aria-controls={"photo-lightbox-#{id}"}
-        >
-          <picture>
-            <source
-              type="image/webp"
-              srcset={photo_srcset(@photo_base_url, photo, "webp")}
-              sizes={photo_sizes(photo)}
-            />
-            <img
-              id={"photo-image-#{id}"}
-              src={photo_url(@photo_base_url, photo_variant(photo, "responsive", "jpg"))}
-              srcset={photo_srcset(@photo_base_url, photo, "jpg")}
-              sizes={photo_sizes(photo)}
-              width={photo["width"]}
-              height={photo["height"]}
-              alt={photo_alt(id)}
-              loading={if index == 0, do: "eager", else: "lazy"}
-              decoding="async"
-              class="h-auto w-full bg-zinc-200 transition-opacity group-hover:opacity-95 dark:bg-zinc-900"
-            />
-          </picture>
-        </a>
-      </figure>
-    </div>
+      photos={@nc500_photos}
+      base_url={@photo_base_url}
+      eager_first
+    />
 
     <p
       :if={!@photo_base_url}
@@ -65,6 +31,35 @@
     >
       Photographs will be available here soon.
     </p>
+  </section>
+
+  <section
+    id="san-francisco"
+    aria-labelledby="san-francisco-title"
+    class="px-4 pt-8 pb-12 sm:px-8 sm:pt-12"
+  >
+    <header class="mx-auto mb-8 max-w-[97.5ch]">
+      <h2
+        id="san-francisco-title"
+        class="photo-title text-center text-xl leading-tight font-light text-black sm:text-[1.75rem] dark:text-white"
+      >
+        San Francisco
+      </h2>
+      <div
+        id="san-francisco-title-rule"
+        class="photo-title-rule photo-title-rule-left mt-2 text-black sm:-mt-3 dark:text-white"
+        aria-hidden="true"
+      >
+        <span class="photo-title-bridge"></span>
+      </div>
+    </header>
+
+    <.photo_gallery
+      :if={@photo_base_url}
+      id="sf-photo-gallery"
+      photos={@sf_photos}
+      base_url={@photo_base_url}
+    />
   </section>
 
   <dialog

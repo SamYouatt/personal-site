@@ -5,7 +5,7 @@ Adapted from scripts/build_map_art.py in the earlier NC500 map experiment:
 https://ampcode.com/threads/T-01a0cf92-411b-744f-a5e3-fc8ebf343d9a
 Requires ImageMagick 7 and AutoTrace fca2c54a2dbd0518fd78595d8d7bc20326fd9094.
 See README.md for build instructions and the Painter source/crop provenance.
-The castle paths are traced, not hand-drawn or edited point by point.
+The artwork paths are traced, not hand-drawn or edited point by point.
 """
 
 import argparse
@@ -18,12 +18,13 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def build(autotrace, error, output):
+def build(autotrace, error, source, output):
     with tempfile.TemporaryDirectory() as tmp:
         raster = Path(tmp) / "input.png"
         traced = Path(tmp) / "traced.svg"
         subprocess.run([
-            "magick", str(ROOT / "assets/art/nc500-castle-source.png"),
+            "magick", str(source),
+            "-background", "white", "-alpha", "remove", "-alpha", "off",
             "-resize", "1200x", "-threshold", "65%", f"PNG24:{raster}",
         ], check=True)
         subprocess.run([
@@ -55,7 +56,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--autotrace", default="autotrace")
     parser.add_argument("--error-threshold", type=int, choices=[2, 6], default=2)
+    parser.add_argument("--source", type=Path,
+                        default=ROOT / "assets/art/nc500-castle-source.png")
     parser.add_argument("--output", type=Path,
                         default=ROOT / "priv/static/images/nc500-castle.svg")
     args = parser.parse_args()
-    build(args.autotrace, args.error_threshold, args.output)
+    build(args.autotrace, args.error_threshold, args.source, args.output)

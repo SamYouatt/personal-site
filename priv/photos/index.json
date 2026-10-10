@@ -1,365 +1,77 @@
 {
   "group": null,
   "photos": {
-    "nc500-ard-neackie": {
-      "height": 5152,
+    "sf-garden-steps": {
+      "height": 3785,
       "recipe": "web-v1",
-      "source_sha256": "e7dfb191b9048f83760446752ed8762fe84adee9f97345c0d13e2d5542003f81",
+      "source_sha256": "6cc865f6aac5a42798b51a55794c3e2f2f824412517e5b9cc8be526e4d7b3600",
       "variants": [
         {
-          "bytes": 33652,
+          "bytes": 130788,
           "format": "webp",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-ard-neackie/18653ff44b6d7b875927293afc9217a1d5e2621ab34fa0ecc9727221bf9d2558/w640.webp",
+          "height": 1067,
+          "key": "photos/_ungrouped/sf-garden-steps/fd91b2a7f56332ac60e6bb75ee2882deab1ed41e3cd1f3409453e922b44e4c88/w640.webp",
           "role": "responsive",
           "width": 640
         },
         {
-          "bytes": 47882,
+          "bytes": 207824,
           "format": "jpg",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-ard-neackie/025bf2c27ebf6e012ebeba13cb47775bcf9da91835785983e2b02f5f11063f8c/w640.jpg",
+          "height": 1067,
+          "key": "photos/_ungrouped/sf-garden-steps/3aedefc2af0d266ca25dad14c49bfa840c1bff9038cb945f0bd3f4b27aa2f956/w640.jpg",
           "role": "responsive",
           "width": 640
         },
         {
-          "bytes": 154598,
-          "format": "webp",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-ard-neackie/1f43132ca10d6b5374544609ea1d3d4b8931a410e707b1a5a608ef54b01229ac/w1280.webp",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 204266,
-          "format": "jpg",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-ard-neackie/9d6695d3e404e05ce416e721019b8f483aa34cb03d30772afdcae739c393eb3c/w1280.jpg",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 462150,
-          "format": "webp",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-ard-neackie/5e21c84d9d43dbf8a20b23f0522a0afb85113a1bdfe055374d69c6ace6e768e1/w1920.webp",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 516613,
-          "format": "jpg",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-ard-neackie/c46b55f3dd08b616c638bf6d30c8789203a9076e300b5d3d61b6b552d0f71422/w1920.jpg",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 1522616,
+          "bytes": 397032,
           "format": "webp",
           "height": 2133,
-          "key": "photos/_ungrouped/nc500-ard-neackie/e8ddf025b57b4d016131a0a1fd5a7a88bc7abfe0862d1019f2c9147512f38089/lightbox.webp",
-          "role": "lightbox",
-          "width": 3200
+          "key": "photos/_ungrouped/sf-garden-steps/ceb2c4fb7f5aa9144465ead8c92b1fd559c58c9a1189bf4fd542b614889b1a7e/w1280.webp",
+          "role": "responsive",
+          "width": 1280
         },
         {
-          "bytes": 1644225,
+          "bytes": 681750,
           "format": "jpg",
           "height": 2133,
-          "key": "photos/_ungrouped/nc500-ard-neackie/e6c0afadca37af3c9b2220091e5dd355aeb141956fbd55f4f749fa9a8d3c15e6/lightbox.jpg",
-          "role": "lightbox",
-          "width": 3200
-        }
-      ],
-      "width": 7728
-    },
-    "nc500-base-of-storr": {
-      "height": 5152,
-      "recipe": "web-v1",
-      "source_sha256": "eb4839d4fcb34e25067bc48418481866d5b4205f45dc289c42f95d1197c0494d",
-      "variants": [
-        {
-          "bytes": 16930,
-          "format": "webp",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-base-of-storr/0a0ee95a59b47e96c18fe2c6989e0e49676afe977778ed39f6540684bbb25a21/w640.webp",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 35591,
-          "format": "jpg",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-base-of-storr/87e6daf3716ed3c626a5f79f91ab2984c25732d8e6e59f2e7ebfccd0adf9b257/w640.jpg",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 51282,
-          "format": "webp",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-base-of-storr/57f994796a665154f5af815ac837dabf1ef5dde6cdd77a24ae04cb2084f1dd8a/w1280.webp",
+          "key": "photos/_ungrouped/sf-garden-steps/dbba0c2ed198345f6700dee9c734aae3c2502c6a8984c71c71892f2fa60eb1c2/w1280.jpg",
           "role": "responsive",
           "width": 1280
         },
         {
-          "bytes": 131858,
-          "format": "jpg",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-base-of-storr/6546602693a1864c5deea304152424565467a37d9a931c9318186dae148da962/w1280.jpg",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 124810,
-          "format": "webp",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-base-of-storr/d4119471b653af6e6645d892acd424952e372c1526a3c308a05e430cb07cb197/w1920.webp",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 316999,
-          "format": "jpg",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-base-of-storr/572e05fd0e5102a0e97395ee602aac9eefcca71fbe0fb6356b3566b53ce64b1c/w1920.jpg",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 853474,
-          "format": "webp",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-base-of-storr/ff794eaa5f797dee15d71cca9224474848b611e38025661136d30e0d0cca9cdc/lightbox.webp",
-          "role": "lightbox",
-          "width": 3200
-        },
-        {
-          "bytes": 1133066,
-          "format": "jpg",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-base-of-storr/da4724f95ad94ec57a9b30067fcd1f46ce6c05551576d3124280d594516bac0c/lightbox.jpg",
-          "role": "lightbox",
-          "width": 3200
-        }
-      ],
-      "width": 7728
-    },
-    "nc500-bouy-bench": {
-      "height": 7728,
-      "recipe": "web-v1",
-      "source_sha256": "e5a66f88dff2a31287d8eab17ac1dce85835fbfc50a77230e93f8d969458a106",
-      "variants": [
-        {
-          "bytes": 105356,
-          "format": "webp",
-          "height": 960,
-          "key": "photos/_ungrouped/nc500-bouy-bench/e82e8fed8249fb0f879d1bb23312b172c0163558e6771ead8c4c73a5ab6390dd/w640.webp",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 169814,
-          "format": "jpg",
-          "height": 960,
-          "key": "photos/_ungrouped/nc500-bouy-bench/e4ae998e8bca0c7038af4bd7f91767adbb8c90c4c80ea1c09793d6d720509c3f/w640.jpg",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 389136,
-          "format": "webp",
-          "height": 1920,
-          "key": "photos/_ungrouped/nc500-bouy-bench/9d002f621fe1b7e2af583d615213313073c8a774c92ef9681234b9acb3439cc8/w1280.webp",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 638148,
-          "format": "jpg",
-          "height": 1920,
-          "key": "photos/_ungrouped/nc500-bouy-bench/ff99178a40bd292833af19ad957da8a56e9b17c637191f21e292a16a4ff877f3/w1280.jpg",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 1049764,
-          "format": "webp",
-          "height": 2880,
-          "key": "photos/_ungrouped/nc500-bouy-bench/e2e0260e94c83fa74a89c295e41cf8c0ef03818bb23c2ea761988f83660c7b65/w1920.webp",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 1451169,
-          "format": "jpg",
-          "height": 2880,
-          "key": "photos/_ungrouped/nc500-bouy-bench/679173a19ab7b3cabc5dc7165b6bb47f5bfdfbcb0f725556a2433cbf802839dc/w1920.jpg",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 1378746,
+          "bytes": 773196,
           "format": "webp",
           "height": 3200,
-          "key": "photos/_ungrouped/nc500-bouy-bench/8d6f04fc8764db28ca5c4953c51e2b9506c4d0d7feb163608789c4d254c21325/lightbox.webp",
-          "role": "lightbox",
-          "width": 2133
+          "key": "photos/_ungrouped/sf-garden-steps/54d887ccacf7304c094ce9c2f3e84932ef1640d205a18ce8cbd3e9b707a05d93/w1920.webp",
+          "role": "responsive",
+          "width": 1920
         },
         {
-          "bytes": 1822351,
+          "bytes": 1362694,
           "format": "jpg",
           "height": 3200,
-          "key": "photos/_ungrouped/nc500-bouy-bench/5948b8e6030b69ea30cfd80066015fd674d87fb9cbc00446b6a033c0c0e76301/lightbox.jpg",
-          "role": "lightbox",
-          "width": 2133
-        }
-      ],
-      "width": 5152
-    },
-    "nc500-bw-old-wick-castle": {
-      "height": 7728,
-      "recipe": "web-v1",
-      "source_sha256": "8976400f76d05ae1f81145bd07ff129e259ecb5948a38c2b523928010a7ae5c8",
-      "variants": [
-        {
-          "bytes": 79934,
-          "format": "webp",
-          "height": 960,
-          "key": "photos/_ungrouped/nc500-bw-old-wick-castle/ca2c0b45db843fc62191540098c989a4bf94d7636662e45eb1135f4ae7041774/w640.webp",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 121721,
-          "format": "jpg",
-          "height": 960,
-          "key": "photos/_ungrouped/nc500-bw-old-wick-castle/2d7e72cbe82de882586053b1f592e5134233757aad2ba4fb5b86cd1deb5baecf/w640.jpg",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 370138,
-          "format": "webp",
-          "height": 1920,
-          "key": "photos/_ungrouped/nc500-bw-old-wick-castle/9c6eaf40cd5f42429ff2b6c2926e70ed30918b9fa32064eccccb2bd49c022ba5/w1280.webp",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 495726,
-          "format": "jpg",
-          "height": 1920,
-          "key": "photos/_ungrouped/nc500-bw-old-wick-castle/622fc9e8306bee1127218539e1f866aa4316c6f5d4b36c2c71325f58725709d6/w1280.jpg",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 961772,
-          "format": "webp",
-          "height": 2880,
-          "key": "photos/_ungrouped/nc500-bw-old-wick-castle/9b785aaa2b7216ca237867414c690f63ce9a7afa255ff5d66a6ec4a53da2005a/w1920.webp",
+          "key": "photos/_ungrouped/sf-garden-steps/74c5173878c1efd8a3c80b0325410a649d14071c3cbca099e3dba7fbc96fc981/w1920.jpg",
           "role": "responsive",
           "width": 1920
         },
         {
-          "bytes": 1179110,
-          "format": "jpg",
-          "height": 2880,
-          "key": "photos/_ungrouped/nc500-bw-old-wick-castle/0d2bf112c9e535eb8a212a8906aaebcbb38947483869b90bbe6483694fe52d29/w1920.jpg",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 1214004,
+          "bytes": 773196,
           "format": "webp",
           "height": 3200,
-          "key": "photos/_ungrouped/nc500-bw-old-wick-castle/aae04d46a499393098029612adf7fa32fb5ac05237b43aa186ca62e5e69e00a7/lightbox.webp",
+          "key": "photos/_ungrouped/sf-garden-steps/54d887ccacf7304c094ce9c2f3e84932ef1640d205a18ce8cbd3e9b707a05d93/lightbox.webp",
           "role": "lightbox",
-          "width": 2133
+          "width": 1920
         },
         {
-          "bytes": 1472085,
+          "bytes": 1362694,
           "format": "jpg",
           "height": 3200,
-          "key": "photos/_ungrouped/nc500-bw-old-wick-castle/099a491fb6fd2bf2d96f13019a21b529130cf903734dc98e8f5225e439c2ea21/lightbox.jpg",
+          "key": "photos/_ungrouped/sf-garden-steps/74c5173878c1efd8a3c80b0325410a649d14071c3cbca099e3dba7fbc96fc981/lightbox.jpg",
           "role": "lightbox",
-          "width": 2133
+          "width": 1920
         }
       ],
-      "width": 5152
-    },
-    "nc500-bw-strathy-beach": {
-      "height": 5152,
-      "recipe": "web-v1",
-      "source_sha256": "58ba869b19f85b42d3bbabd02d4e6a9c8d2e319814ddb60072465bdea5add280",
-      "variants": [
-        {
-          "bytes": 28680,
-          "format": "webp",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-bw-strathy-beach/b5a5e0047112d176e93a0e0fb1df73d8808d83a65d37d0ae1ac45f9b8f1fb629/w640.webp",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 42980,
-          "format": "jpg",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-bw-strathy-beach/0700752613e85c550a2c71ff5e951376f1af6a763f05f5d54cf0786f37322fdd/w640.jpg",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 118812,
-          "format": "webp",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-bw-strathy-beach/031b7a3d91aa8a272af6a2dffe30e100c9728957b0552796c1572096c65110fa/w1280.webp",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 178522,
-          "format": "jpg",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-bw-strathy-beach/16394a99f25ed5a8298b89f679a74435f5eb595af35a1f6f1ccb5938c2a54350/w1280.jpg",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 342370,
-          "format": "webp",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-bw-strathy-beach/dddd52f07ed819c52c0d0493c0dc00fcdc52d9725fd1673d23a64f3fe02fc50e/w1920.webp",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 442461,
-          "format": "jpg",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-bw-strathy-beach/eab5b51ae8044375f90c4d41c242cf84667239503da61cc510842b01755a0a46/w1920.jpg",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 1284234,
-          "format": "webp",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-bw-strathy-beach/4ff35fdca1ec3b37b8afc53f115893e7df37a6df4667846a676f109863a5595f/lightbox.webp",
-          "role": "lightbox",
-          "width": 3200
-        },
-        {
-          "bytes": 1434306,
-          "format": "jpg",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-bw-strathy-beach/86002c32a749c99a14ef51daa5b3fe931b035b81f0e20a30259e4c5f80b2bad8/lightbox.jpg",
-          "role": "lightbox",
-          "width": 3200
-        }
-      ],
-      "width": 7728
+      "width": 2271
     },
     "nc500-cemetry-near-chocolate": {
       "height": 5152,
@@ -433,576 +145,72 @@
       ],
       "width": 7728
     },
-    "nc500-chanonry-point-boat": {
+    "nc500-random-layby": {
       "height": 5152,
       "recipe": "web-v1",
-      "source_sha256": "4e5df497e1327cfb0ccd1a5585513f9e0c9b33e08c0138f73b08280e29c98cf2",
+      "source_sha256": "0d456bf1d2dcb09d0c6b0f739a0e33e0b74523b20422088855ff513f9ea401d4",
       "variants": [
         {
-          "bytes": 46230,
+          "bytes": 48816,
           "format": "webp",
           "height": 427,
-          "key": "photos/_ungrouped/nc500-chanonry-point-boat/f3f406b7259cf0cfd8255318c5851545c3369d8bef43fbe85391d7c060a396ca/w640.webp",
+          "key": "photos/_ungrouped/nc500-random-layby/51eb180ec5021c32a9065433faab18c4b4b1bede5db6ab146f82afbb4ca65143/w640.webp",
           "role": "responsive",
           "width": 640
         },
         {
-          "bytes": 60275,
+          "bytes": 73871,
           "format": "jpg",
           "height": 427,
-          "key": "photos/_ungrouped/nc500-chanonry-point-boat/a06338403d0c4ab206ced481a2c6b6144faeac23ceb13bdc9bb9291df676c9dc/w640.jpg",
+          "key": "photos/_ungrouped/nc500-random-layby/6a609558951a5ecfae0a46f54388f7a65682eba95ea83e0102d338cc82dcd06a/w640.jpg",
           "role": "responsive",
           "width": 640
         },
         {
-          "bytes": 184250,
+          "bytes": 174816,
           "format": "webp",
           "height": 853,
-          "key": "photos/_ungrouped/nc500-chanonry-point-boat/9b4b2463d47b2543aeb4abacbab11866c9e0e49566e8824c6201b10629a3414b/w1280.webp",
+          "key": "photos/_ungrouped/nc500-random-layby/09341ad0c5e0ce07b7de8ceff3fb5ce2bfd6f82871a15c0cf1c4c952de6ff377/w1280.webp",
           "role": "responsive",
           "width": 1280
         },
         {
-          "bytes": 235461,
+          "bytes": 272918,
           "format": "jpg",
           "height": 853,
-          "key": "photos/_ungrouped/nc500-chanonry-point-boat/79088a134196c44feb8c0bf2af40a3d72b81fe38652d8ccf566ce9c0b7c7ecb3/w1280.jpg",
+          "key": "photos/_ungrouped/nc500-random-layby/c2b9a44d4d1b9cacc01f5e99ec6d416804214b871d43c846ebe65ed2d98b3ec3/w1280.jpg",
           "role": "responsive",
           "width": 1280
         },
         {
-          "bytes": 463532,
+          "bytes": 411264,
           "format": "webp",
           "height": 1280,
-          "key": "photos/_ungrouped/nc500-chanonry-point-boat/0c15a4ac3ebbc73563fbdafc452c4ee92d4576ae8ba663dcf265cb48a60ae75e/w1920.webp",
+          "key": "photos/_ungrouped/nc500-random-layby/4c4ac606fafab42fa558f4563620bfc332f6a9c9cb14c3a055dbfd13719a957e/w1920.webp",
           "role": "responsive",
           "width": 1920
         },
         {
-          "bytes": 552421,
+          "bytes": 613827,
           "format": "jpg",
           "height": 1280,
-          "key": "photos/_ungrouped/nc500-chanonry-point-boat/85277f7cb6e8e16d560443c22e1c8458143ded6fa5645ac1d780169d8ec6ced0/w1920.jpg",
+          "key": "photos/_ungrouped/nc500-random-layby/00d6d692e7cf2ea78db38a28df0216a64c1253d1621e20638c16d3b6915d7d77/w1920.jpg",
           "role": "responsive",
           "width": 1920
         },
         {
-          "bytes": 1433870,
+          "bytes": 1426524,
           "format": "webp",
           "height": 2133,
-          "key": "photos/_ungrouped/nc500-chanonry-point-boat/83f85df61b7390879359d2ee121d85b4e05ec259cc8e63723938557be3ef48ca/lightbox.webp",
+          "key": "photos/_ungrouped/nc500-random-layby/0e742c44b324618d10cbf1a244760da74490f8e5e22027d4f8ab5e64067c2d79/lightbox.webp",
           "role": "lightbox",
           "width": 3200
         },
         {
-          "bytes": 1647299,
+          "bytes": 1802907,
           "format": "jpg",
           "height": 2133,
-          "key": "photos/_ungrouped/nc500-chanonry-point-boat/e366117f7d549b0e4d499622fca4b59bdda66572a2c1c21b550258da91e9efd1/lightbox.jpg",
-          "role": "lightbox",
-          "width": 3200
-        }
-      ],
-      "width": 7728
-    },
-    "nc500-clouded-ben-loyal": {
-      "height": 3648,
-      "recipe": "web-v1",
-      "source_sha256": "60f488a7e2e57c0f26c8d841f59b43ddaa734ebf06fd77bb9ebe662f7d0ab668",
-      "variants": [
-        {
-          "bytes": 6968,
-          "format": "webp",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-clouded-ben-loyal/0396ef929ce9eb420316cde4dcd919fac2e98760f7a8dd02602e98c7532fa6d9/w640.webp",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 18155,
-          "format": "jpg",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-clouded-ben-loyal/79251d0311a73c7cd204a3a381c06ac599c4fd92a766558f2700992f7477f1b5/w640.jpg",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 18328,
-          "format": "webp",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-clouded-ben-loyal/af2add7593943ad7e46db13a75221658ed930bc8d712d78d56cd357c6e9835df/w1280.webp",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 76812,
-          "format": "jpg",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-clouded-ben-loyal/19f86b3b4475bdea02efa2a3281a0a936acea6544179912d2e3256baf761a2a7/w1280.jpg",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 90326,
-          "format": "webp",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-clouded-ben-loyal/9c36df1c51995c49449f11ecf47185ba659562efb52fe60c9ca9c25a1554b7aa/w1920.webp",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 220671,
-          "format": "jpg",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-clouded-ben-loyal/badaca75f337dba654a7fe7c5023f911337afc1f222de3c916272c6434d81063/w1920.jpg",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 710068,
-          "format": "webp",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-clouded-ben-loyal/0f6d48f54b4b7de61ec59c0b5d0c7231bc758efe1fc2918e245bb33fb5dc6a09/lightbox.webp",
-          "role": "lightbox",
-          "width": 3200
-        },
-        {
-          "bytes": 969633,
-          "format": "jpg",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-clouded-ben-loyal/45d742198d33ef5be93266af4c5a3f203f1823eb32b99c2b2a49d4e3c85a45c8/lightbox.jpg",
-          "role": "lightbox",
-          "width": 3200
-        }
-      ],
-      "width": 5472
-    },
-    "nc500-dunrobbin": {
-      "height": 5152,
-      "recipe": "web-v1",
-      "source_sha256": "473cde45cd1623c8bf235aba85a1f6442d51ca2233bb018a3a50b81843a6788c",
-      "variants": [
-        {
-          "bytes": 44538,
-          "format": "webp",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-dunrobbin/05e1fbc6bbc054b0eb168e60d01913aec8a5ee900b7033bec84d8be8197b5152/w640.webp",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 74185,
-          "format": "jpg",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-dunrobbin/8a00bfa033e1c4c5bf3da36c55c6f059c22095f531911c0b241cc43a338a638d/w640.jpg",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 142166,
-          "format": "webp",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-dunrobbin/af398cb59ca3ead15fbb89e8d2df8ba1c5a8c9a2bb9cdb956338e968bd1130c4/w1280.webp",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 253008,
-          "format": "jpg",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-dunrobbin/1bbcde6533fcdff70473db98132d55535dea40a960c28384c0fdb9dcf25ca511/w1280.jpg",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 310714,
-          "format": "webp",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-dunrobbin/15087a2e9e0263e051dd7dc0246e5500823a896071ff2fe024ca0dbdd8c1cdcd/w1920.webp",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 548625,
-          "format": "jpg",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-dunrobbin/7162da285681fb9f81059b08facde3a2b1b347ae565f290c6226dc1a63258ead/w1920.jpg",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 1211592,
-          "format": "webp",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-dunrobbin/4111489948ad7aea17abebf27fb4676df7df137902402913ab5f8ac675a1e1bf/lightbox.webp",
-          "role": "lightbox",
-          "width": 3200
-        },
-        {
-          "bytes": 1604653,
-          "format": "jpg",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-dunrobbin/cff16ba83cdd2a6dcb2ba6028846ff3aedeb37a88aa5c8b460ac7502f583c051/lightbox.jpg",
-          "role": "lightbox",
-          "width": 3200
-        }
-      ],
-      "width": 7728
-    },
-    "nc500-eliean-donan-landscape": {
-      "height": 5152,
-      "recipe": "web-v1",
-      "source_sha256": "8231f0bc49f4139a46ac0bd0a3b8036a07e8c227b488c0ec2c08aa9cb3379e1a",
-      "variants": [
-        {
-          "bytes": 44218,
-          "format": "webp",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-eliean-donan-landscape/79154a87015c9f5393e056d5cff18bf038a612a12533caeee587d8bf2a5d0162/w640.webp",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 73899,
-          "format": "jpg",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-eliean-donan-landscape/8fd0e0295ad0a40676cc428b3b3110e9c5dca7a9b1c7e605506bfcaad97484ff/w640.jpg",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 154766,
-          "format": "webp",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-eliean-donan-landscape/b4e7f5f7e3fb6d0473908bb2f8bfd5d3a4ad2ab67acb4ca7fcf8bf028a5b3b00/w1280.webp",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 271059,
-          "format": "jpg",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-eliean-donan-landscape/7d08cf18c1f24d7cf25f2daee28a478452934bc64b50e948f72d1319f21de28c/w1280.jpg",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 374488,
-          "format": "webp",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-eliean-donan-landscape/23baacecc26a5703d3fd73590d38938c94541f3091d8ac4b6bbc060445f90ff5/w1920.webp",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 609168,
-          "format": "jpg",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-eliean-donan-landscape/6d3e3ef2ef9c359fcf759689de0f6577fb40f88177f0445fb7f2263477fff1e2/w1920.jpg",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 1393046,
-          "format": "webp",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-eliean-donan-landscape/43ac44f43df74c44e28d1b972f09addbd1fdbf50d5a2a301ac7d96f5ad0d8661/lightbox.webp",
-          "role": "lightbox",
-          "width": 3200
-        },
-        {
-          "bytes": 1799806,
-          "format": "jpg",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-eliean-donan-landscape/3cf07a2e627568d539f13bed544534f3a46d8b531c581ff92e1b3598fac12d6a/lightbox.jpg",
-          "role": "lightbox",
-          "width": 3200
-        }
-      ],
-      "width": 7728
-    },
-    "nc500-falls-long-exposure": {
-      "height": 3648,
-      "recipe": "web-v1",
-      "source_sha256": "f6ac38c769560ebbd8e127b28b6c550e600bf239dd47d0a36c003886f9f12d88",
-      "variants": [
-        {
-          "bytes": 66454,
-          "format": "webp",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-falls-long-exposure/468d745b91f3d85a7ce03e1408540f5dd6a1c73e649f5a8f55518d3fce6bd3a0/w640.webp",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 95666,
-          "format": "jpg",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-falls-long-exposure/035ea79002117a913c2de261a5957a79c7912f95ad91a9eddbf64d8e0673dc95/w640.jpg",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 223982,
-          "format": "webp",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-falls-long-exposure/d2bde5723f4683cdfcfd546e37e945731c580b55c6a7a51fb5d06e19a459771c/w1280.webp",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 333998,
-          "format": "jpg",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-falls-long-exposure/f27d624a6729739529cbfb5a25c76d2bc7d5c2536615e2b0605f503504d4e94c/w1280.jpg",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 425110,
-          "format": "webp",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-falls-long-exposure/ef2990de7ec6b5910c0496e45df32e08ab4efac942ce6897502bbd0abde1fb10/w1920.webp",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 663924,
-          "format": "jpg",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-falls-long-exposure/5b68ae5e9a196cecfd6f2cbb200670d1c5688f447ffef1dd3409e6f577f69538/w1920.jpg",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 796406,
-          "format": "webp",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-falls-long-exposure/da648c67fbb7c3dd6979c766666f2c5d28061f0899a1ccd9ddddab6dd34db393/lightbox.webp",
-          "role": "lightbox",
-          "width": 3200
-        },
-        {
-          "bytes": 1453437,
-          "format": "jpg",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-falls-long-exposure/e02f91e18f9299cc9be3235a4d6e5caf9b3605781a5985587b2437c148693753/lightbox.jpg",
-          "role": "lightbox",
-          "width": 3200
-        }
-      ],
-      "width": 5472
-    },
-    "nc500-hilltop-boats": {
-      "height": 7728,
-      "recipe": "web-v1",
-      "source_sha256": "7b5d817c728a3dcc7c71e12a4d6c99a18f52c98a0a7af5705fa56217168e33b4",
-      "variants": [
-        {
-          "bytes": 90374,
-          "format": "webp",
-          "height": 960,
-          "key": "photos/_ungrouped/nc500-hilltop-boats/8f94e5d45de4f986e57e65f2af00a116c7ec37b251d5b28b574e753611324d21/w640.webp",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 145529,
-          "format": "jpg",
-          "height": 960,
-          "key": "photos/_ungrouped/nc500-hilltop-boats/5154df52ad608da331770536f8498859fe0cd0464fb13edc211bcd9984513866/w640.jpg",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 336918,
-          "format": "webp",
-          "height": 1920,
-          "key": "photos/_ungrouped/nc500-hilltop-boats/af42ae8fbdce9b88173d40dfcc2c5dd6f08dbb94833b5c05cc3005dc998c32a8/w1280.webp",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 557064,
-          "format": "jpg",
-          "height": 1920,
-          "key": "photos/_ungrouped/nc500-hilltop-boats/fa707824417ac560ebb27d046c07e25997c2573a19339a106f1d68ebb68c87ec/w1280.jpg",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 932496,
-          "format": "webp",
-          "height": 2880,
-          "key": "photos/_ungrouped/nc500-hilltop-boats/8210f393515555476f9610a30a7e1bf34b0974c885d166fd1584b89fb2bceac4/w1920.webp",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 1293579,
-          "format": "jpg",
-          "height": 2880,
-          "key": "photos/_ungrouped/nc500-hilltop-boats/58cefbbd6390d22f5494bb4bdefddf16185ff0aa010f96634d8cd413e064728f/w1920.jpg",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 1236776,
-          "format": "webp",
-          "height": 3200,
-          "key": "photos/_ungrouped/nc500-hilltop-boats/d3d73461340bd3ee9ec1beac67858f84e184d1980583063f22d1351e91df7af1/lightbox.webp",
-          "role": "lightbox",
-          "width": 2133
-        },
-        {
-          "bytes": 1639216,
-          "format": "jpg",
-          "height": 3200,
-          "key": "photos/_ungrouped/nc500-hilltop-boats/d5c22041158797a2d5c35babf17bcd0f172459d8c78da8d4b343f2c7ab784572/lightbox.jpg",
-          "role": "lightbox",
-          "width": 2133
-        }
-      ],
-      "width": 5152
-    },
-    "nc500-hilltop-sheep": {
-      "height": 5472,
-      "recipe": "web-v1",
-      "source_sha256": "03e81d873aca558b33b6b350bb4a415b0329985f2c414407af404dcca209728c",
-      "variants": [
-        {
-          "bytes": 48758,
-          "format": "webp",
-          "height": 960,
-          "key": "photos/_ungrouped/nc500-hilltop-sheep/599bd0f967266937b37acedcf4e42c9508b5ef398fbb41c8e64a203f2198591d/w640.webp",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 100484,
-          "format": "jpg",
-          "height": 960,
-          "key": "photos/_ungrouped/nc500-hilltop-sheep/4c79a20e0a756e1a0d34f830853d9b2554bf04da1921fbddbf45c756fdf77a1b/w640.jpg",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 235730,
-          "format": "webp",
-          "height": 1920,
-          "key": "photos/_ungrouped/nc500-hilltop-sheep/af06a0a90b793483058427669e029f7731f1fe10f9f0070ad25c788e7a3e8595/w1280.webp",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 421943,
-          "format": "jpg",
-          "height": 1920,
-          "key": "photos/_ungrouped/nc500-hilltop-sheep/85d1be32cb928efa732a2d4713c55811218fe1e82ee5720a30fb94b4d34c6489/w1280.jpg",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 815492,
-          "format": "webp",
-          "height": 2880,
-          "key": "photos/_ungrouped/nc500-hilltop-sheep/581eb2f19c22bc57b33fb3ea7592d279cb37ce462d99025389a6044c680d0729/w1920.webp",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 1090494,
-          "format": "jpg",
-          "height": 2880,
-          "key": "photos/_ungrouped/nc500-hilltop-sheep/61cdc912565d01d61f10426f9b5dd2448ba742c84d1929f2c87b3e55af9ac387/w1920.jpg",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 1113932,
-          "format": "webp",
-          "height": 3200,
-          "key": "photos/_ungrouped/nc500-hilltop-sheep/7aadabd61270acabd171abc58621806eae39c4659d908f142b53ab82dad0e5fb/lightbox.webp",
-          "role": "lightbox",
-          "width": 2133
-        },
-        {
-          "bytes": 1421271,
-          "format": "jpg",
-          "height": 3200,
-          "key": "photos/_ungrouped/nc500-hilltop-sheep/569a5b7a4e65b9601afd96ee38b3ba0d459ad4e81cfe42b84aaf740d364edb0b/lightbox.jpg",
-          "role": "lightbox",
-          "width": 2133
-        }
-      ],
-      "width": 3648
-    },
-    "nc500-lighthouse-blue-sky": {
-      "height": 5152,
-      "recipe": "web-v1",
-      "source_sha256": "640c11e321bb5fdb3b442580ea3d158173646891b1f1bad15e21fffc5b2928f7",
-      "variants": [
-        {
-          "bytes": 19678,
-          "format": "webp",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-lighthouse-blue-sky/16651efb0822eeeb5d628b8892f4c6ecd1333235e8ca624197694d0500e6c213/w640.webp",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 39048,
-          "format": "jpg",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-lighthouse-blue-sky/bed7a9d08febe9c0b181ba929850b82d19a195e92c44a4a2cdb4bf16aeb1bef9/w640.jpg",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 56408,
-          "format": "webp",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-lighthouse-blue-sky/563245a2628c9c77eb9df3480407f05fc0d602a609c7ba973a7d2efb6632f679/w1280.webp",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 136063,
-          "format": "jpg",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-lighthouse-blue-sky/35e25daba71b1cefc327c959371ecc2c3d089c67c3ed8fd3d580a8dab2a6c6e7/w1280.jpg",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 135258,
-          "format": "webp",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-lighthouse-blue-sky/358b0238e34ce97d2a8a290c5c9d846c34c638025fe18fdd795e4f1dc7e560e1/w1920.webp",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 322464,
-          "format": "jpg",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-lighthouse-blue-sky/f5fea4f031e820f329c607b2ee5417ba3a8249ebc5ca2a4cbf41ddcbd59abd70/w1920.jpg",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 831572,
-          "format": "webp",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-lighthouse-blue-sky/9f0a596876a4134bed90944ad4ccf40c77a877e4b75da411c5f64cf37f7c91e1/lightbox.webp",
-          "role": "lightbox",
-          "width": 3200
-        },
-        {
-          "bytes": 1165008,
-          "format": "jpg",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-lighthouse-blue-sky/8068beb2143c4735a772ba948a993aa768dc40c0934dd6b0165ed12a31678842/lightbox.jpg",
+          "key": "photos/_ungrouped/nc500-random-layby/21e15af9be1049b6d40b81415884126d47b7aa67334436b948b75fa0fe5d9a1a/lightbox.jpg",
           "role": "lightbox",
           "width": 3200
         }
@@ -1081,149 +289,77 @@
       ],
       "width": 5152
     },
-    "nc500-random-layby": {
-      "height": 5152,
+    "sf-bw-glass-bottles": {
+      "height": 7728,
       "recipe": "web-v1",
-      "source_sha256": "0d456bf1d2dcb09d0c6b0f739a0e33e0b74523b20422088855ff513f9ea401d4",
+      "source_sha256": "162ecefc71486cb21afb6acaf359079c7494cbb9ee262785f24d1c91ed757d37",
       "variants": [
         {
-          "bytes": 48816,
+          "bytes": 106952,
           "format": "webp",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-random-layby/51eb180ec5021c32a9065433faab18c4b4b1bede5db6ab146f82afbb4ca65143/w640.webp",
+          "height": 960,
+          "key": "photos/_ungrouped/sf-bw-glass-bottles/1a3245b89c52b2e83dca6faf19ff604b5d48bfca5fdd4783e69aa7e97cd77942/w640.webp",
           "role": "responsive",
           "width": 640
         },
         {
-          "bytes": 73871,
+          "bytes": 154733,
           "format": "jpg",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-random-layby/6a609558951a5ecfae0a46f54388f7a65682eba95ea83e0102d338cc82dcd06a/w640.jpg",
+          "height": 960,
+          "key": "photos/_ungrouped/sf-bw-glass-bottles/5e26f2b581d1fef7d3b5b42132e9cca8e0714a8b7a618be7468237040bb0ac01/w640.jpg",
           "role": "responsive",
           "width": 640
         },
         {
-          "bytes": 174816,
+          "bytes": 465788,
           "format": "webp",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-random-layby/09341ad0c5e0ce07b7de8ceff3fb5ce2bfd6f82871a15c0cf1c4c952de6ff377/w1280.webp",
+          "height": 1920,
+          "key": "photos/_ungrouped/sf-bw-glass-bottles/a29ed5fa6426355cdc1aad2e26b7d5c1aa09eeaa88d36f86979e4d336ed977a8/w1280.webp",
           "role": "responsive",
           "width": 1280
         },
         {
-          "bytes": 272918,
+          "bytes": 568840,
           "format": "jpg",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-random-layby/c2b9a44d4d1b9cacc01f5e99ec6d416804214b871d43c846ebe65ed2d98b3ec3/w1280.jpg",
+          "height": 1920,
+          "key": "photos/_ungrouped/sf-bw-glass-bottles/fb3878d48f382ec810676552a40e33220f4a960f22c486f66dc9c02e59498eca/w1280.jpg",
           "role": "responsive",
           "width": 1280
         },
         {
-          "bytes": 411264,
+          "bytes": 1239818,
           "format": "webp",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-random-layby/4c4ac606fafab42fa558f4563620bfc332f6a9c9cb14c3a055dbfd13719a957e/w1920.webp",
+          "height": 2880,
+          "key": "photos/_ungrouped/sf-bw-glass-bottles/5144bb6eaa82afe8b534d1ea98d8973d88c6f72fd56e7764c28b929088ea9b4c/w1920.webp",
           "role": "responsive",
           "width": 1920
         },
         {
-          "bytes": 613827,
+          "bytes": 1393814,
           "format": "jpg",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-random-layby/00d6d692e7cf2ea78db38a28df0216a64c1253d1621e20638c16d3b6915d7d77/w1920.jpg",
+          "height": 2880,
+          "key": "photos/_ungrouped/sf-bw-glass-bottles/f97f5f5ec15d28fa1037a7d0cb16d61f79251576a2bb25fc540fd352f792046a/w1920.jpg",
           "role": "responsive",
           "width": 1920
         },
         {
-          "bytes": 1426524,
+          "bytes": 1575868,
           "format": "webp",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-random-layby/0e742c44b324618d10cbf1a244760da74490f8e5e22027d4f8ab5e64067c2d79/lightbox.webp",
+          "height": 3200,
+          "key": "photos/_ungrouped/sf-bw-glass-bottles/241f48a99db6808b96a0a17f2ca0437598ad750b15c00a2f6114fb3e4fdc6f13/lightbox.webp",
           "role": "lightbox",
-          "width": 3200
+          "width": 2133
         },
         {
-          "bytes": 1802907,
+          "bytes": 1754086,
           "format": "jpg",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-random-layby/21e15af9be1049b6d40b81415884126d47b7aa67334436b948b75fa0fe5d9a1a/lightbox.jpg",
+          "height": 3200,
+          "key": "photos/_ungrouped/sf-bw-glass-bottles/af0619789059e74e1c4d54101e0072c3898d5b4c043ee0b9cdc37daab157775a/lightbox.jpg",
           "role": "lightbox",
-          "width": 3200
+          "width": 2133
         }
       ],
-      "width": 7728
-    },
-    "nc500-rhue-lighthouse": {
-      "height": 5152,
-      "recipe": "web-v1",
-      "source_sha256": "83f44786436e32d99a61ddefca9bd3b285fae53769010013cedb9ad0b9caa87e",
-      "variants": [
-        {
-          "bytes": 22064,
-          "format": "webp",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-rhue-lighthouse/247a84b8edb8277058034bf6b806687ca8b5f2776eaafec0cd4e66e3284bbe5e/w640.webp",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 44935,
-          "format": "jpg",
-          "height": 427,
-          "key": "photos/_ungrouped/nc500-rhue-lighthouse/169b182387202ad34610dd41014af454d57446426b51700a8056aefb083f25e4/w640.jpg",
-          "role": "responsive",
-          "width": 640
-        },
-        {
-          "bytes": 66486,
-          "format": "webp",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-rhue-lighthouse/3a90f1389849a07f7916cf0acfa98011d0fbec63abd024df58a031bc8d24413d/w1280.webp",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 162066,
-          "format": "jpg",
-          "height": 853,
-          "key": "photos/_ungrouped/nc500-rhue-lighthouse/51612c906b3cd97ba634438048210f4158e9f873deed19c414f61524c615583d/w1280.jpg",
-          "role": "responsive",
-          "width": 1280
-        },
-        {
-          "bytes": 187556,
-          "format": "webp",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-rhue-lighthouse/4654cd6b74905aadd1940c20240d56e08a7453d2b0da66b199bd17ab05bce1c6/w1920.webp",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 388829,
-          "format": "jpg",
-          "height": 1280,
-          "key": "photos/_ungrouped/nc500-rhue-lighthouse/63da2f2358c576a2134b83e11cd4485335f8d5fee4961af773a290cf015f5fdf/w1920.jpg",
-          "role": "responsive",
-          "width": 1920
-        },
-        {
-          "bytes": 1120310,
-          "format": "webp",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-rhue-lighthouse/29795745b5022687ebb05275a93ddcc563954922ba447d4236f63abc93bd327c/lightbox.webp",
-          "role": "lightbox",
-          "width": 3200
-        },
-        {
-          "bytes": 1352309,
-          "format": "jpg",
-          "height": 2133,
-          "key": "photos/_ungrouped/nc500-rhue-lighthouse/c74764668dbb3103c3bb0bb44e1d6efb04e0a75797ebd68951150bdbe740da21/lightbox.jpg",
-          "role": "lightbox",
-          "width": 3200
-        }
-      ],
-      "width": 7728
+      "width": 5152
     },
     "nc500-skye-hill": {
       "height": 7728,
@@ -1291,6 +427,222 @@
           "format": "jpg",
           "height": 3200,
           "key": "photos/_ungrouped/nc500-skye-hill/47d7dcb170ff8240a5d43d40e072229294352525f8b880d5e3b4134eb203ad04/lightbox.jpg",
+          "role": "lightbox",
+          "width": 2133
+        }
+      ],
+      "width": 5152
+    },
+    "nc500-chanonry-point-boat": {
+      "height": 5152,
+      "recipe": "web-v1",
+      "source_sha256": "4e5df497e1327cfb0ccd1a5585513f9e0c9b33e08c0138f73b08280e29c98cf2",
+      "variants": [
+        {
+          "bytes": 46230,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-chanonry-point-boat/f3f406b7259cf0cfd8255318c5851545c3369d8bef43fbe85391d7c060a396ca/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 60275,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-chanonry-point-boat/a06338403d0c4ab206ced481a2c6b6144faeac23ceb13bdc9bb9291df676c9dc/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 184250,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-chanonry-point-boat/9b4b2463d47b2543aeb4abacbab11866c9e0e49566e8824c6201b10629a3414b/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 235461,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-chanonry-point-boat/79088a134196c44feb8c0bf2af40a3d72b81fe38652d8ccf566ce9c0b7c7ecb3/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 463532,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-chanonry-point-boat/0c15a4ac3ebbc73563fbdafc452c4ee92d4576ae8ba663dcf265cb48a60ae75e/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 552421,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-chanonry-point-boat/85277f7cb6e8e16d560443c22e1c8458143ded6fa5645ac1d780169d8ec6ced0/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1433870,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-chanonry-point-boat/83f85df61b7390879359d2ee121d85b4e05ec259cc8e63723938557be3ef48ca/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 1647299,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-chanonry-point-boat/e366117f7d549b0e4d499622fca4b59bdda66572a2c1c21b550258da91e9efd1/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 7728
+    },
+    "sf-fishing-boat": {
+      "height": 7728,
+      "recipe": "web-v1",
+      "source_sha256": "9bb37b0287e791b0dc8c4fb5e91b19cad0862f9082a8d975065a2a19efd64e15",
+      "variants": [
+        {
+          "bytes": 121332,
+          "format": "webp",
+          "height": 960,
+          "key": "photos/_ungrouped/sf-fishing-boat/49449febef0fa37d8c73a2f95df2c1346a1a7e61483ee906c02b9609681c0b9e/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 197814,
+          "format": "jpg",
+          "height": 960,
+          "key": "photos/_ungrouped/sf-fishing-boat/a243afe7c88e8f553c474aa655151d971c2c2839e72e787575ed92ee6a49f765/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 443392,
+          "format": "webp",
+          "height": 1920,
+          "key": "photos/_ungrouped/sf-fishing-boat/b66420fe1f815e858abd4d69d6428ed55eb0960bb0a1fa83514b3b6c735859e2/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 702386,
+          "format": "jpg",
+          "height": 1920,
+          "key": "photos/_ungrouped/sf-fishing-boat/24b3d5e4ff03fa8c9ef4f6d0414ad6665389e607b3794326043ba844812bc01c/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 1011706,
+          "format": "webp",
+          "height": 2880,
+          "key": "photos/_ungrouped/sf-fishing-boat/5f58eb291977b9f6866215d2f061bb68205ad812436b59c87ea756f2732dccf0/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1512259,
+          "format": "jpg",
+          "height": 2880,
+          "key": "photos/_ungrouped/sf-fishing-boat/d4643192c4aa73105fc25882bd8fc09ed0ef13b4ebf829bd48fd499563b085be/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1235044,
+          "format": "webp",
+          "height": 3200,
+          "key": "photos/_ungrouped/sf-fishing-boat/0decb7551b1a842aa8aea88afd3accbaec969c57d74b1c4b47aa331b527127b6/lightbox.webp",
+          "role": "lightbox",
+          "width": 2133
+        },
+        {
+          "bytes": 1841606,
+          "format": "jpg",
+          "height": 3200,
+          "key": "photos/_ungrouped/sf-fishing-boat/da7ce173f7f6f06b1554891e26f7897638c451dd3663ce07862df42f7d004075/lightbox.jpg",
+          "role": "lightbox",
+          "width": 2133
+        }
+      ],
+      "width": 5152
+    },
+    "sf-bw-embarcadero-center": {
+      "height": 7728,
+      "recipe": "web-v1",
+      "source_sha256": "939fdda3baf91339b248ba0e16f4fceaad6ee399be9a7c600d3109c32efef2b4",
+      "variants": [
+        {
+          "bytes": 82396,
+          "format": "webp",
+          "height": 960,
+          "key": "photos/_ungrouped/sf-bw-embarcadero-center/16cc8c325297b5335deadfffe7d1f13a9a01158f1c2d4a8b90a214b265ee337d/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 134572,
+          "format": "jpg",
+          "height": 960,
+          "key": "photos/_ungrouped/sf-bw-embarcadero-center/d3a0f57efd9b463d49aa70edfcaede1df6410d8794e6d50b22ab71788e0edb00/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 371126,
+          "format": "webp",
+          "height": 1920,
+          "key": "photos/_ungrouped/sf-bw-embarcadero-center/9cfc9f63b4f463e1590daf0e8e47807301252f2cd2d58d41379f6310ed6a4cbd/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 511434,
+          "format": "jpg",
+          "height": 1920,
+          "key": "photos/_ungrouped/sf-bw-embarcadero-center/0821362c850b870d8a67cf2c2c631d594676ed898ff41c8ca3b7c367410a3854/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 1001522,
+          "format": "webp",
+          "height": 2880,
+          "key": "photos/_ungrouped/sf-bw-embarcadero-center/67e5fa8cab834557c30f500cf1eb6c8930543d6eedaaaed5185b46812a3056e1/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1219589,
+          "format": "jpg",
+          "height": 2880,
+          "key": "photos/_ungrouped/sf-bw-embarcadero-center/ac7182d410a35988e1121e4fcb7b3acc299746f9b382190742191f68b8b8fec5/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1273206,
+          "format": "webp",
+          "height": 3200,
+          "key": "photos/_ungrouped/sf-bw-embarcadero-center/f2e88039332c6676a4a1dd6984b9ab162ada31807ff8695076f9ee22854c0766/lightbox.webp",
+          "role": "lightbox",
+          "width": 2133
+        },
+        {
+          "bytes": 1528211,
+          "format": "jpg",
+          "height": 3200,
+          "key": "photos/_ungrouped/sf-bw-embarcadero-center/34b3c968e56847319ab684679604c289022a59d5da10283115bcfbc2485d4934/lightbox.jpg",
           "role": "lightbox",
           "width": 2133
         }
@@ -1369,6 +721,438 @@
       ],
       "width": 5152
     },
+    "nc500-bw-strathy-beach": {
+      "height": 5152,
+      "recipe": "web-v1",
+      "source_sha256": "58ba869b19f85b42d3bbabd02d4e6a9c8d2e319814ddb60072465bdea5add280",
+      "variants": [
+        {
+          "bytes": 28680,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-bw-strathy-beach/b5a5e0047112d176e93a0e0fb1df73d8808d83a65d37d0ae1ac45f9b8f1fb629/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 42980,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-bw-strathy-beach/0700752613e85c550a2c71ff5e951376f1af6a763f05f5d54cf0786f37322fdd/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 118812,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-bw-strathy-beach/031b7a3d91aa8a272af6a2dffe30e100c9728957b0552796c1572096c65110fa/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 178522,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-bw-strathy-beach/16394a99f25ed5a8298b89f679a74435f5eb595af35a1f6f1ccb5938c2a54350/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 342370,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-bw-strathy-beach/dddd52f07ed819c52c0d0493c0dc00fcdc52d9725fd1673d23a64f3fe02fc50e/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 442461,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-bw-strathy-beach/eab5b51ae8044375f90c4d41c242cf84667239503da61cc510842b01755a0a46/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1284234,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-bw-strathy-beach/4ff35fdca1ec3b37b8afc53f115893e7df37a6df4667846a676f109863a5595f/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 1434306,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-bw-strathy-beach/86002c32a749c99a14ef51daa5b3fe931b035b81f0e20a30259e4c5f80b2bad8/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 7728
+    },
+    "sf-alcatraz-island": {
+      "height": 2886,
+      "recipe": "web-v1",
+      "source_sha256": "a1c560448a4d8331cbb17f55208849bec26cdadbeb1d8bbd37c9b09bdf3db0b5",
+      "variants": [
+        {
+          "bytes": 34172,
+          "format": "webp",
+          "height": 268,
+          "key": "photos/_ungrouped/sf-alcatraz-island/b958dc8b88dd3d3a7bfc13a122418aad3619f8f646a53e00e217deac9c4cb8c3/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 54190,
+          "format": "jpg",
+          "height": 268,
+          "key": "photos/_ungrouped/sf-alcatraz-island/fecbb5ce16d4e6b0da213fb82634488628e2f9a33c3713d37b0645bc97553ef0/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 137244,
+          "format": "webp",
+          "height": 536,
+          "key": "photos/_ungrouped/sf-alcatraz-island/bb0b5c5deb3a7c4b67a03189bd35fa29a2c2fb923142f3e2061da8f8ebe18d47/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 200276,
+          "format": "jpg",
+          "height": 536,
+          "key": "photos/_ungrouped/sf-alcatraz-island/7c1daa7ff8305d2170694d941be231642c39cd5d2404f6f904f033074786c8e7/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 346348,
+          "format": "webp",
+          "height": 803,
+          "key": "photos/_ungrouped/sf-alcatraz-island/226c6490b8e1e1756f6af14325c52ac5b0e253ba666c5a7b705a4144a7b975b5/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 461631,
+          "format": "jpg",
+          "height": 803,
+          "key": "photos/_ungrouped/sf-alcatraz-island/1690cc3fefe0de8ece6e232b0f08c81dafdf3d945f2dae44b5ef66a48aa00b39/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 981866,
+          "format": "webp",
+          "height": 1339,
+          "key": "photos/_ungrouped/sf-alcatraz-island/6abe560a16ad1c02ef46cae14bc7be5d955ae57e82d432711f68bb5be482f0c7/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 1268962,
+          "format": "jpg",
+          "height": 1339,
+          "key": "photos/_ungrouped/sf-alcatraz-island/92f697b90ad73a5cc24a90090f33a298beeb93b1877a4323df89c67bc74ebda5/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 6898
+    },
+    "sf-golden-gate-bridge": {
+      "height": 7728,
+      "recipe": "web-v1",
+      "source_sha256": "7243d2ac5f7b1b0ab79efc85c35ecea6dda2e30552c131161a50b93d0a970acc",
+      "variants": [
+        {
+          "bytes": 52528,
+          "format": "webp",
+          "height": 960,
+          "key": "photos/_ungrouped/sf-golden-gate-bridge/e49c703037d38e55588c6ee8b884449534dc27737c30830076f887139750894c/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 117740,
+          "format": "jpg",
+          "height": 960,
+          "key": "photos/_ungrouped/sf-golden-gate-bridge/16777a5f57a64949c7fd9d7c48a0547aa5fc3ae27b40b4c59855f47df905911e/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 159378,
+          "format": "webp",
+          "height": 1920,
+          "key": "photos/_ungrouped/sf-golden-gate-bridge/40c011ea366f00051b3cf9a8cd074303eb5c2926b93baf4f5af1e945e8ae0e6a/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 385246,
+          "format": "jpg",
+          "height": 1920,
+          "key": "photos/_ungrouped/sf-golden-gate-bridge/3ce2821359535bb65d792db63cbe2e126fdf7941bffd315cd9b1e922b092fd25/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 318308,
+          "format": "webp",
+          "height": 2880,
+          "key": "photos/_ungrouped/sf-golden-gate-bridge/69634710fd92a3a050452f7027106909db685126d301e322f4ec6b6e278e38f5/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 841068,
+          "format": "jpg",
+          "height": 2880,
+          "key": "photos/_ungrouped/sf-golden-gate-bridge/39abf6592160d74b57963d6bf824a502802ba2f983f61a0dadfb4117b3b06a6f/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 402996,
+          "format": "webp",
+          "height": 3200,
+          "key": "photos/_ungrouped/sf-golden-gate-bridge/1226394b3b32cbbee66602ee10ba07c37f7c8a9c2bd016e289e5c47e34571b9f/lightbox.webp",
+          "role": "lightbox",
+          "width": 2133
+        },
+        {
+          "bytes": 1046422,
+          "format": "jpg",
+          "height": 3200,
+          "key": "photos/_ungrouped/sf-golden-gate-bridge/1cde71cfba8d022d30e3c0cb164a17555295e9c1beefe8577ff8bc8decd38e22/lightbox.jpg",
+          "role": "lightbox",
+          "width": 2133
+        }
+      ],
+      "width": 5152
+    },
+    "nc500-base-of-storr": {
+      "height": 5152,
+      "recipe": "web-v1",
+      "source_sha256": "eb4839d4fcb34e25067bc48418481866d5b4205f45dc289c42f95d1197c0494d",
+      "variants": [
+        {
+          "bytes": 16930,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-base-of-storr/0a0ee95a59b47e96c18fe2c6989e0e49676afe977778ed39f6540684bbb25a21/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 35591,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-base-of-storr/87e6daf3716ed3c626a5f79f91ab2984c25732d8e6e59f2e7ebfccd0adf9b257/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 51282,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-base-of-storr/57f994796a665154f5af815ac837dabf1ef5dde6cdd77a24ae04cb2084f1dd8a/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 131858,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-base-of-storr/6546602693a1864c5deea304152424565467a37d9a931c9318186dae148da962/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 124810,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-base-of-storr/d4119471b653af6e6645d892acd424952e372c1526a3c308a05e430cb07cb197/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 316999,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-base-of-storr/572e05fd0e5102a0e97395ee602aac9eefcca71fbe0fb6356b3566b53ce64b1c/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 853474,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-base-of-storr/ff794eaa5f797dee15d71cca9224474848b611e38025661136d30e0d0cca9cdc/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 1133066,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-base-of-storr/da4724f95ad94ec57a9b30067fcd1f46ce6c05551576d3124280d594516bac0c/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 7728
+    },
+    "nc500-dunrobbin": {
+      "height": 5152,
+      "recipe": "web-v1",
+      "source_sha256": "473cde45cd1623c8bf235aba85a1f6442d51ca2233bb018a3a50b81843a6788c",
+      "variants": [
+        {
+          "bytes": 44538,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-dunrobbin/05e1fbc6bbc054b0eb168e60d01913aec8a5ee900b7033bec84d8be8197b5152/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 74185,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-dunrobbin/8a00bfa033e1c4c5bf3da36c55c6f059c22095f531911c0b241cc43a338a638d/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 142166,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-dunrobbin/af398cb59ca3ead15fbb89e8d2df8ba1c5a8c9a2bb9cdb956338e968bd1130c4/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 253008,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-dunrobbin/1bbcde6533fcdff70473db98132d55535dea40a960c28384c0fdb9dcf25ca511/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 310714,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-dunrobbin/15087a2e9e0263e051dd7dc0246e5500823a896071ff2fe024ca0dbdd8c1cdcd/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 548625,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-dunrobbin/7162da285681fb9f81059b08facde3a2b1b347ae565f290c6226dc1a63258ead/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1211592,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-dunrobbin/4111489948ad7aea17abebf27fb4676df7df137902402913ab5f8ac675a1e1bf/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 1604653,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-dunrobbin/cff16ba83cdd2a6dcb2ba6028846ff3aedeb37a88aa5c8b460ac7502f583c051/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 7728
+    },
+    "nc500-ard-neackie": {
+      "height": 5152,
+      "recipe": "web-v1",
+      "source_sha256": "e7dfb191b9048f83760446752ed8762fe84adee9f97345c0d13e2d5542003f81",
+      "variants": [
+        {
+          "bytes": 33652,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-ard-neackie/18653ff44b6d7b875927293afc9217a1d5e2621ab34fa0ecc9727221bf9d2558/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 47882,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-ard-neackie/025bf2c27ebf6e012ebeba13cb47775bcf9da91835785983e2b02f5f11063f8c/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 154598,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-ard-neackie/1f43132ca10d6b5374544609ea1d3d4b8931a410e707b1a5a608ef54b01229ac/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 204266,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-ard-neackie/9d6695d3e404e05ce416e721019b8f483aa34cb03d30772afdcae739c393eb3c/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 462150,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-ard-neackie/5e21c84d9d43dbf8a20b23f0522a0afb85113a1bdfe055374d69c6ace6e768e1/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 516613,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-ard-neackie/c46b55f3dd08b616c638bf6d30c8789203a9076e300b5d3d61b6b552d0f71422/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1522616,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-ard-neackie/e8ddf025b57b4d016131a0a1fd5a7a88bc7abfe0862d1019f2c9147512f38089/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 1644225,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-ard-neackie/e6c0afadca37af3c9b2220091e5dd355aeb141956fbd55f4f749fa9a8d3c15e6/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 7728
+    },
     "nc500-whaligoe-boat": {
       "height": 5152,
       "recipe": "web-v1",
@@ -1435,6 +1219,1014 @@
           "format": "jpg",
           "height": 2133,
           "key": "photos/_ungrouped/nc500-whaligoe-boat/52adf9a5396ed50336bf8b973789fa82829ff92dc7ea81c6a21777d73d3e7ec3/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 7728
+    },
+    "sf-bw-sfmoma-staircase": {
+      "height": 7728,
+      "recipe": "web-v1",
+      "source_sha256": "1bf18f501d20bb9f0d7c1ccc1be602ed8684baadaf2122520648a75bc7a3ea78",
+      "variants": [
+        {
+          "bytes": 82918,
+          "format": "webp",
+          "height": 960,
+          "key": "photos/_ungrouped/sf-bw-sfmoma-staircase/d182e4b2ab372ab87fc1eefe76b9ccf2449bdd669711582df8b75f468ffc317c/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 127240,
+          "format": "jpg",
+          "height": 960,
+          "key": "photos/_ungrouped/sf-bw-sfmoma-staircase/dcfba5b8302577a7bf157d2546f28de9b0808ef0a44626e4476aeadfe9d3958c/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 444156,
+          "format": "webp",
+          "height": 1920,
+          "key": "photos/_ungrouped/sf-bw-sfmoma-staircase/5173b751952d7fbbfe5e19179a684e04faa2120e6d1f95706f30d87bbecc4753/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 543221,
+          "format": "jpg",
+          "height": 1920,
+          "key": "photos/_ungrouped/sf-bw-sfmoma-staircase/828f82f663f40e86a222e47f5f496133b3465fdcd7756d55b1f8abe743cb4049/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 1208670,
+          "format": "webp",
+          "height": 2880,
+          "key": "photos/_ungrouped/sf-bw-sfmoma-staircase/970cd10a4b250926591c75bdeb5f5aaf7751d6d2db09952d3dfa59203d2a8b78/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1339236,
+          "format": "jpg",
+          "height": 2880,
+          "key": "photos/_ungrouped/sf-bw-sfmoma-staircase/62f70ce2b762bac18db05d26c4c41bf5b3263359fe5ebda0241db9fc414db650/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1521006,
+          "format": "webp",
+          "height": 3200,
+          "key": "photos/_ungrouped/sf-bw-sfmoma-staircase/97db10ffd1b4f07b4a75d9c755efc86d01f43d15ac461da2e998454232cfba1b/lightbox.webp",
+          "role": "lightbox",
+          "width": 2133
+        },
+        {
+          "bytes": 1683877,
+          "format": "jpg",
+          "height": 3200,
+          "key": "photos/_ungrouped/sf-bw-sfmoma-staircase/5bba5a24467a999869fe0cae1f2046577f20dff9c6daca550fee11fc0e6f1e8d/lightbox.jpg",
+          "role": "lightbox",
+          "width": 2133
+        }
+      ],
+      "width": 5152
+    },
+    "nc500-rhue-lighthouse": {
+      "height": 5152,
+      "recipe": "web-v1",
+      "source_sha256": "83f44786436e32d99a61ddefca9bd3b285fae53769010013cedb9ad0b9caa87e",
+      "variants": [
+        {
+          "bytes": 22064,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-rhue-lighthouse/247a84b8edb8277058034bf6b806687ca8b5f2776eaafec0cd4e66e3284bbe5e/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 44935,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-rhue-lighthouse/169b182387202ad34610dd41014af454d57446426b51700a8056aefb083f25e4/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 66486,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-rhue-lighthouse/3a90f1389849a07f7916cf0acfa98011d0fbec63abd024df58a031bc8d24413d/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 162066,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-rhue-lighthouse/51612c906b3cd97ba634438048210f4158e9f873deed19c414f61524c615583d/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 187556,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-rhue-lighthouse/4654cd6b74905aadd1940c20240d56e08a7453d2b0da66b199bd17ab05bce1c6/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 388829,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-rhue-lighthouse/63da2f2358c576a2134b83e11cd4485335f8d5fee4961af773a290cf015f5fdf/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1120310,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-rhue-lighthouse/29795745b5022687ebb05275a93ddcc563954922ba447d4236f63abc93bd327c/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 1352309,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-rhue-lighthouse/c74764668dbb3103c3bb0bb44e1d6efb04e0a75797ebd68951150bdbe740da21/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 7728
+    },
+    "nc500-hilltop-boats": {
+      "height": 7728,
+      "recipe": "web-v1",
+      "source_sha256": "7b5d817c728a3dcc7c71e12a4d6c99a18f52c98a0a7af5705fa56217168e33b4",
+      "variants": [
+        {
+          "bytes": 90374,
+          "format": "webp",
+          "height": 960,
+          "key": "photos/_ungrouped/nc500-hilltop-boats/8f94e5d45de4f986e57e65f2af00a116c7ec37b251d5b28b574e753611324d21/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 145529,
+          "format": "jpg",
+          "height": 960,
+          "key": "photos/_ungrouped/nc500-hilltop-boats/5154df52ad608da331770536f8498859fe0cd0464fb13edc211bcd9984513866/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 336918,
+          "format": "webp",
+          "height": 1920,
+          "key": "photos/_ungrouped/nc500-hilltop-boats/af42ae8fbdce9b88173d40dfcc2c5dd6f08dbb94833b5c05cc3005dc998c32a8/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 557064,
+          "format": "jpg",
+          "height": 1920,
+          "key": "photos/_ungrouped/nc500-hilltop-boats/fa707824417ac560ebb27d046c07e25997c2573a19339a106f1d68ebb68c87ec/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 932496,
+          "format": "webp",
+          "height": 2880,
+          "key": "photos/_ungrouped/nc500-hilltop-boats/8210f393515555476f9610a30a7e1bf34b0974c885d166fd1584b89fb2bceac4/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1293579,
+          "format": "jpg",
+          "height": 2880,
+          "key": "photos/_ungrouped/nc500-hilltop-boats/58cefbbd6390d22f5494bb4bdefddf16185ff0aa010f96634d8cd413e064728f/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1236776,
+          "format": "webp",
+          "height": 3200,
+          "key": "photos/_ungrouped/nc500-hilltop-boats/d3d73461340bd3ee9ec1beac67858f84e184d1980583063f22d1351e91df7af1/lightbox.webp",
+          "role": "lightbox",
+          "width": 2133
+        },
+        {
+          "bytes": 1639216,
+          "format": "jpg",
+          "height": 3200,
+          "key": "photos/_ungrouped/nc500-hilltop-boats/d5c22041158797a2d5c35babf17bcd0f172459d8c78da8d4b343f2c7ab784572/lightbox.jpg",
+          "role": "lightbox",
+          "width": 2133
+        }
+      ],
+      "width": 5152
+    },
+    "sf-golden-gate-night": {
+      "height": 5152,
+      "recipe": "web-v1",
+      "source_sha256": "1f1d9778a957902cd6f17ce0ac2b3ba17198ca8f46f940cef401541b1707cbc9",
+      "variants": [
+        {
+          "bytes": 14308,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-golden-gate-night/48797aa593f61e70073140db26a0fc4e81ebadb23725a98decb1201d7c3bafa5/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 33951,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-golden-gate-night/e32d86b8f6cedd4e6d5d5f1501626e16875a7dbadbcc261ef58cc3fbb7db7d33/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 35872,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-golden-gate-night/506b7725e274e771dd34569b26c36d09e0768e7a3e42d426d8996df7845704b3/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 117567,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-golden-gate-night/eb6adc592a8fdd0ec0771673a6a551e11260d4984bed2ea3c484e8d759f9842f/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 78058,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-golden-gate-night/55aae9fc177d270e6361f8b5a202a844109e51010713bbb4e5f8522c32c94193/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 274945,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-golden-gate-night/deb87ff8d7124476b0b2236d54f5f953d18eaa3f4dcfbff9b1d5f9473a2502fa/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 317894,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-golden-gate-night/38fac03a6ffacdc7875597b1b620f1b9e4906e5a59aa6bcd143ad9f4878eb7ee/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 873654,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-golden-gate-night/6eb123ba3778821a2826bd766ebb69ee98956ff6f72d952550a5f163fd23b2a0/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 7728
+    },
+    "sf-california-street": {
+      "height": 5152,
+      "recipe": "web-v1",
+      "source_sha256": "e2ddf1c1e273a825963a1787ba8e588bcc166ea262f7da7cdccad0b217877f74",
+      "variants": [
+        {
+          "bytes": 51740,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-california-street/ccafa9beab86d488c0aa2d22570d0c8bcbdd983d19d9028977ee39276a708435/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 81056,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-california-street/31139be77e3bdabf822471f5b150f5b26051afa55d8f74f0f8913b794bc2111f/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 169290,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-california-street/8c743488934ee13a52f67619f52bb8231ea3f454208b66ef2f4e82e3ee0f19db/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 272750,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-california-street/ca5d551f57e6b1e6c5dc8f905e83a2765612f713a31f2ebfd2dcb05ed76e6b47/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 343312,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-california-street/0db3b8b18cd5ccef0ccd518b713f8d123e45ee560896f596a612d8537cd5ada9/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 574929,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-california-street/8df5aae881a2d6d533152244145ebdb038cbbe8cfcbbf3569dd3e25ef72a09a4/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 900214,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-california-street/f68937f3a1f1eb66a354262a8cf909652e085b5509cc88ab32e7b5457adc421a/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 1512932,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-california-street/fb2caed684404e217859052ad2959e6c7d834485232ca9f106a9a47145ba1257/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 7728
+    },
+    "sf-lime-point-lighthouse": {
+      "height": 2592,
+      "recipe": "web-v1",
+      "source_sha256": "52ac9b0b44e0568221fff544c4f5053009c108673a4e6d9f88d7e4684a36f096",
+      "variants": [
+        {
+          "bytes": 46952,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-lime-point-lighthouse/518ccf5a72cc8f786da66c62ecead1eb8ce6c8afb7f2901de33477e0c3c6a842/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 74982,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-lime-point-lighthouse/d24e06eaf0f3c7c6f753ab5bfee4c4324bc8c5cb61fdc913f92af72c517a77d0/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 154942,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-lime-point-lighthouse/7f72763f19dcf94362f169e7697ede14c1f15768a59ac509a1e8b2ed854f5db2/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 264895,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-lime-point-lighthouse/4754c9f6dbbd9edc4462aa707563a01d784ca721f16e71c8433163a6033aa5f5/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 329794,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-lime-point-lighthouse/4fe8947603e303e84821b5f3896b4977973b1d9a330c47040077dc1b6f3e3684/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 548272,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-lime-point-lighthouse/77a10cd306b56eceddfb2fefa70ae5c7ba3f63291bb1385321ca5450c3d0eb00/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1050534,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-lime-point-lighthouse/23969d69d24b2cfe0c5e61f79d8e33581715eda4fbc7e3dbe8f50cba73e1542e/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 1488526,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-lime-point-lighthouse/269ff67c8e244df98f6722a5ac3b14a79b0af5a831295c5dddccc46bb5ad6854/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 3888
+    },
+    "nc500-bw-old-wick-castle": {
+      "height": 7728,
+      "recipe": "web-v1",
+      "source_sha256": "8976400f76d05ae1f81145bd07ff129e259ecb5948a38c2b523928010a7ae5c8",
+      "variants": [
+        {
+          "bytes": 79934,
+          "format": "webp",
+          "height": 960,
+          "key": "photos/_ungrouped/nc500-bw-old-wick-castle/ca2c0b45db843fc62191540098c989a4bf94d7636662e45eb1135f4ae7041774/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 121721,
+          "format": "jpg",
+          "height": 960,
+          "key": "photos/_ungrouped/nc500-bw-old-wick-castle/2d7e72cbe82de882586053b1f592e5134233757aad2ba4fb5b86cd1deb5baecf/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 370138,
+          "format": "webp",
+          "height": 1920,
+          "key": "photos/_ungrouped/nc500-bw-old-wick-castle/9c6eaf40cd5f42429ff2b6c2926e70ed30918b9fa32064eccccb2bd49c022ba5/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 495726,
+          "format": "jpg",
+          "height": 1920,
+          "key": "photos/_ungrouped/nc500-bw-old-wick-castle/622fc9e8306bee1127218539e1f866aa4316c6f5d4b36c2c71325f58725709d6/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 961772,
+          "format": "webp",
+          "height": 2880,
+          "key": "photos/_ungrouped/nc500-bw-old-wick-castle/9b785aaa2b7216ca237867414c690f63ce9a7afa255ff5d66a6ec4a53da2005a/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1179110,
+          "format": "jpg",
+          "height": 2880,
+          "key": "photos/_ungrouped/nc500-bw-old-wick-castle/0d2bf112c9e535eb8a212a8906aaebcbb38947483869b90bbe6483694fe52d29/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1214004,
+          "format": "webp",
+          "height": 3200,
+          "key": "photos/_ungrouped/nc500-bw-old-wick-castle/aae04d46a499393098029612adf7fa32fb5ac05237b43aa186ca62e5e69e00a7/lightbox.webp",
+          "role": "lightbox",
+          "width": 2133
+        },
+        {
+          "bytes": 1472085,
+          "format": "jpg",
+          "height": 3200,
+          "key": "photos/_ungrouped/nc500-bw-old-wick-castle/099a491fb6fd2bf2d96f13019a21b529130cf903734dc98e8f5225e439c2ea21/lightbox.jpg",
+          "role": "lightbox",
+          "width": 2133
+        }
+      ],
+      "width": 5152
+    },
+    "sf-hilltop-cars": {
+      "height": 5152,
+      "recipe": "web-v1",
+      "source_sha256": "e216790f397f56c19d6edd08901963331a36a3b7cca59938fa413a1657108716",
+      "variants": [
+        {
+          "bytes": 56258,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-hilltop-cars/8873748a0198aa333bb1569abaef1256648db6b051a10c22d0dfb35e82b624d8/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 89088,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-hilltop-cars/3a95f735725b9d3f889bb578b5c27d9f8f4648083a3b47baa771600f053616e2/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 181250,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-hilltop-cars/374044e3d5df3ab948c60d800ba335e8d70b6b2aadaf2e12ea7e4da30f556299/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 298169,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-hilltop-cars/aed09b59c16ab12a3da6c72fcbc08b3083a13f54fffe6c527560c4ac7ace95ad/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 367132,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-hilltop-cars/21ab801911651fd83357cc0982117aa0d58fab8a2de52f1d8bcd36f08c3f7d2d/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 614020,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-hilltop-cars/c7e8fc144d2ba90b0b4e171576c8f350be7d7d696379f268e2729f3af5cc2d99/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 888874,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-hilltop-cars/b6dcc213af4d4337895a3ca8d60042a6331f2320b68d7df99b4ece17f2b67924/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 1561866,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-hilltop-cars/2297d30ba31c032a0c6299f973c3b6dd6a6a5b10581acb6b769bdeb5df51fb2f/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 7728
+    },
+    "sf-golden-gate-onlookers": {
+      "height": 5152,
+      "recipe": "web-v1",
+      "source_sha256": "fc05793db40da48ba6a65a3e20c4017186075a44314da78cc08ff0041ab5456d",
+      "variants": [
+        {
+          "bytes": 26548,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-golden-gate-onlookers/0c464644e7df65d6b22354ec45743f214490309ee4f11f3a29ecc613cf36a5b8/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 60180,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-golden-gate-onlookers/12bd9f9c415e3ec3360415a7d91492478f4d5b2985f8542f5d2384fecb822216/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 70036,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-golden-gate-onlookers/25f315eed00265a42ded1e8699e4b90b6d3fb34db6322275b2a60e491984200b/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 177934,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-golden-gate-onlookers/846ae1163f248b0d0d612b59a9244dc1ec0f69607d88c6b5336efd926522df57/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 127172,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-golden-gate-onlookers/8d7424dc886e67c2178fa969f54470fef74bed389751b8dfd710053553aaac8d/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 346944,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-golden-gate-onlookers/3ff95d89cbab458024c54bda5323ad70e6331407c70ff31c265468dbbd750d4f/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 307520,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-golden-gate-onlookers/75a002377720e9a08e8493dec0cd6b51cd623140587c513d67b04479a6dc48b9/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 918563,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-golden-gate-onlookers/af2edba4af53b280a38e9d4f2ff7780836c0e0fcf94a5fc806741f062006175c/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 7728
+    },
+    "sf-bay-view-street": {
+      "height": 5152,
+      "recipe": "web-v1",
+      "source_sha256": "736fb973057a807c3a88dd54ad236e48c0d4355510a73539e65c9c67d4cbff59",
+      "variants": [
+        {
+          "bytes": 42190,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-bay-view-street/daddfe11e8e74e5e46726e0f4607b0fc66e01f056c2ffe25534008766535601f/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 69984,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-bay-view-street/eb19e7047932f8690906a40c29638a1dfa69f47bba442399b7a5147991b0ee34/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 144380,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-bay-view-street/e93485b07060b41e59199b590b57d4d4a35df6b37af451b828e8a2b586aaa7d4/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 243883,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-bay-view-street/5c39c00cd7f2a9e7d8a3daf70d6e1f9ec27f186bce7e9454f52b6d4e9c35f0f3/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 309638,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-bay-view-street/7b3510bfda568a4d52c6b3e10c29a4bad83871773872cf3f1ff8fbda90efdcc0/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 529485,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-bay-view-street/200864bd36b8eff05eb4adc4e4d389988c5a291a495625d63b14f135dbd33b3e/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 849238,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-bay-view-street/7cfb9e6a3ce484b8f535ba4bb4a7d63d08cd894b618db2e04587a8bfd1052e80/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 1459095,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-bay-view-street/bfa889ea53c9692a495ed513570573b72c5fb86289d30f74cd4429e14d5effa2/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 7728
+    },
+    "sf-bw-golden-gate-tower": {
+      "height": 7728,
+      "recipe": "web-v1",
+      "source_sha256": "b48b350c3ac9c3c3227cb1d2697a3e71aa7740241ae8392f802802561cf18792",
+      "variants": [
+        {
+          "bytes": 26866,
+          "format": "webp",
+          "height": 960,
+          "key": "photos/_ungrouped/sf-bw-golden-gate-tower/694a7c35d46d4ecca547a2cbc2043cc874bfc0db2f98659213238d81984b3501/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 62639,
+          "format": "jpg",
+          "height": 960,
+          "key": "photos/_ungrouped/sf-bw-golden-gate-tower/84220b38bee0d148f99a623c38e56807452bf13c555f17a0c0acf30a93606017/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 150160,
+          "format": "webp",
+          "height": 1920,
+          "key": "photos/_ungrouped/sf-bw-golden-gate-tower/74755a1950555dde56b289ab7703f98b3fc6b28477c579239bb22c84c3c2cc92/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 290419,
+          "format": "jpg",
+          "height": 1920,
+          "key": "photos/_ungrouped/sf-bw-golden-gate-tower/63edd150ce35ebafb7b141f484cb8da79161292eb2837da2b2444758c45c199b/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 497360,
+          "format": "webp",
+          "height": 2880,
+          "key": "photos/_ungrouped/sf-bw-golden-gate-tower/8f147c9e8a29e776afa355c61eb0d9d7de91abc917993fd79ad07f363e388695/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 777729,
+          "format": "jpg",
+          "height": 2880,
+          "key": "photos/_ungrouped/sf-bw-golden-gate-tower/84bccfd7e9bc93d48e48b613e7138a9042a959008daf6481fd280503b48f6eef/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 649874,
+          "format": "webp",
+          "height": 3200,
+          "key": "photos/_ungrouped/sf-bw-golden-gate-tower/2312303f1cdb3f544d4aaa068033633e7cc73f523f3f61241f5f22ade79e3f1c/lightbox.webp",
+          "role": "lightbox",
+          "width": 2133
+        },
+        {
+          "bytes": 996260,
+          "format": "jpg",
+          "height": 3200,
+          "key": "photos/_ungrouped/sf-bw-golden-gate-tower/b7b9cdec6f59cbb60b333771c6bdab4aa10eff205200d58845ca7a9be4aab618/lightbox.jpg",
+          "role": "lightbox",
+          "width": 2133
+        }
+      ],
+      "width": 5152
+    },
+    "nc500-bouy-bench": {
+      "height": 7728,
+      "recipe": "web-v1",
+      "source_sha256": "e5a66f88dff2a31287d8eab17ac1dce85835fbfc50a77230e93f8d969458a106",
+      "variants": [
+        {
+          "bytes": 105356,
+          "format": "webp",
+          "height": 960,
+          "key": "photos/_ungrouped/nc500-bouy-bench/e82e8fed8249fb0f879d1bb23312b172c0163558e6771ead8c4c73a5ab6390dd/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 169814,
+          "format": "jpg",
+          "height": 960,
+          "key": "photos/_ungrouped/nc500-bouy-bench/e4ae998e8bca0c7038af4bd7f91767adbb8c90c4c80ea1c09793d6d720509c3f/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 389136,
+          "format": "webp",
+          "height": 1920,
+          "key": "photos/_ungrouped/nc500-bouy-bench/9d002f621fe1b7e2af583d615213313073c8a774c92ef9681234b9acb3439cc8/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 638148,
+          "format": "jpg",
+          "height": 1920,
+          "key": "photos/_ungrouped/nc500-bouy-bench/ff99178a40bd292833af19ad957da8a56e9b17c637191f21e292a16a4ff877f3/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 1049764,
+          "format": "webp",
+          "height": 2880,
+          "key": "photos/_ungrouped/nc500-bouy-bench/e2e0260e94c83fa74a89c295e41cf8c0ef03818bb23c2ea761988f83660c7b65/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1451169,
+          "format": "jpg",
+          "height": 2880,
+          "key": "photos/_ungrouped/nc500-bouy-bench/679173a19ab7b3cabc5dc7165b6bb47f5bfdfbcb0f725556a2433cbf802839dc/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1378746,
+          "format": "webp",
+          "height": 3200,
+          "key": "photos/_ungrouped/nc500-bouy-bench/8d6f04fc8764db28ca5c4953c51e2b9506c4d0d7feb163608789c4d254c21325/lightbox.webp",
+          "role": "lightbox",
+          "width": 2133
+        },
+        {
+          "bytes": 1822351,
+          "format": "jpg",
+          "height": 3200,
+          "key": "photos/_ungrouped/nc500-bouy-bench/5948b8e6030b69ea30cfd80066015fd674d87fb9cbc00446b6a033c0c0e76301/lightbox.jpg",
+          "role": "lightbox",
+          "width": 2133
+        }
+      ],
+      "width": 5152
+    },
+    "sf-hillside-convertible": {
+      "height": 7728,
+      "recipe": "web-v1",
+      "source_sha256": "9381cce42ea56e0fe551573533f70f067f94340dd26a20e29736a58008a62e5c",
+      "variants": [
+        {
+          "bytes": 89434,
+          "format": "webp",
+          "height": 960,
+          "key": "photos/_ungrouped/sf-hillside-convertible/a4ce10d0a4578b877a867ca275f6de4d01a96ef24f4ff07b9cc8bd9f6f2d602c/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 139130,
+          "format": "jpg",
+          "height": 960,
+          "key": "photos/_ungrouped/sf-hillside-convertible/ccd728153f839a439205fd32bb7e31e8a5b470ee667dad643eaffd79a0557a41/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 521928,
+          "format": "webp",
+          "height": 1920,
+          "key": "photos/_ungrouped/sf-hillside-convertible/477f25facef41e6b0c9776d2da0c7e11889e538fd39b31459827b5a08a3eec38/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 647124,
+          "format": "jpg",
+          "height": 1920,
+          "key": "photos/_ungrouped/sf-hillside-convertible/69298f18a61136d472f769c27217b34850e3ef20df49f5cc5c6f9a8e5c3fef8f/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 1297502,
+          "format": "webp",
+          "height": 2880,
+          "key": "photos/_ungrouped/sf-hillside-convertible/dd95b59c2bb95a30ac16f605863f9ba036ed782b8bbf276eb4d5a3f3e8ee8e8f/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1561791,
+          "format": "jpg",
+          "height": 2880,
+          "key": "photos/_ungrouped/sf-hillside-convertible/3a23d61488a5e1bd2f12bd0d9d43fca649e629b4bd39ec6ab6624b53f4ed5633/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1608576,
+          "format": "webp",
+          "height": 3200,
+          "key": "photos/_ungrouped/sf-hillside-convertible/d17c2c44496715f5cae6b7cf6289edbebdedd79b67a1db4c2df8e51c15c8a135/lightbox.webp",
+          "role": "lightbox",
+          "width": 2133
+        },
+        {
+          "bytes": 1938463,
+          "format": "jpg",
+          "height": 3200,
+          "key": "photos/_ungrouped/sf-hillside-convertible/faa41ef61b69d4d7a061cbea82f5f722a1b686d7a8c08c3449fcca1d8f630a7d/lightbox.jpg",
+          "role": "lightbox",
+          "width": 2133
+        }
+      ],
+      "width": 5152
+    },
+    "sf-palace-fine-arts": {
+      "height": 5152,
+      "recipe": "web-v1",
+      "source_sha256": "e3c8def6c1dabf4c0219191ada9fc955f5226937469d83eb022f6bd58de749d0",
+      "variants": [
+        {
+          "bytes": 25580,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-palace-fine-arts/1c5cc1800707e44a7ff7937a09029861c785a6f53d2ef6d76d112d659470bf4e/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 55518,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-palace-fine-arts/845d8412e2d5294377a8dec57c65f88f876fe228d1b4694ba497264203a4d7f3/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 97812,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-palace-fine-arts/e43409a347ad7961dfd769b870381ddf3f06bccc3fbb6e6b17b5aeb75c33f891/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 205996,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-palace-fine-arts/71895264c7876422139a2814786c25af543cc09fc2eb6942dc3a0d6d8c9097a6/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 280756,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-palace-fine-arts/a4ec379af4e71783358c9a1aff208138fceec893e33f29c813c13d054756511c/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 482888,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-palace-fine-arts/060634d4e355686e23bf72b78add38d359bf5503090f38d7a9efbc522116632d/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 911216,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-palace-fine-arts/84e66ef82806d6f736814b35cd3e96b1bc80e57eb6308d337b67e8c575b02d95/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 1420493,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-palace-fine-arts/ecf0980302d089b74a36eaa3f2f5c3a6a83d31e2ae47ed7e60eb6c3f92cac3a2/lightbox.jpg",
           "role": "lightbox",
           "width": 3200
         }
@@ -1512,6 +2304,582 @@
         }
       ],
       "width": 7728
+    },
+    "nc500-eliean-donan-landscape": {
+      "height": 5152,
+      "recipe": "web-v1",
+      "source_sha256": "8231f0bc49f4139a46ac0bd0a3b8036a07e8c227b488c0ec2c08aa9cb3379e1a",
+      "variants": [
+        {
+          "bytes": 44218,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-eliean-donan-landscape/79154a87015c9f5393e056d5cff18bf038a612a12533caeee587d8bf2a5d0162/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 73899,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-eliean-donan-landscape/8fd0e0295ad0a40676cc428b3b3110e9c5dca7a9b1c7e605506bfcaad97484ff/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 154766,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-eliean-donan-landscape/b4e7f5f7e3fb6d0473908bb2f8bfd5d3a4ad2ab67acb4ca7fcf8bf028a5b3b00/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 271059,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-eliean-donan-landscape/7d08cf18c1f24d7cf25f2daee28a478452934bc64b50e948f72d1319f21de28c/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 374488,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-eliean-donan-landscape/23baacecc26a5703d3fd73590d38938c94541f3091d8ac4b6bbc060445f90ff5/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 609168,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-eliean-donan-landscape/6d3e3ef2ef9c359fcf759689de0f6577fb40f88177f0445fb7f2263477fff1e2/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1393046,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-eliean-donan-landscape/43ac44f43df74c44e28d1b972f09addbd1fdbf50d5a2a301ac7d96f5ad0d8661/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 1799806,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-eliean-donan-landscape/3cf07a2e627568d539f13bed544534f3a46d8b531c581ff92e1b3598fac12d6a/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 7728
+    },
+    "sf-bw-sfmoma-terrace": {
+      "height": 5152,
+      "recipe": "web-v1",
+      "source_sha256": "e94399630502515ea6685e57ad2b9a69dd4984fd8e19a0238fca5c26b59dca75",
+      "variants": [
+        {
+          "bytes": 36976,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-bw-sfmoma-terrace/387ac65feaaf13899f53cd14d0d491cad6d8fa3c5bb31f2249a2175cc75591be/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 54553,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-bw-sfmoma-terrace/693e948d8b8b95ca7c89e37a2f314408469f43f12446c107cb6c0f195b493b5c/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 161264,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-bw-sfmoma-terrace/8f6f22800ed2d9ee00010056ab241bbda03f2396a6b27a961890171f7e8fbe20/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 215299,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-bw-sfmoma-terrace/7486d6759be805ee1b1e1fab5f4269aa4d2238679f918fe0af760b0c709ceaf9/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 439200,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-bw-sfmoma-terrace/f568602ef6c9bffa32824d1ea263efa9afd64006f98c64e82e16f5421ee7b870/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 530715,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-bw-sfmoma-terrace/3c360b53d6486cc931af20fd74ce47cb2fed6cba2d02f103dd04785fd4230972/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1487872,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-bw-sfmoma-terrace/80dfad036b01c58adf7a177746ba7254f64a8521b629bd7f910fb0e7fb3bcc7a/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 1656214,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-bw-sfmoma-terrace/abf4ec3bbba09155b3085736da2225f023e4c744ebbb3e1176977b5f180620a2/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 7728
+    },
+    "sf-ferry-deck": {
+      "height": 5152,
+      "recipe": "web-v1",
+      "source_sha256": "0e7e997989246ef7a7e6a571721350455a378b41cd14b5d35a26325d2930c46c",
+      "variants": [
+        {
+          "bytes": 23214,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-ferry-deck/27554b1463df7ffff4715d08311d1f0b2715969b3a1e97b9195de212a66bd5d0/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 47621,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-ferry-deck/125b7ea03daf9f2298e1218dc6d5b7c0ecd2df95a22ab79cf6d236c34fec56ee/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 61374,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-ferry-deck/8a491f65f8ccf3115f19df19833f6f35b38a7b618ab78cc2a675aac8bacff2ef/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 140287,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-ferry-deck/ae28aa409439bf6ccca6ae90fa04379ef22dc601bd6402e4eb91a2a78ef176f8/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 111968,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-ferry-deck/12ce60131b6ab37de2bcb256446839e2a54def284f37e391fa91aab3f0b895a9/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 280218,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-ferry-deck/5a251441527adfc7855a1e45c212854c625293d30fd28a530087f705c848745c/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 285168,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-ferry-deck/e10351652d47d04186dd68ae3d00cd10468b401a6174c5a7d2ff9286bb25b1bd/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 734707,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-ferry-deck/62330b5cb82094223c5c0111c3835601e17c772410cd1c1e823eb62a4ad66709/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 7728
+    },
+    "nc500-falls-long-exposure": {
+      "height": 3648,
+      "recipe": "web-v1",
+      "source_sha256": "f6ac38c769560ebbd8e127b28b6c550e600bf239dd47d0a36c003886f9f12d88",
+      "variants": [
+        {
+          "bytes": 66454,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-falls-long-exposure/468d745b91f3d85a7ce03e1408540f5dd6a1c73e649f5a8f55518d3fce6bd3a0/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 95666,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-falls-long-exposure/035ea79002117a913c2de261a5957a79c7912f95ad91a9eddbf64d8e0673dc95/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 223982,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-falls-long-exposure/d2bde5723f4683cdfcfd546e37e945731c580b55c6a7a51fb5d06e19a459771c/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 333998,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-falls-long-exposure/f27d624a6729739529cbfb5a25c76d2bc7d5c2536615e2b0605f503504d4e94c/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 425110,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-falls-long-exposure/ef2990de7ec6b5910c0496e45df32e08ab4efac942ce6897502bbd0abde1fb10/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 663924,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-falls-long-exposure/5b68ae5e9a196cecfd6f2cbb200670d1c5688f447ffef1dd3409e6f577f69538/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 796406,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-falls-long-exposure/da648c67fbb7c3dd6979c766666f2c5d28061f0899a1ccd9ddddab6dd34db393/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 1453437,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-falls-long-exposure/e02f91e18f9299cc9be3235a4d6e5caf9b3605781a5985587b2437c148693753/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 5472
+    },
+    "sf-bw-in-n-out": {
+      "height": 5152,
+      "recipe": "web-v1",
+      "source_sha256": "bfeb1aa76fe527dff3d1c70fbbf7950d7a7fa58cc371dae7a80dff5fdf5ad431",
+      "variants": [
+        {
+          "bytes": 37012,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-bw-in-n-out/27b2a99e149e1fc7ebad8448de6420890f1155608d218efb92a8e54cb3c52a47/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 58775,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/sf-bw-in-n-out/a5eb0f075bb2c8978e3bff0b9e3bdde78c45ad5ffd3d74e059f0bef5a6541844/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 142718,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-bw-in-n-out/867b30183fcdd39025053b12ce5f64f3c6513be8b2bb6fe60f4d81e56f986c6e/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 206888,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/sf-bw-in-n-out/a8cb057e443df9db1361e7edba443eab4a312a123a8daf82d443080159be70e2/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 437372,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-bw-in-n-out/099f11e31c0a12899b8f3414d8f6f29ddecbdc1706883bf96ca8eaa80298a34a/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 514895,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/sf-bw-in-n-out/b53724354299849a061564769acd7288a791bf38a81fcd66fa702557a76d8dfa/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1480566,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-bw-in-n-out/46654c4519b9a8ec51f4dc70e94b2bde4fe05a2b31101eb623b6277346bf4a4b/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 1662432,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/sf-bw-in-n-out/276688d3097ae01c59ba02236e0d28187879a3aac77c99c12479272b2ff34e11/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 7728
+    },
+    "nc500-lighthouse-blue-sky": {
+      "height": 5152,
+      "recipe": "web-v1",
+      "source_sha256": "640c11e321bb5fdb3b442580ea3d158173646891b1f1bad15e21fffc5b2928f7",
+      "variants": [
+        {
+          "bytes": 19678,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-lighthouse-blue-sky/16651efb0822eeeb5d628b8892f4c6ecd1333235e8ca624197694d0500e6c213/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 39048,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-lighthouse-blue-sky/bed7a9d08febe9c0b181ba929850b82d19a195e92c44a4a2cdb4bf16aeb1bef9/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 56408,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-lighthouse-blue-sky/563245a2628c9c77eb9df3480407f05fc0d602a609c7ba973a7d2efb6632f679/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 136063,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-lighthouse-blue-sky/35e25daba71b1cefc327c959371ecc2c3d089c67c3ed8fd3d580a8dab2a6c6e7/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 135258,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-lighthouse-blue-sky/358b0238e34ce97d2a8a290c5c9d846c34c638025fe18fdd795e4f1dc7e560e1/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 322464,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-lighthouse-blue-sky/f5fea4f031e820f329c607b2ee5417ba3a8249ebc5ca2a4cbf41ddcbd59abd70/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 831572,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-lighthouse-blue-sky/9f0a596876a4134bed90944ad4ccf40c77a877e4b75da411c5f64cf37f7c91e1/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 1165008,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-lighthouse-blue-sky/8068beb2143c4735a772ba948a993aa768dc40c0934dd6b0165ed12a31678842/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 7728
+    },
+    "nc500-clouded-ben-loyal": {
+      "height": 3648,
+      "recipe": "web-v1",
+      "source_sha256": "60f488a7e2e57c0f26c8d841f59b43ddaa734ebf06fd77bb9ebe662f7d0ab668",
+      "variants": [
+        {
+          "bytes": 6968,
+          "format": "webp",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-clouded-ben-loyal/0396ef929ce9eb420316cde4dcd919fac2e98760f7a8dd02602e98c7532fa6d9/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 18155,
+          "format": "jpg",
+          "height": 427,
+          "key": "photos/_ungrouped/nc500-clouded-ben-loyal/79251d0311a73c7cd204a3a381c06ac599c4fd92a766558f2700992f7477f1b5/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 18328,
+          "format": "webp",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-clouded-ben-loyal/af2add7593943ad7e46db13a75221658ed930bc8d712d78d56cd357c6e9835df/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 76812,
+          "format": "jpg",
+          "height": 853,
+          "key": "photos/_ungrouped/nc500-clouded-ben-loyal/19f86b3b4475bdea02efa2a3281a0a936acea6544179912d2e3256baf761a2a7/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 90326,
+          "format": "webp",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-clouded-ben-loyal/9c36df1c51995c49449f11ecf47185ba659562efb52fe60c9ca9c25a1554b7aa/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 220671,
+          "format": "jpg",
+          "height": 1280,
+          "key": "photos/_ungrouped/nc500-clouded-ben-loyal/badaca75f337dba654a7fe7c5023f911337afc1f222de3c916272c6434d81063/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 710068,
+          "format": "webp",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-clouded-ben-loyal/0f6d48f54b4b7de61ec59c0b5d0c7231bc758efe1fc2918e245bb33fb5dc6a09/lightbox.webp",
+          "role": "lightbox",
+          "width": 3200
+        },
+        {
+          "bytes": 969633,
+          "format": "jpg",
+          "height": 2133,
+          "key": "photos/_ungrouped/nc500-clouded-ben-loyal/45d742198d33ef5be93266af4c5a3f203f1823eb32b99c2b2a49d4e3c85a45c8/lightbox.jpg",
+          "role": "lightbox",
+          "width": 3200
+        }
+      ],
+      "width": 5472
+    },
+    "nc500-hilltop-sheep": {
+      "height": 5472,
+      "recipe": "web-v1",
+      "source_sha256": "03e81d873aca558b33b6b350bb4a415b0329985f2c414407af404dcca209728c",
+      "variants": [
+        {
+          "bytes": 48758,
+          "format": "webp",
+          "height": 960,
+          "key": "photos/_ungrouped/nc500-hilltop-sheep/599bd0f967266937b37acedcf4e42c9508b5ef398fbb41c8e64a203f2198591d/w640.webp",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 100484,
+          "format": "jpg",
+          "height": 960,
+          "key": "photos/_ungrouped/nc500-hilltop-sheep/4c79a20e0a756e1a0d34f830853d9b2554bf04da1921fbddbf45c756fdf77a1b/w640.jpg",
+          "role": "responsive",
+          "width": 640
+        },
+        {
+          "bytes": 235730,
+          "format": "webp",
+          "height": 1920,
+          "key": "photos/_ungrouped/nc500-hilltop-sheep/af06a0a90b793483058427669e029f7731f1fe10f9f0070ad25c788e7a3e8595/w1280.webp",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 421943,
+          "format": "jpg",
+          "height": 1920,
+          "key": "photos/_ungrouped/nc500-hilltop-sheep/85d1be32cb928efa732a2d4713c55811218fe1e82ee5720a30fb94b4d34c6489/w1280.jpg",
+          "role": "responsive",
+          "width": 1280
+        },
+        {
+          "bytes": 815492,
+          "format": "webp",
+          "height": 2880,
+          "key": "photos/_ungrouped/nc500-hilltop-sheep/581eb2f19c22bc57b33fb3ea7592d279cb37ce462d99025389a6044c680d0729/w1920.webp",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1090494,
+          "format": "jpg",
+          "height": 2880,
+          "key": "photos/_ungrouped/nc500-hilltop-sheep/61cdc912565d01d61f10426f9b5dd2448ba742c84d1929f2c87b3e55af9ac387/w1920.jpg",
+          "role": "responsive",
+          "width": 1920
+        },
+        {
+          "bytes": 1113932,
+          "format": "webp",
+          "height": 3200,
+          "key": "photos/_ungrouped/nc500-hilltop-sheep/7aadabd61270acabd171abc58621806eae39c4659d908f142b53ab82dad0e5fb/lightbox.webp",
+          "role": "lightbox",
+          "width": 2133
+        },
+        {
+          "bytes": 1421271,
+          "format": "jpg",
+          "height": 3200,
+          "key": "photos/_ungrouped/nc500-hilltop-sheep/569a5b7a4e65b9601afd96ee38b3ba0d459ad4e81cfe42b84aaf740d364edb0b/lightbox.jpg",
+          "role": "lightbox",
+          "width": 2133
+        }
+      ],
+      "width": 3648
     }
   },
   "version": 1

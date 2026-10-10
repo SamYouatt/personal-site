@@ -85,6 +85,16 @@ html { overflow-y: scroll; color-scheme: light dark; }
   background: currentColor;
   mask: url("/images/nc500-castle.svg") center / contain no-repeat;
 }
+.photo-title-rule-left {
+  flex-direction: row-reverse;
+}
+.photo-title-bridge {
+  flex: none;
+  width: 180px;
+  height: calc(180px * 150 / 850);
+  background: currentColor;
+  mask: url("/images/sf-bridge.svg") center / contain no-repeat;
+}
 
 .photo-lightbox {
   --photo-gutter: 1rem;

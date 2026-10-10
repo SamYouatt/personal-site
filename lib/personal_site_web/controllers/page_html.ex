@@ -8,6 +8,56 @@ defmodule PersonalSiteWeb.PageHTML do
 
   embed_templates "page_html/*"
 
+  attr :id, :string, required: true
+  attr :photos, :list, required: true
+  attr :base_url, :string, required: true
+  attr :eager_first, :boolean, default: false
+
+  def photo_gallery(assigns) do
+    ~H"""
+    <div
+      id={@id}
+      class="mx-auto grid max-w-[97.5ch] grid-cols-1 items-start gap-4 md:grid-cols-2"
+    >
+      <figure
+        :for={{{id, photo}, index} <- Enum.with_index(@photos)}
+        id={"photo-#{id}"}
+        class={[photo["width"] >= photo["height"] && "md:col-span-2"]}
+      >
+        <a
+          id={"photo-open-#{id}"}
+          href={photo_url(@base_url, photo_variant(photo, "lightbox", "jpg"))}
+          data-photo-open={"photo-lightbox-#{id}"}
+          class="group block cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-500"
+          aria-label={"View larger: #{photo_alt(id)}"}
+          aria-haspopup="dialog"
+          aria-controls={"photo-lightbox-#{id}"}
+        >
+          <picture>
+            <source
+              type="image/webp"
+              srcset={photo_srcset(@base_url, photo, "webp")}
+              sizes={photo_sizes(photo)}
+            />
+            <img
+              id={"photo-image-#{id}"}
+              src={photo_url(@base_url, photo_variant(photo, "responsive", "jpg"))}
+              srcset={photo_srcset(@base_url, photo, "jpg")}
+              sizes={photo_sizes(photo)}
+              width={photo["width"]}
+              height={photo["height"]}
+              alt={photo_alt(id)}
+              loading={if @eager_first && index == 0, do: "eager", else: "lazy"}
+              decoding="async"
+              class="h-auto w-full bg-zinc-200 transition-opacity group-hover:opacity-95 dark:bg-zinc-900"
+            />
+          </picture>
+        </a>
+      </figure>
+    </div>
+    """
+  end
+
   attr :id, :string, default: "photo-lightbox"
   attr :photo, :map, required: true
   attr :base_url, :string, required: true
@@ -84,7 +134,34 @@ defmodule PersonalSiteWeb.PageHTML do
       "nc500-urquhart-castle" =>
         "The ruins of Urquhart Castle overlooking Loch Ness, in black and white",
       "nc500-whaligoe-boat" => "A small orange boat beneath the towering cliffs at Whaligoe",
-      "nc500-whaligoe-cliff" => "Sunlight on the grassy clifftops above the sea at Whaligoe"
+      "nc500-whaligoe-cliff" => "Sunlight on the grassy clifftops above the sea at Whaligoe",
+      "sf-alcatraz-island" => "Alcatraz Island across the bay, framed by trees",
+      "sf-bay-view-street" => "A man crossing a sunlit San Francisco street with the bay beyond",
+      "sf-bw-embarcadero-center" =>
+        "Looking up at the repeating windows of the Embarcadero Center, in black and white",
+      "sf-bw-glass-bottles" => "Rows of glass bottles catching the light, in black and white",
+      "sf-bw-golden-gate-tower" =>
+        "Looking straight up a riveted Golden Gate Bridge tower into the clouds, in black and white",
+      "sf-bw-in-n-out" => "Staff working behind the counter at In-N-Out, in black and white",
+      "sf-bw-sfmoma-staircase" =>
+        "Visitors on a staircase beneath tall columns at SFMOMA, in black and white",
+      "sf-bw-sfmoma-terrace" =>
+        "A curved sculpture casting a shadow across the SFMOMA terrace, in black and white",
+      "sf-california-street" => "Cars parked along sloping California Street beneath a blue sky",
+      "sf-ferry-deck" => "Passengers on a sunny ferry deck seen through dark cabin windows",
+      "sf-fishing-boat" => "A fishing boat's mast and working deck in the harbour",
+      "sf-garden-steps" => "People descending shaded garden steps towards a sunlit street",
+      "sf-golden-gate-bridge" =>
+        "The red railing and towers of the Golden Gate Bridge beside the bay",
+      "sf-golden-gate-night" => "The Golden Gate Bridge lit up across the water at night",
+      "sf-golden-gate-onlookers" =>
+        "Two people looking over the red railing of the Golden Gate Bridge",
+      "sf-hillside-convertible" => "A convertible rounding a bend between green hillsides",
+      "sf-hilltop-cars" => "Parked cars and pastel houses on a sunlit San Francisco hill",
+      "sf-lime-point-lighthouse" =>
+        "Looking down from the bridge at Lime Point lighthouse and the bay",
+      "sf-palace-fine-arts" =>
+        "An illuminated arch at the Palace of Fine Arts against the night sky"
     }
     |> Map.get(id, "Photograph — " <> String.replace(id, "-", " "))
   end
@@ -96,7 +173,11 @@ defmodule PersonalSiteWeb.PageHTML do
     cond do
       id in ~w(nc500-eliean-donan-landscape nc500-ard-neackie nc500-base-of-storr
                nc500-bw-strathy-beach nc500-dunrobbin nc500-falls-long-exposure
-               nc500-lighthouse-blue-sky nc500-chanonry-point-boat nc500-rhue-lighthouse) ->
+               nc500-lighthouse-blue-sky nc500-chanonry-point-boat nc500-rhue-lighthouse
+               sf-bay-view-street sf-hilltop-cars sf-bw-embarcadero-center
+               sf-bw-golden-gate-tower sf-bw-in-n-out sf-garden-steps sf-ferry-deck
+               sf-golden-gate-onlookers sf-bw-sfmoma-terrace sf-fishing-boat
+               sf-bw-glass-bottles sf-bw-sfmoma-staircase sf-golden-gate-night) ->
         0
 
       photo["width"] >= photo["height"] ->
