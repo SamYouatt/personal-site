@@ -143,6 +143,16 @@ defmodule PersonalSiteWeb.BrainfuckLive do
       |> assign(
         page_title: "Brainfuck",
         description: "A brainfuck debugger dressed up as an 8-bit games console.",
+        preload_fonts: [
+          ~p"/fonts/russo-one/RussoOne-Regular.woff2",
+          ~p"/fonts/jost/Jost-Variable.woff2",
+          ~p"/fonts/michroma/Michroma-Regular.woff2",
+          ~p"/fonts/bungee/Bungee-Regular.woff2",
+          ~p"/fonts/vt323/VT323-Regular.woff2",
+          ~p"/fonts/tinos/Tinos-Regular.woff2",
+          ~p"/fonts/courier-prime/CourierPrime-Regular.woff2",
+          ~p"/fonts/courier-prime/CourierPrime-Bold.woff2"
+        ],
         carts: @carts,
         speeds: @speeds,
         speed: @default_speed,
@@ -552,6 +562,18 @@ defmodule PersonalSiteWeb.BrainfuckLive do
               </span>
             </button>
           </div>
+        </div>
+
+        <div
+          id="boot-screen"
+          class="bj-boot"
+          phx-hook="BootScreen"
+          phx-mounted={JS.ignore_attributes(["data-booted"])}
+          phx-update="ignore"
+          aria-hidden="true"
+        >
+          <span class="bj-boot-mark"><.wordmark /></span>
+          <span class="bj-boot-bar"><i></i></span>
         </div>
 
         <%= case @overlay do %>

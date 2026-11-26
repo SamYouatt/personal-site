@@ -24,6 +24,14 @@
       type="font/woff2"
       crossorigin="anonymous"
     />
+    <link
+      :for={font <- assigns[:preload_fonts] || []}
+      rel="preload"
+      href={font}
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
     <script defer phx-track-static type="text/javascript" src={~p"/assets/js/app.js"}>
     </script>
   </head>

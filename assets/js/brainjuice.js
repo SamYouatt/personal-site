@@ -120,6 +120,24 @@ export const CrtCursor = {
   },
 }
 
+const pageFonts = ["VT323", "Michroma", "Jost", "Bungee", "Russo One", "Tinos", "Courier Prime"]
+
+export const BootScreen = {
+  mounted() {
+    const fontsLoaded = [...document.fonts]
+      .filter(font => pageFonts.includes(font.family.replaceAll('"', "")))
+      .map(font => font.load())
+
+    const barFilled = this.el.querySelector(".bj-boot-bar i")
+      .getAnimations()
+      .map(animation => animation.finished)
+
+    Promise.allSettled([...fontsLoaded, ...barFilled]).then(() => {
+      this.el.dataset.booted = ""
+    })
+  },
+}
+
 export const PauseWhenHidden = {
   mounted() {
     this.pauseIfHidden = () => {
