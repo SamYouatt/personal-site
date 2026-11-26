@@ -31,6 +31,8 @@ defmodule PersonalSiteWeb.Layouts do
     default: nil,
     doc: "the current [scope](https://hexdocs.pm/phoenix/scopes.html)"
 
+  attr :bare, :boolean, default: false, doc: "hide the site nav and footer for full-screen pages"
+
   slot :inner_block, required: true
 
   def app(assigns) do
@@ -71,7 +73,7 @@ defmodule PersonalSiteWeb.Layouts do
         </filter>
       </defs>
     </svg>
-    <nav aria-label="Home" class="mb-8 flex flex-row justify-center px-4 pt-4">
+    <nav :if={!@bare} aria-label="Home" class="mb-8 flex flex-row justify-center px-4 pt-4">
       <.link href={~p"/"} id="back-to-posts" class="inline-flex">
         <span class="chromatic-wordmark inline-block self-center font-hero text-[2.5rem] leading-none tracking-wide text-zinc-800 md:text-[3.25rem] dark:text-zinc-200">
           Sam Youatt
@@ -81,7 +83,7 @@ defmodule PersonalSiteWeb.Layouts do
     <main id="main" class="flex-1">
       {render_slot(@inner_block)}
     </main>
-    <footer class="pt-4 pb-8 text-center text-sm text-zinc-300 dark:text-zinc-600">
+    <footer :if={!@bare} class="pt-4 pb-8 text-center text-sm text-zinc-300 dark:text-zinc-600">
       Made by <a href="https://github.com/samyouatt" class="underline font-semibold">me</a> in York
     </footer>
     <.flash_group flash={@flash} />

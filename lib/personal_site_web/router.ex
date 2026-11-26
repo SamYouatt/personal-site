@@ -23,6 +23,7 @@ defmodule PersonalSiteWeb.Router do
 
     get "/", PageController, :home
     get "/photos", PageController, :photos
+    live "/brainfuck", BrainfuckLive
     get "/:slug", BlogController, :show
   end
 
