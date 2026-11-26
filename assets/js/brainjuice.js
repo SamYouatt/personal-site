@@ -1,3 +1,196 @@
+const soundNames = [
+  "pad-press", "pad-release", "pill-press", "pill-release", "detent",
+  "cart-seat", "cart-eject", "book-open", "book-close", "page-1", "page-2", "page-3",
+  "tape-play", "tape-stop", "tape-loop",
+]
+
+const volumes = {
+  "pad-press": 0.9,
+  "pad-release": 0.6,
+  "pill-press": 0.7,
+  "pill-release": 0.45,
+  "detent": 0.55,
+  "cart-seat": 0.9,
+  "cart-eject": 0.7,
+  "book-open": 0.6,
+  "book-close": 0.6,
+  "page-1": 0.45,
+  "page-2": 0.45,
+  "page-3": 0.45,
+  "tape-play": 0.45,
+  "tape-stop": 0.45,
+}
+
+const tapeLoop = {start: 0.2, end: 2.2, volume: 0.16}
+const detentSpacing = 0.045
+
+let audio = null
+let speaker = null
+let buffers = {}
+let soundsLoading = null
+let soundsListening = false
+let pressedKind = null
+
+function loadSounds() {
+  audio ??= new AudioContext()
+
+  if (!speaker) {
+    speaker = audio.createGain()
+    speaker.gain.value = 0.7
+    speaker.connect(audio.destination)
+  }
+
+  soundsLoading ??= Promise.all(soundNames.map(async name => {
+    const response = await fetch(`/sounds/${name}.mp3`)
+    buffers[name] = await audio.decodeAudioData(await response.arrayBuffer())
+  }))
+
+  return soundsLoading
+}
+
+function wakeAudio() {
+  loadSounds()
+  if (audio.state === "suspended") audio.resume()
+}
+
+function playSound(name, delay = 0) {
+  wakeAudio()
+
+  const buffer = buffers[name]
+  if (!buffer) return
+
+  const source = audio.createBufferSource()
+  source.buffer = buffer
+
+  const level = audio.createGain()
+  level.gain.value = volumes[name]
+
+  source.connect(level).connect(speaker)
+  source.start(audio.currentTime + delay)
+}
+
+function playDetents(dial, target) {
+  const active = dial.closest(".bj-knob-dial").querySelector(".bj-knob-tick.is-active")
+  const from = Number(active.getAttribute("phx-value-index"))
+  const to = Number(target.getAttribute("phx-value-index"))
+  const detents = Math.max(1, Math.abs(to - from))
+
+  for (let i = 0; i < detents; i++) playSound("detent", i * detentSpacing)
+}
+
+function press(control) {
+  const kind = control.dataset.sound
+
+  if (kind === "knob") playDetents(control, control)
+  else if (kind === "cart") playSound("cart-seat")
+  else {
+    playSound(`${kind}-press`)
+    pressedKind = kind
+  }
+}
+
+function release() {
+  if (!pressedKind) return
+  playSound(`${pressedKind}-release`)
+  pressedKind = null
+}
+
+export function initConsoleSounds() {
+  if (!document.querySelector(".bj-desk")) return
+  loadSounds()
+
+  if (soundsListening) return
+  soundsListening = true
+
+  const soundingControl = event => {
+    const control = event.target.closest("[data-sound]")
+    return control && !control.disabled ? control : null
+  }
+
+  document.addEventListener("pointerdown", event => {
+    const control = event.button === 0 && soundingControl(event)
+    if (control) press(control)
+  })
+
+  document.addEventListener("pointerup", release)
+  document.addEventListener("pointercancel", release)
+
+  document.addEventListener("click", event => {
+    const fromKeyboard = event.detail === 0
+    const control = fromKeyboard && soundingControl(event)
+    if (!control) return
+
+    press(control)
+    setTimeout(release, 70)
+  })
+}
+
+export const TapeSound = {
+  mounted() {
+    this.running = false
+    this.sync()
+  },
+
+  updated() {
+    this.sync()
+  },
+
+  destroyed() {
+    this.stopWhirr(false)
+  },
+
+  playbackRate() {
+    const stepsPerSecond = Number(this.el.dataset.stepsPerSecond)
+    return 0.75 + 0.3 * Math.log10(stepsPerSecond)
+  },
+
+  sync() {
+    const running = this.el.classList.contains("is-running")
+
+    if (running && !this.running) this.startWhirr()
+    if (!running && this.running) this.stopWhirr(true)
+    if (running && this.whirr) {
+      this.whirr.playbackRate.setTargetAtTime(this.playbackRate(), audio.currentTime, 0.15)
+    }
+
+    this.running = running
+  },
+
+  startWhirr() {
+    playSound("tape-play")
+
+    const buffer = buffers["tape-loop"]
+    if (!buffer) return
+
+    const now = audio.currentTime
+    this.whirr = audio.createBufferSource()
+    this.whirr.buffer = buffer
+    this.whirr.loop = true
+    this.whirr.loopStart = tapeLoop.start
+    this.whirr.loopEnd = tapeLoop.end
+    this.whirr.playbackRate.setValueAtTime(this.playbackRate() * 0.6, now)
+    this.whirr.playbackRate.setTargetAtTime(this.playbackRate(), now + 0.08, 0.12)
+
+    this.whirrLevel = audio.createGain()
+    this.whirrLevel.gain.setValueAtTime(0.0001, now)
+    this.whirrLevel.gain.exponentialRampToValueAtTime(tapeLoop.volume, now + 0.25)
+
+    this.whirr.connect(this.whirrLevel).connect(speaker)
+    this.whirr.start(now + 0.08, tapeLoop.start)
+  },
+
+  stopWhirr(withClunk) {
+    if (withClunk) playSound("tape-stop")
+    if (!this.whirr) return
+
+    const now = audio.currentTime
+    this.whirr.playbackRate.setTargetAtTime(0.35, now, 0.12)
+    this.whirrLevel.gain.setTargetAtTime(0.0001, now, 0.1)
+    this.whirr.stop(now + 0.6)
+    this.whirr = null
+  },
+}
+
 export const CrtCursor = {
   mounted() {
     this.el.addEventListener("wheel", event => this.scrollByWheel(event), {passive: false})
@@ -162,10 +355,12 @@ export const Modal = {
       if (clickedBackdrop) this.el.close()
     })
 
+    if (this.el.dataset.openSound) playSound(this.el.dataset.openSound)
     this.el.showModal()
   },
 
   destroyed() {
+    if (this.el.dataset.closeSound) playSound(this.el.dataset.closeSound)
     this.opener?.focus({preventScroll: true})
   },
 }
@@ -291,6 +486,8 @@ export const ManualBook = {
     const targetPage = this.currentPage + direction * this.pagesPerSpread()
     const outOfRange = targetPage < 0 || targetPage > this.pages.length - 1
     if (this.turning || outOfRange) return
+
+    playSound(`page-${1 + Math.floor(Math.random() * 3)}`)
 
     const page = index => this.pages[index]
     let front, back

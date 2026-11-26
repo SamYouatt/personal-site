@@ -470,13 +470,25 @@ defmodule PersonalSiteWeb.BrainfuckLive do
               <div class="bj-controls">
                 <div class="bj-pill-group">
                   <div class="bj-pill-wrap">
-                    <button id="reset-button" type="button" class="bj-pill" phx-click="reset">
+                    <button
+                      id="reset-button"
+                      type="button"
+                      class="bj-pill"
+                      phx-click="reset"
+                      data-sound="pill"
+                    >
                       <span class="sr-only">Reset</span>
                     </button>
                     <span class="bj-print">Reset</span>
                   </div>
                   <div class="bj-pill-wrap">
-                    <button id="eject-button" type="button" class="bj-pill" phx-click="open_editor">
+                    <button
+                      id="eject-button"
+                      type="button"
+                      class="bj-pill"
+                      phx-click="open_editor"
+                      data-sound="pill"
+                    >
                       <span class="sr-only">Inspect cartridge</span>
                     </button>
                     <span class="bj-print">Cart</span>
@@ -488,6 +500,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
                     <div class="bj-pad-well">
                       <button
                         id="step-button"
+                        data-sound="pad"
                         type="button"
                         class="bj-pad"
                         phx-click="step"
@@ -502,6 +515,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
                     <div class="bj-pad-well">
                       <button
                         id="run-button"
+                        data-sound="pad"
                         type="button"
                         class="bj-pad"
                         phx-click="toggle_run"
@@ -531,6 +545,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
               <li :for={cart <- @carts} class="bj-rack-slot">
                 <button
                   id={"library-#{cart.id}"}
+                  data-sound="cart"
                   type="button"
                   class={["bj-spine", "bj-cart-#{cart.colour}"]}
                   phx-click="insert_cart"
@@ -596,6 +611,8 @@ defmodule PersonalSiteWeb.BrainfuckLive do
     ~H"""
     <dialog
       id="cart-editor"
+      data-open-sound="cart-eject"
+      data-close-sound="cart-seat"
       class="bj-modal"
       phx-hook="Modal"
       aria-label="Cartridge label"
@@ -689,6 +706,8 @@ defmodule PersonalSiteWeb.BrainfuckLive do
     <dialog
       id="manual"
       class="bj-modal bj-manual-modal"
+      data-open-sound="book-open"
+      data-close-sound="book-close"
       phx-hook="Modal"
       aria-labelledby="manual-title"
     >
@@ -787,6 +806,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
                 <pre>{technique.source}</pre>
                 <button
                   id={"load-technique-#{index}"}
+                  data-sound="cart"
                   type="button"
                   class="bj-manual-load"
                   phx-click="load_technique"
@@ -952,12 +972,15 @@ defmodule PersonalSiteWeb.BrainfuckLive do
   attr :speed, :any, required: true
 
   defp tape_deck(assigns) do
-    assigns = assign(assigns, leader?: assigns.head <= @tape_reach)
+    {_label, fps, steps} = assigns.speed
+    assigns = assign(assigns, leader?: assigns.head <= @tape_reach, steps_per_second: fps * steps)
 
     ~H"""
     <div
       id="tape-deck"
       class={["bj-deck", @running? && "is-running"]}
+      phx-hook="TapeSound"
+      data-steps-per-second={@steps_per_second}
       style={"--head: #{@head}; --slide: #{slide_ms(@speed)}ms"}
     >
       <div class="bj-deck-window">
@@ -1084,6 +1107,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
           :for={{label, index, angle} <- @ticks}
           type="button"
           id={"speed-#{index}"}
+          data-sound="knob"
           class={["bj-knob-tick", index == @speed && "is-active"]}
           style={"--angle: #{angle}deg"}
           phx-click="set_speed"
@@ -1094,6 +1118,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
         </button>
         <button
           id="speed-knob"
+          data-sound="knob"
           type="button"
           class="bj-knob"
           phx-click="set_speed"
