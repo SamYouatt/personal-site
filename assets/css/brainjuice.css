@@ -31,7 +31,10 @@
   --bj-red: #d42e20;
   --bj-red-ink: #b3241b;
   --bj-phosphor: #84ffa6;
-  --bj-paper: #efe4c6;
+  --bj-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.22 0 0 0 0 0.17 0 0 0 0 0.1 0 0 0 1.0 -0.43'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --bj-grime: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.011' numOctaves='4' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.36 0 0 0 0 0.27 0 0 0 0 0.12 0 0 0 1.5 -0.72'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  --bj-dust: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.92 0 0 0 0 0.9 0 0 0 0 0.84 0 0 0 9 -6.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23d)'/%3E%3C/svg%3E");
+  --bj-chips: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.22' numOctaves='2' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -16 12.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E");
 
   position: fixed;
   inset: 0;
@@ -55,7 +58,7 @@ html:has(.bj-page) { overflow: hidden; }
   translate: -50% -50%;
   scale: var(--bj-fit, 0.75);
 }
-.bj-desk > .bj-stage { grid-area: console; width: 64rem; }
+.bj-desk > .bj-stage { grid-area: console; }
 .bj-desk > .bj-library { grid-area: library; }
 .bj-desk > .bj-booklet-lift { grid-area: manual; }
 .bj-table {
@@ -76,8 +79,6 @@ html:has(.bj-page) { overflow: hidden; }
 }
 .bj-print {
   font-size: 0.66rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--bj-ink);
   text-shadow: 0 1px 0 rgb(255 255 255 / 0.55);
@@ -105,19 +106,17 @@ html:has(.bj-page) { overflow: hidden; }
   height: 2.6rem;
   transform: translateX(-50%);
   border-radius: 0.9rem 0.9rem 0.2rem 0.2rem;
-  background: linear-gradient(180deg, #121110 0 0.55rem, transparent 0.55rem) center 0.35rem / 88% 0.55rem no-repeat, linear-gradient(180deg, var(--bj-dark-hi), var(--bj-dark) 45%, var(--bj-dark-lo));
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.18), 0 3px 0 #1a1918, 0 6px 10px rgb(0 0 0 / 0.25);
+  background: linear-gradient(180deg, #121110 0 0.55rem, transparent 0.55rem) center 0.35rem / 88% 0.55rem no-repeat, var(--bj-dust) 0 0 / 200px 200px, linear-gradient(180deg, var(--bj-dark-hi), var(--bj-dark) 45%, var(--bj-dark-lo));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.18), 0 3px 0 #1a1918, 4px 8px 10px rgb(0 0 0 / 0.4);
 }
 .bj-cart {
-  --cart-a: #e2452f;
-  --cart-b: #8f1d14;
   --cart-ink: #fff;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   border-radius: 0.8rem 0.8rem 0.3rem 0.3rem;
-  background: linear-gradient(90deg, #4c4b4a, #6b6a68 12%, #656462 88%, #454443);
+  background: var(--bj-dust) 0 0 / 200px 200px, linear-gradient(90deg, #4c4b4a, #6b6a68 12%, #656462 88%, #454443);
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.25), inset 0 -2px 0 rgb(0 0 0 / 0.3), 0 6px 14px rgb(0 0 0 / 0.3);
   text-align: left;
   transition: transform 220ms cubic-bezier(0.3, 1.4, 0.5, 1), box-shadow 220ms ease;
@@ -161,35 +160,30 @@ html:has(.bj-page) { overflow: hidden; }
   padding: 0.6rem 0.75rem;
   border-radius: 0.3rem;
   color: var(--cart-ink);
-  background: radial-gradient(120% 90% at 85% 0%, rgb(255 255 255 / 0.35), transparent 55%), repeating-linear-gradient(-55deg, transparent 0 14px, rgb(255 255 255 / 0.08) 14px 28px), linear-gradient(140deg, var(--cart-a), var(--cart-b));
+  background: var(--bj-grain), radial-gradient(120% 90% at 85% 0%, rgb(255 255 255 / 0.25), transparent 55%), repeating-linear-gradient(-55deg, transparent 0 14px, rgb(255 255 255 / 0.07) 14px 28px), linear-gradient(140deg, var(--cart-a), var(--cart-b));
   box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.2), 0 1px 0 rgb(255 255 255 / 0.2);
   overflow: hidden;
+  mask: linear-gradient(#000 0 0) center / calc(100% - 14px) calc(100% - 14px) no-repeat, var(--bj-chips) 0 0 / 70px 70px;
 }
 .bj-cart-brand {
   font-size: 0.6rem;
-  font-weight: 800;
-  letter-spacing: 0.2em;
+  text-transform: uppercase;
   opacity: 0.85;
 }
 .bj-cart-name {
   font-size: 1.45rem;
-  font-weight: 900;
   line-height: 1;
   text-transform: uppercase;
-  letter-spacing: -0.01em;
   text-shadow: 0 2px 0 rgb(0 0 0 / 0.25);
 }
-.bj-cart-hint {
-  font-size: 0.68rem;
-  font-weight: 600;
-  opacity: 0.85;
-}
+/* The inserted cartridge ends inside the slot housing rather than below it. */
 .bj-cart-inserted {
   position: absolute;
-  bottom: -1.4rem;
+  bottom: 0.3rem;
   z-index: 1;
   width: min(18.5rem, 72%);
-  height: 8.2rem;
+  height: 7rem;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.22), inset 0 -2px 0 rgb(0 0 0 / 0.3), 0 3px 0 #2c2b2a, 0 4px 1px rgb(0 0 0 / 0.5), 6px 12px 10px rgb(25 12 2 / 0.4), 14px 26px 26px rgb(25 12 2 / 0.3);
 }
 .bj-cart-inserted:hover {
   transform: translateY(-0.4rem);
@@ -209,7 +203,8 @@ html:has(.bj-page) { overflow: hidden; }
   padding: 1.5rem 1.4rem 1.1rem;
   border-radius: 1.6rem 1.6rem 1.9rem 1.9rem;
   background: linear-gradient(180deg, rgb(255 255 255 / 0.25), transparent 2.5rem), linear-gradient(180deg, var(--bj-shell-hi), var(--bj-shell) 35%, var(--bj-shell-lo));
-  box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.85), inset 0 -6px 0 rgb(0 0 0 / 0.07), inset 0 0 0 1px rgb(0 0 0 / 0.07), 0 2px 0 #b2a990, 0 12px 0 var(--bj-shell-edge), 0 13px 0 #7b7360, 0 40px 50px -10px rgb(0 0 0 / 0.65);
+  box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.65), inset 2px 0 0 rgb(255 255 255 / 0.3), inset -4px 0 10px rgb(60 40 10 / 0.12), inset 0 -6px 0 rgb(0 0 0 / 0.08), 0 2px 0 #b2a990, 0 12px 0 var(--bj-shell-edge), 0 13px 0 #6f6754, 0 14px 2px rgb(10 5 0 / 0.6), 6px 20px 8px rgb(25 12 2 / 0.35), 16px 36px 26px rgb(25 12 2 / 0.32), 34px 64px 60px rgb(25 12 2 / 0.3), 70px 110px 120px rgb(25 12 2 / 0.28);
+  isolation: isolate;
 }
 .bj-top {
   display: flex;
@@ -218,32 +213,45 @@ html:has(.bj-page) { overflow: hidden; }
   gap: 1rem;
   flex-wrap: wrap;
 }
+/* The logotype block is exactly as tall as the stripes: the name's cap tops meet the stripes'
+   tops and the subtitle's baseline meets their feet. Trimming each line to cap height to
+   baseline keeps it exact whatever the font. */
 .bj-badge {
   display: grid;
   grid-template-columns: auto auto;
-  align-items: center;
+  grid-template-rows: auto auto;
+  align-items: stretch;
   column-gap: 0.8rem;
+  row-gap: 0;
   --name: 1.7rem;
 }
 .bj-badge-name {
+  align-self: start;
+  font-family: "Russo One", "Jost", sans-serif;
   font-size: var(--name);
-  font-weight: 900;
+  font-weight: 400;
+  font-synthesis: none;
   transform: skewX(-18deg);
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #2c2926;
   text-shadow: 0 1px 0 rgb(255 255 255 / 0.6), 0 -1px 0 rgb(0 0 0 / 0.15);
   line-height: 1;
+  text-box: trim-both cap alphabetic;
 }
 .bj-badge-sub {
   grid-column: 1;
+  align-self: end;
   translate: calc(var(--name) * -0.088) 0;
   display: flex;
   justify-content: space-between;
+  font-family: var(--font-sans);
   font-size: 0.58rem;
   font-weight: 800;
+  line-height: 1;
   text-transform: uppercase;
   color: var(--bj-red-ink);
+  text-box: trim-both cap alphabetic;
 }
 .bj-stripes {
   grid-column: 2;
@@ -313,19 +321,15 @@ html:has(.bj-page) { overflow: hidden; }
   padding: 0.9rem;
   border-radius: 1.3rem;
   background: linear-gradient(160deg, var(--bj-dark-hi), var(--bj-dark) 40%, var(--bj-dark-lo));
-  box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.12), inset 0 -3px 0 rgb(0 0 0 / 0.4), 0 0 0 3px var(--bj-shell-lo), 0 0 0 4px rgb(0 0 0 / 0.1);
 }
 .bj-crt {
   position: relative;
-  height: 19rem;
   border-radius: 1.6rem / 2rem;
   overflow: hidden;
   background: radial-gradient(ellipse at 50% 45%, #10301b 0%, #071a0e 65%, #020904 100%);
   box-shadow: inset 0 0 0 2px #000, inset 0 0 30px rgb(0 0 0 / 0.9);
   color: var(--bj-phosphor);
   font-family: "VT323", "Geist Mono", ui-monospace, monospace;
-  font-size: 1.3rem;
-  line-height: 1.1;
   text-shadow: 0 0 2px rgb(132 255 166 / 0.85), 0 0 12px rgb(70 255 130 / 0.35);
 }
 .bj-crt::before, .bj-crt::after {
@@ -341,7 +345,7 @@ html:has(.bj-page) { overflow: hidden; }
 }
 .bj-crt::after {
   z-index: 3;
-  background: radial-gradient(ellipse 60% 35% at 30% 12%, rgb(255 255 255 / 0.09), transparent 70%), radial-gradient(ellipse at center, transparent 55%, rgb(0 0 0 / 0.65) 100%);
+  background: radial-gradient(ellipse 13% 11% at 79% 71%, rgb(255 255 255 / 0.055), transparent 70%), radial-gradient(ellipse 8% 7% at 85% 62%, rgb(255 255 255 / 0.045), transparent 70%), radial-gradient(ellipse 20% 7% at 22% 88%, rgb(255 255 255 / 0.04), transparent 70%), radial-gradient(ellipse 7% 9% at 12% 30%, rgb(255 255 255 / 0.035), transparent 70%), linear-gradient(118deg, transparent 0 24%, rgb(255 235 200 / 0.07) 29%, rgb(255 235 200 / 0.02) 36%, transparent 40%), radial-gradient(ellipse 60% 35% at 28% 10%, rgb(255 240 215 / 0.1), transparent 70%), radial-gradient(ellipse at center, transparent 50%, rgb(0 0 0 / 0.7) 100%);
 }
 .bj-crt.is-off {
   background: radial-gradient(ellipse at 50% 45%, #2a2f2c 0%, #161a18 70%, #0b0d0c 100%);
@@ -351,10 +355,8 @@ html:has(.bj-page) { overflow: hidden; }
 .bj-crt-glass {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 1rem 1.4rem;
+  padding: 1.1rem 1.7rem;
+  container-type: inline-size;
 }
 @media (prefers-reduced-motion: no-preference) {
   .bj-crt.is-running .bj-crt-glass {
@@ -362,46 +364,22 @@ html:has(.bj-page) { overflow: hidden; }
   }
 }
 @keyframes bj-flicker {
-  0%, 100% {
-    opacity: 1;
-  }
-  48% {
+  48%, 52% {
     opacity: 1;
   }
   50% {
     opacity: 0.94;
   }
-  52% {
-    opacity: 1;
-  }
-}
-.bj-crt-line {
-  margin: 0;
-}
-.bj-crt-centre {
-  margin: auto;
-  letter-spacing: 0.2em;
-}
-.bj-crt-status {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-bottom: 0.3rem;
-  margin-bottom: 0.4rem;
-  border-bottom: 2px dashed rgb(132 255 166 / 0.35);
 }
 .bj-crt-listing {
   position: relative;
   flex: 1;
-  min-height: 0;
-  margin: 0;
+  height: calc(var(--lh) * 6);
   overflow-y: auto;
   scrollbar-width: none;
-  font: inherit;
-  white-space: pre-wrap;
   word-break: break-all;
-  scroll-behavior: smooth;
 }
+.bj-crt-listing pre { white-space: pre-wrap; }
 .bj-crt-listing::-webkit-scrollbar {
   display: none;
 }
@@ -412,40 +390,29 @@ html:has(.bj-page) { overflow: hidden; }
   text-shadow: none;
 }
 .bj-crt-io {
-  flex: none;
-  max-height: 45%;
-  overflow: hidden;
-  padding-top: 0.35rem;
-  margin-top: 0.4rem;
-  border-top: 2px dashed rgb(132 255 166 / 0.35);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  height: calc(var(--lh) * 2);
+  overflow: hidden;
 }
-.bj-crt-output, .bj-crt-input {
-  margin: 0;
-  font: inherit;
-  white-space: pre-wrap;
-  word-break: break-all;
-}
+.bj-crt-output,
+.bj-crt-error { white-space: pre-wrap; word-break: break-all; }
 .bj-crt-input {
   opacity: 0.7;
 }
 .bj-crt-prompt {
-  margin-right: 0.5ch;
   opacity: 0.6;
 }
 .bj-crt-error {
-  margin: 0 0 0.2rem;
   color: #ffb8a0;
   text-shadow: 0 0 6px rgb(255 90 60 / 0.8);
 }
 .bj-crt-caret {
   display: inline-block;
-  width: 0.55em;
-  height: 0.9em;
-  margin-left: 1px;
-  vertical-align: -0.05em;
+  width: 1ch;
+  height: var(--lh);
+  vertical-align: top;
   background: var(--bj-phosphor);
   box-shadow: 0 0 6px rgb(132 255 166 / 0.8);
 }
@@ -467,7 +434,6 @@ html:has(.bj-page) { overflow: hidden; }
   padding: 0.9rem 1rem;
   border-radius: 1.1rem;
   background: linear-gradient(160deg, var(--bj-dark-hi), var(--bj-dark) 40%, var(--bj-dark-lo));
-  box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.12), inset 0 -3px 0 rgb(0 0 0 / 0.4), 0 0 0 3px var(--bj-shell-lo), 0 0 0 4px rgb(0 0 0 / 0.1);
 }
 .bj-seg {
   display: flex;
@@ -503,7 +469,6 @@ html:has(.bj-page) { overflow: hidden; }
   padding: 0.8rem;
   border-radius: 1.1rem;
   background: repeating-linear-gradient(90deg, rgb(255 255 255 / 0.025) 0 1px, transparent 1px 3px), linear-gradient(180deg, #4b4945, #33312e 50%, #262523);
-  box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.12), inset 0 -3px 0 rgb(0 0 0 / 0.4), 0 0 0 3px var(--bj-shell-lo), 0 0 0 4px rgb(0 0 0 / 0.1);
 }
 .bj-deck-window {
   position: relative;
@@ -520,7 +485,7 @@ html:has(.bj-page) { overflow: hidden; }
   inset: 0;
   z-index: 3;
   pointer-events: none;
-  background: linear-gradient(90deg, rgb(0 0 0 / 0.55), transparent 18%, transparent 82%, rgb(0 0 0 / 0.55)), linear-gradient(170deg, rgb(255 255 255 / 0.08), transparent 35%);
+  background: linear-gradient(90deg, rgb(0 0 0 / 0.35), transparent 14%, transparent 86%, rgb(0 0 0 / 0.35)), linear-gradient(170deg, rgb(255 255 255 / 0.08), transparent 35%);
 }
 .bj-tape {
   position: absolute;
@@ -535,7 +500,7 @@ html:has(.bj-page) { overflow: hidden; }
   top: 0;
   bottom: 0;
   width: var(--cell);
-  background: linear-gradient(180deg, rgb(140 110 60 / 0.18), transparent 8%, transparent 92%, rgb(140 110 60 / 0.18)), var(--bj-paper);
+  background: linear-gradient(180deg, rgb(140 110 60 / 0.25), transparent 9%, transparent 91%, rgb(140 110 60 / 0.25));
 }
 .bj-cell {
   left: calc(var(--i) * var(--cell));
@@ -633,8 +598,6 @@ html:has(.bj-page) { overflow: hidden; }
   right: 0;
   z-index: 1;
   font-size: 0.5rem;
-  font-weight: 900;
-  letter-spacing: 0.15em;
   text-align: center;
   color: #4a4a47;
 }
@@ -647,7 +610,6 @@ html:has(.bj-page) { overflow: hidden; }
   padding: 1.1rem 1.8rem;
   border-radius: 1.1rem;
   background: linear-gradient(180deg, rgb(255 255 255 / 0.06), transparent 30%), linear-gradient(180deg, #3e3c39, #2e2c2a);
-  box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.1), inset 0 -3px 0 rgb(0 0 0 / 0.4), 0 0 0 3px var(--bj-shell-lo), 0 0 0 4px rgb(0 0 0 / 0.1);
 }
 .bj-controls .bj-print {
   color: #d7d0bf;
@@ -671,7 +633,7 @@ html:has(.bj-page) { overflow: hidden; }
   width: 3.6rem;
   height: 1.1rem;
   border-radius: 999px;
-  background: linear-gradient(180deg, #3a3836, #151413);
+  background: var(--bj-dust) 0 0 / 160px 160px, linear-gradient(180deg, #3a3836, #151413);
   box-shadow: 0 0 0 0.3rem #67635e, 0 0 0 calc(0.3rem + 1px) rgb(0 0 0 / 0.5), 0 3px 0 #090808, inset 0 1px 0 rgb(255 255 255 / 0.18);
   transition: transform 70ms ease, box-shadow 70ms ease, filter 120ms;
 }
@@ -692,14 +654,14 @@ html:has(.bj-page) { overflow: hidden; }
   width: 5rem;
   height: 5rem;
   border-radius: 0.9rem;
-  background: linear-gradient(180deg, #c9c3b4, #a9a293);
-  box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.5), inset 0 -2px 0 rgb(0 0 0 / 0.2), 0 2px 0 rgb(0 0 0 / 0.5);
+  background: var(--bj-grain), linear-gradient(180deg, #c8c0ac, #a69e8a);
+  box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.4), inset 0 -2px 0 rgb(0 0 0 / 0.2), inset 0 0 6px rgb(70 50 20 / 0.25), 0 2px 0 rgb(0 0 0 / 0.5), 3px 5px 6px rgb(0 0 0 / 0.35);
 }
 .bj-pad {
   width: 3.6rem;
   height: 3.6rem;
   border-radius: 999px;
-  background: radial-gradient(circle at 36% 30%, #ff7a63 0%, #e0392a 32%, var(--bj-red) 50%, #9b1b12 100%);
+  background: var(--bj-grain) 0 0 / 120px 120px, radial-gradient(circle at 50% 50%, rgb(255 190 170 / 0.12) 0 30%, transparent 55%), radial-gradient(circle at 36% 30%, #f07560 0%, #d8392b 32%, #c62d20 50%, #8f1a11 100%);
   box-shadow: 0 5px 0 #6b110b, 0 8px 10px rgb(0 0 0 / 0.45), inset 0 -3px 6px rgb(0 0 0 / 0.25), inset 0 2px 3px rgb(255 255 255 / 0.35);
   transform: translateY(-3px);
   transition: transform 70ms ease, box-shadow 70ms ease, filter 120ms;
@@ -751,50 +713,32 @@ html:has(.bj-page) { overflow: hidden; }
     opacity: 0;
   }
 }
+/* Cartridge editor: the title is written straight onto the coloured label band,
+   program and input are on lined paper below. */
 .bj-cart-sheet {
   gap: 0.6rem;
   padding: 0 1.1rem 1.1rem;
-  background: linear-gradient(140deg, var(--cart-a), var(--cart-b)) top / 100% 3rem no-repeat, #f6efdc;
-  color: #2b2420;
+  background:
+    linear-gradient(140deg, var(--cart-a), var(--cart-b)) top / 100% 4rem no-repeat,
+    #f6efdc;
+  mask: none;
 }
 .bj-sheet-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 3rem;
-  color: var(--cart-ink);
+  height: 4rem;
+  margin-bottom: 0.6rem;
 }
-.bj-sheet-close {
-  display: grid;
-  place-items: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 999px;
-  background: rgb(0 0 0 / 0.15);
-}
-.bj-sheet-close:hover {
-  background: rgb(0 0 0 / 0.3);
-}
+.bj-sheet-head .fieldset { width: 100%; margin: 0; }
 .bj-cart-sheet .fieldset label {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
 }
-.bj-cart-sheet .label {
-  font-size: 0.62rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #8a7f6d;
-}
 .bj-field {
-  width: 100%;
-  padding: 0.3rem 0.1rem;
   border: 0;
-  border-bottom: 2px solid #d2c6aa;
-  background: transparent;
   font-family: "Geist Mono", ui-monospace, monospace;
-  font-size: 0.95rem;
   color: #2b2420;
   outline: none;
 }
@@ -802,11 +746,16 @@ html:has(.bj-page) { overflow: hidden; }
   border-bottom-color: var(--cart-b);
 }
 .bj-field-title {
+  padding: 0;
+  border-bottom: 0;
   font-family: var(--font-sans);
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   font-weight: 900;
   text-transform: uppercase;
+  color: var(--cart-ink);
+  text-shadow: 0 2px 0 rgb(0 0 0 / 0.25);
 }
+.bj-field-title::placeholder { color: var(--cart-ink); opacity: 0.55; }
 .bj-field-source {
   min-height: 15rem;
   padding: 0 0.4rem;
@@ -816,8 +765,18 @@ html:has(.bj-page) { overflow: hidden; }
   line-height: 1.5rem;
   background: repeating-linear-gradient(180deg, transparent 0 calc(1.5rem - 1px), #e3d8bf calc(1.5rem - 1px) 1.5rem), #fbf6e8;
   background-attachment: local;
-  resize: vertical;
 }
+.bj-field-input {
+  height: calc(1.5rem + 2px);
+  padding: 0 0.4rem;
+  border: 1px solid #d9ceb4;
+  border-radius: 0.25rem;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  background: linear-gradient(180deg, transparent 0 calc(1.5rem - 1px), #e3d8bf calc(1.5rem - 1px) 1.5rem), #fbf6e8;
+}
+.bj-field-source::placeholder,
+.bj-field-input::placeholder { color: #b3a789; }
 .bj-stamp {
   align-self: flex-start;
   padding: 0.3rem 0.7rem;
@@ -867,10 +826,6 @@ html:has(.bj-page) { overflow: hidden; }
     width: 1.05rem;
     height: 1.75rem;
   }
-  .bj-crt {
-    height: 16rem;
-    font-size: 1.15rem;
-  }
   .bj-controls {
     justify-content: center;
     padding: 1.1rem;
@@ -885,22 +840,11 @@ html:has(.bj-page) { overflow: hidden; }
     display: none;
   }
 }
-.bj-page {
-  --bj-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.22 0 0 0 0 0.17 0 0 0 0 0.1 0 0 0 1.0 -0.43'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  --bj-grime: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.011' numOctaves='4' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.36 0 0 0 0 0.27 0 0 0 0 0.12 0 0 0 1.5 -0.72'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
-  --bj-dust: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.92 0 0 0 0 0.9 0 0 0 0 0.84 0 0 0 9 -6.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23d)'/%3E%3C/svg%3E");
-  --bj-chips: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.22' numOctaves='2' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -16 12.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E");
-}
 .bj-table::before {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 9% 78%, transparent 0 3.1rem, rgb(55 25 8 / 0.45) 3.2rem, rgb(55 25 8 / 0.12) 3.45rem, transparent 3.7rem), radial-gradient(circle at 10.2% 79.5%, transparent 0 3rem, rgb(55 25 8 / 0.2) 3.08rem, transparent 3.3rem), radial-gradient(circle at 9% 78%, rgb(55 25 8 / 0.06) 0 3rem, transparent 3.1rem), linear-gradient(172deg, transparent 0 61.9%, rgb(255 225 180 / 0.12) 62%, transparent 62.15%), linear-gradient(168deg, transparent 0 66.9%, rgb(30 12 2 / 0.25) 67%, transparent 67.1%), radial-gradient(ellipse 55% 45% at 22% 8%, rgb(255 205 130 / 0.28), transparent 75%);
-  mix-blend-mode: normal;
-}
-.bj-console {
-  isolation: isolate;
-  box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.65), inset 2px 0 0 rgb(255 255 255 / 0.3), inset -4px 0 10px rgb(60 40 10 / 0.12), inset 0 -6px 0 rgb(0 0 0 / 0.08), 0 2px 0 #b2a990, 0 12px 0 var(--bj-shell-edge), 0 13px 0 #6f6754, 0 14px 2px rgb(10 5 0 / 0.6), 6px 20px 8px rgb(25 12 2 / 0.35), 16px 36px 26px rgb(25 12 2 / 0.32), 34px 64px 60px rgb(25 12 2 / 0.3), 70px 110px 120px rgb(25 12 2 / 0.28);
 }
 .bj-console::before {
   content: "";
@@ -927,27 +871,8 @@ html:has(.bj-page) { overflow: hidden; }
   background: var(--bj-dust) 0 0 / 300px 300px, radial-gradient(ellipse 40% 60% at 0% 100%, rgb(140 120 80 / 0.12), transparent 70%), radial-gradient(ellipse 30% 50% at 100% 0%, rgb(140 120 80 / 0.08), transparent 70%);
   opacity: 0.22;
 }
-.bj-crt::after {
-  background: radial-gradient(ellipse 13% 11% at 79% 71%, rgb(255 255 255 / 0.055), transparent 70%), radial-gradient(ellipse 8% 7% at 85% 62%, rgb(255 255 255 / 0.045), transparent 70%), radial-gradient(ellipse 20% 7% at 22% 88%, rgb(255 255 255 / 0.04), transparent 70%), radial-gradient(ellipse 7% 9% at 12% 30%, rgb(255 255 255 / 0.035), transparent 70%), linear-gradient(118deg, transparent 0 24%, rgb(255 235 200 / 0.07) 29%, rgb(255 235 200 / 0.02) 36%, transparent 40%), radial-gradient(ellipse 60% 35% at 28% 10%, rgb(255 240 215 / 0.1), transparent 70%), radial-gradient(ellipse at center, transparent 50%, rgb(0 0 0 / 0.7) 100%);
-}
 .bj-controls .bj-print-red, .bj-pill-wrap .bj-print {
   mask: var(--bj-chips) 0 0 / 120px 120px;
-}
-.bj-pad {
-  background: var(--bj-grain) 0 0 / 120px 120px, radial-gradient(circle at 50% 50%, rgb(255 190 170 / 0.12) 0 30%, transparent 55%), radial-gradient(circle at 36% 30%, #f07560 0%, #d8392b 32%, #c62d20 50%, #8f1a11 100%);
-}
-.bj-pad-well {
-  background: var(--bj-grain), linear-gradient(180deg, #c8c0ac, #a69e8a);
-  box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.4), inset 0 -2px 0 rgb(0 0 0 / 0.2), inset 0 0 6px rgb(70 50 20 / 0.25), 0 2px 0 rgb(0 0 0 / 0.5), 3px 5px 6px rgb(0 0 0 / 0.35);
-}
-.bj-pill, .bj-knob {
-  background-blend-mode: normal;
-}
-.bj-pill {
-  background: var(--bj-dust) 0 0 / 160px 160px, linear-gradient(180deg, #3a3836, #151413);
-}
-.bj-cell, .bj-tape-leader {
-  background: linear-gradient(180deg, rgb(140 110 60 / 0.25), transparent 9%, transparent 91%, rgb(140 110 60 / 0.25));
 }
 /* The paper and its grain are one layer under all the cells, so a step repaints only the
    cells that change. It spans 1060 cells and only moves every 500, and its grain is anchored
@@ -961,23 +886,6 @@ html:has(.bj-page) { overflow: hidden; }
   left: calc(var(--from) * var(--cell));
   width: calc(var(--cell) * 1060);
   background: var(--bj-grain) calc(var(--from) * var(--cell) * -1) 0 / 180px 180px, #eadcb8;
-}
-.bj-cart {
-  background: var(--bj-dust) 0 0 / 200px 200px, linear-gradient(90deg, #4c4b4a, #6b6a68 12%, #656462 88%, #454443);
-}
-.bj-cart-label {
-  background: var(--bj-grain), radial-gradient(120% 90% at 85% 0%, rgb(255 255 255 / 0.25), transparent 55%), repeating-linear-gradient(-55deg, transparent 0 14px, rgb(255 255 255 / 0.07) 14px 28px), linear-gradient(140deg, var(--cart-a), var(--cart-b));
-  mask: linear-gradient(#000 0 0) center / calc(100% - 14px) calc(100% - 14px) no-repeat, var(--bj-chips) 0 0 / 70px 70px;
-}
-.bj-cart-sheet {
-  mask: none;
-}
-.bj-cart-inserted {
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.22), inset 0 -2px 0 rgb(0 0 0 / 0.3), 0 3px 0 #2c2b2a, 0 4px 1px rgb(0 0 0 / 0.5), 6px 12px 10px rgb(25 12 2 / 0.4), 14px 26px 26px rgb(25 12 2 / 0.3);
-}
-.bj-slot {
-  background: linear-gradient(180deg, #121110 0 0.55rem, transparent 0.55rem) center 0.35rem / 88% 0.55rem no-repeat, var(--bj-dust) 0 0 / 200px 200px, linear-gradient(180deg, var(--bj-dark-hi), var(--bj-dark) 45%, var(--bj-dark-lo));
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.18), 0 3px 0 #1a1918, 4px 8px 10px rgb(0 0 0 / 0.4);
 }
 .bj-sticker {
   position: absolute;
@@ -1014,13 +922,6 @@ html:has(.bj-page) { overflow: hidden; }
   .bj-desk > .bj-stage {
     width: 45rem;
   }
-  .bj-booklet {
-    width: 17rem;
-    height: 23rem;
-  }
-}
-.bj-deck-window::after {
-  background: linear-gradient(90deg, rgb(0 0 0 / 0.35), transparent 14%, transparent 86%, rgb(0 0 0 / 0.35)), linear-gradient(170deg, rgb(255 255 255 / 0.08), transparent 35%);
 }
 .bj-tape-leader {
   left: calc(var(--cell) * -30);
@@ -1032,10 +933,7 @@ html:has(.bj-page) { overflow: hidden; }
   top: 50%;
   right: 0.5rem;
   translate: 0 -50%;
-  font-family: "Geist Mono", ui-monospace, monospace;
   font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
   color: rgb(179 36 27 / 0.75);
   writing-mode: vertical-rl;
   rotate: 180deg;
@@ -1064,9 +962,6 @@ html:has(.bj-page) { overflow: hidden; }
   border-radius: 999px / 0.25rem;
   background: linear-gradient(90deg, #4a4946, #c9c8c3 35%, #f1f0ec 45%, #8b8a85 75%, #3d3c3a);
   box-shadow: 0 1px 1px rgb(0 0 0 / 0.6);
-}
-.bj-spool::before {
-  top: 0;
 }
 .bj-spool::after {
   bottom: 0;
@@ -1122,8 +1017,6 @@ html:has(.bj-page) { overflow: hidden; }
   margin: -0.55rem 0 0 -0.95rem;
   transform: rotate(var(--angle)) translateY(-3.25rem) rotate(calc(var(--angle) * -1));
   font-size: 0.6rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
   color: #9c968b;
   transition: color 150ms;
 }
@@ -1201,7 +1094,6 @@ html:has(.bj-page) { overflow: hidden; }
   gap: 0.45rem;
   width: 20.3rem;
   padding: 0.9rem 0.8rem 1.1rem;
-  list-style: none;
   border-radius: 0.7rem 0.7rem 0.9rem 0.9rem;
   background: var(--bj-grain), linear-gradient(90deg, rgb(255 255 255 / 0.08), transparent 12%, transparent 88%, rgb(0 0 0 / 0.25)), linear-gradient(180deg, #3f3d3a, #2c2a28);
   box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.12), inset 0 -4px 0 rgb(0 0 0 / 0.35), 0 3px 0 #171615, 0 4px 1px rgb(0 0 0 / 0.5), 6px 14px 12px rgb(25 12 2 / 0.4), 16px 32px 30px rgb(25 12 2 / 0.32);
@@ -1237,12 +1129,16 @@ html:has(.bj-page) { overflow: hidden; }
 .bj-spine[aria-current="true"] {
   visibility: hidden;
 }
+/* Rack stickers: name above tagline, always inside the cartridge end. */
 .bj-spine-label {
   display: flex;
   flex: 1;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.15rem;
+  min-width: 0;
+  overflow: hidden;
   padding: 0.35rem 0.6rem;
   border-radius: 0.2rem;
   color: var(--cart-ink);
@@ -1253,7 +1149,6 @@ html:has(.bj-page) { overflow: hidden; }
 }
 .bj-spine-name {
   font-size: 1.05rem;
-  font-weight: 900;
   line-height: 1;
   text-transform: uppercase;
   text-shadow: 0 1px 0 rgb(0 0 0 / 0.25);
@@ -1312,14 +1207,13 @@ html:has(.bj-page) { overflow: hidden; }
 }
 .bj-booklet-band {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   height: 4.3rem;
   margin: 0 -1.4rem 0.5rem;
   padding: 0 1.3rem;
   background: linear-gradient(140deg, #e04a36, #a8231a);
 }
-.bj-booklet-band { justify-content: flex-start; }
 .bj-booklet-band .bj-stripes i { height: 1.8rem; }
 .bj-booklet-band .bj-badge { --name: 1.9rem; }
 .bj-booklet-band .bj-badge-name { color: #fbf3df; text-shadow: 0 1px 0 rgb(80 10 5 / 0.5); }
@@ -1333,9 +1227,10 @@ html:has(.bj-page) { overflow: hidden; }
 /* The eight command keys as cover art. */
 .bj-booklet-keys {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.4rem;
   margin-top: auto;
+  margin-right: 0.6rem;
 }
 .bj-booklet-keys i {
   display: grid;
@@ -1361,7 +1256,6 @@ html:has(.bj-page) { overflow: hidden; }
 .bj-book {
   --pw: 25rem;
   --ph: 35rem;
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1395,7 +1289,7 @@ html:has(.bj-page) { overflow: hidden; }
   width: 2.4rem;
   z-index: 3;
   pointer-events: none;
-  background: linear-gradient(90deg, transparent, rgb(80 50 15 / 0.28) 46%, rgb(40 25 5 / 0.45) 50%, rgb(80 50 15 / 0.28) 54%, transparent);
+  background: linear-gradient(90deg, transparent, rgb(60 56 50 / 0.28) 46%, rgb(30 28 25 / 0.45) 50%, rgb(60 56 50 / 0.28) 54%, transparent);
 }
 
 .bj-leaf {
@@ -1405,26 +1299,27 @@ html:has(.bj-page) { overflow: hidden; }
   flex-direction: column;
   width: var(--pw);
   height: var(--ph);
-  padding: 2.3rem 2.1rem 2.8rem;
+  padding: 1.3rem 2.1rem 3.4rem;
   overflow: hidden;
-  color: #2e271e;
+  color: #57534d;
   font-family: "Tinos", "Times New Roman", serif;
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.86rem;
+  line-height: 1.45;
   text-align: left;
+  /* One grime tile covers a whole page, so no repeat seam shows. */
   background:
     var(--bj-grain),
-    var(--bj-grime) 0 0 / 520px 520px,
-    radial-gradient(ellipse at 50% 45%, transparent 55%, rgb(140 95 35 / 0.32) 100%),
-    #f1e6c8;
+    var(--bj-grime) 0 0 / 640px 640px,
+    radial-gradient(ellipse at 50% 45%, transparent 55%, rgb(95 88 76 / 0.3) 100%),
+    #eeeae0;
 }
 .bj-leaf[data-side] { display: flex; }
-.bj-leaf[data-side="left"] { left: 0; border-radius: 4px 0 0 4px; }
+.bj-leaf[data-side="left"] { border-radius: 4px 0 0 4px; }
 .bj-leaf[data-side="right"] { left: var(--pw); border-radius: 0 4px 4px 0; }
-.bj-leaf[data-side="single"] { left: 0; border-radius: 0 4px 4px 0; }
-.bj-leaf[data-side="left"] { box-shadow: inset -14px 0 18px -10px rgb(90 60 20 / 0.35); }
+.bj-leaf[data-side="single"] { border-radius: 0 4px 4px 0; }
+.bj-leaf[data-side="left"] { box-shadow: inset -14px 0 18px -10px rgb(60 56 50 / 0.35); }
 .bj-leaf[data-side="right"],
-.bj-leaf[data-side="single"] { box-shadow: inset 14px 0 18px -10px rgb(90 60 20 / 0.35); }
+.bj-leaf[data-side="single"] { box-shadow: inset 14px 0 18px -10px rgb(60 56 50 / 0.35); }
 .bj-leaf::after {
   content: attr(data-n);
   position: absolute;
@@ -1439,11 +1334,11 @@ html:has(.bj-page) { overflow: hidden; }
 /* A coffee ring on the first spread, like every manual that lived by a console. */
 .bj-leaf-cover {
   background:
-    radial-gradient(circle at 84% 86%, transparent 0 3.1rem, rgb(120 75 25 / 0.26) 3.2rem, rgb(120 75 25 / 0.07) 3.5rem, transparent 3.7rem),
+    radial-gradient(circle at 84% 86%, transparent 0 3.1rem, rgb(85 79 70 / 0.26) 3.2rem, rgb(85 79 70 / 0.07) 3.5rem, transparent 3.7rem),
     var(--bj-grain),
-    var(--bj-grime) 0 0 / 520px 520px,
-    radial-gradient(ellipse at 50% 45%, transparent 55%, rgb(140 95 35 / 0.32) 100%),
-    #f1e6c8;
+    var(--bj-grime) 0 0 / 640px 640px,
+    radial-gradient(ellipse at 50% 45%, transparent 55%, rgb(95 88 76 / 0.3) 100%),
+    #eeeae0;
 }
 
 .bj-turn {
@@ -1482,27 +1377,19 @@ html:has(.bj-page) { overflow: hidden; }
   margin-bottom: 1.2rem;
   border-bottom: 4px double #2e271e;
 }
+/* Section headings: upright, with a plain number on the title's baseline. */
 .bj-leaf h3 {
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  align-items: baseline;
+  gap: 0.75rem;
   margin-bottom: 0.8rem;
   font-family: var(--font-sans);
   font-size: 1.1rem;
   font-weight: 900;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
 }
-.bj-leaf h3 span {
-  display: grid;
-  place-items: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 999px;
-  font-style: normal;
-  font-size: 0.95rem;
-  color: #f6eed6;
-  background: var(--bj-red-ink);
-}
+.bj-leaf h3 span { font-variant-numeric: tabular-nums; }
 .bj-leaf h3.bj-manual-cont { font-size: 0.85rem; opacity: 0.7; }
 .bj-leaf h4 {
   margin-top: 0.9rem;
@@ -1517,13 +1404,11 @@ html:has(.bj-page) { overflow: hidden; }
 .bj-leaf pre { font-family: "Courier Prime", "Courier New", monospace; }
 
 
-.bj-manual-table { width: 100%; border-collapse: collapse; }
+.bj-manual-table { width: 100%; }
 .bj-manual-table th,
 .bj-manual-table td {
-  padding: 0.28rem 0.4rem;
-  border-bottom: 1px dashed rgb(46 39 30 / 0.35);
-  text-align: left;
-  vertical-align: middle;
+  padding: 0.2rem 0.4rem;
+  border-bottom: 1px dashed rgb(43 41 38 / 0.3);
 }
 .bj-manual-table th { width: 2.6rem; }
 .bj-manual-table th code {
@@ -1533,10 +1418,9 @@ html:has(.bj-page) { overflow: hidden; }
   height: 1.6rem;
   border: 2px solid #2e271e;
   border-radius: 0.3rem;
-  font-weight: 700;
 }
 
-.bj-manual-parts { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.7rem 0.8rem; }
+.bj-manual-parts { display: grid; gap: 0.5rem 0.8rem; }
 .bj-manual-parts dt {
   padding-top: 0.15rem;
   font-family: var(--font-sans);
@@ -1545,7 +1429,7 @@ html:has(.bj-page) { overflow: hidden; }
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-.bj-manual-parts-stacked { grid-template-columns: 1fr; gap: 0.15rem; }
+.bj-manual-parts-stacked { grid-template-columns: 1fr; }
 .bj-manual-parts-stacked dd { margin-bottom: 0.8rem; }
 
 .bj-manual-code {
@@ -1574,16 +1458,12 @@ html:has(.bj-page) { overflow: hidden; }
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #fff;
-  background: linear-gradient(180deg, #e8473a, #ad1f15);
-  box-shadow: 0 3px 0 #6b110b, inset 0 1px 0 rgb(255 255 255 / 0.3);
+  background: linear-gradient(180deg, #4a4743, #2b2926);
+  box-shadow: 0 3px 0 #111, inset 0 1px 0 rgb(255 255 255 / 0.2);
   transition: translate 70ms, box-shadow 70ms;
 }
-.bj-manual-load:active { translate: 0 2px; box-shadow: 0 1px 0 #6b110b; }
+.bj-manual-load:active { translate: 0 2px; box-shadow: 0 1px 0 #111; }
 
-.bj-manual-notes {
-  flex: 1;
-  background: repeating-linear-gradient(180deg, transparent 0 calc(1.8rem - 1px), rgb(46 39 30 / 0.25) calc(1.8rem - 1px) 1.8rem);
-}
 .bj-manual-footer {
   padding-top: 0.9rem;
   margin-bottom: 1rem;
@@ -1592,15 +1472,6 @@ html:has(.bj-page) { overflow: hidden; }
   text-align: center;
   opacity: 0.75;
 }
-.bj-cart-brand { text-transform: uppercase; }
-.bj-booklet-keys { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-right: 0.6rem; }
-/* One grime tile covers a whole page, so no repeat seam shows. */
-.bj-leaf { padding-bottom: 3.4rem; font-size: 0.86rem; line-height: 1.45; background-size: auto, 640px 640px, auto, auto; }
-.bj-leaf-cover { background-size: auto, auto, 640px 640px, auto, auto; }
-.bj-manual-table th, .bj-manual-table td { padding: 0.2rem 0.4rem; }
-.bj-manual-parts { gap: 0.5rem 0.8rem; }
-/* The inserted cartridge ends inside the slot housing rather than below it. */
-.bj-cart-inserted { bottom: 0.3rem; height: 7rem; }
 
 /* Dog-eared page corners: curled up where there is a page to turn to. */
 .bj-corner {
@@ -1612,7 +1483,6 @@ html:has(.bj-page) { overflow: hidden; }
   height: var(--size);
   transition: width 180ms cubic-bezier(0.3, 1.4, 0.5, 1), height 180ms cubic-bezier(0.3, 1.4, 0.5, 1);
 }
-.bj-corner[hidden] { display: none; }
 .bj-corner:hover,
 .bj-corner:focus-visible { --size: 3.6rem; }
 .bj-corner-next {
@@ -1620,17 +1490,17 @@ html:has(.bj-page) { overflow: hidden; }
   border-bottom-right-radius: 4px;
   /* The flap's paler underside above the fold, the page beneath in its shadow below it. */
   background:
-    linear-gradient(135deg, #fbf4e0 0%, #efe3c2 35%, #d6c398 49.5%, transparent 50%),
-    linear-gradient(315deg, #cdb98e 0%, #b9a47a 50%, transparent 50%);
-  filter: drop-shadow(-3px -3px 3px rgb(60 35 8 / 0.35));
+    linear-gradient(135deg, #f7f5ef 0%, #e6e2d8 35%, #c9c4b8 49.5%, transparent 50%),
+    linear-gradient(315deg, #bdb8ac 0%, #a8a397 50%, transparent 50%);
+  filter: drop-shadow(-3px -3px 3px rgb(40 36 30 / 0.35));
 }
 .bj-corner-prev {
   left: 0;
   border-bottom-left-radius: 4px;
   background:
-    linear-gradient(225deg, #fbf4e0 0%, #efe3c2 35%, #d6c398 49.5%, transparent 50%),
-    linear-gradient(45deg, #cdb98e 0%, #b9a47a 50%, transparent 50%);
-  filter: drop-shadow(3px -3px 3px rgb(60 35 8 / 0.35));
+    linear-gradient(225deg, #f7f5ef 0%, #e6e2d8 35%, #c9c4b8 49.5%, transparent 50%),
+    linear-gradient(45deg, #bdb8ac 0%, #a8a397 50%, transparent 50%);
+  filter: drop-shadow(3px -3px 3px rgb(40 36 30 / 0.35));
 }
 
 /* ------------------------------------------------------------------
@@ -1638,49 +1508,21 @@ html:has(.bj-page) { overflow: hidden; }
    screen's width so exactly --cols characters fit (VT323 is 0.4em wide),
    and every block is a whole number of rows tall.
    ------------------------------------------------------------------ */
-.bj-crt { height: auto; }
-.bj-crt-glass {
-  display: block;
-  height: auto;
-  padding: 1.1rem 1.7rem;
-  container-type: inline-size;
-}
 .bj-crt-grid {
   --lh: 1.15em;
   width: calc(var(--cols) * 1ch);
   font-size: calc(100cqw / (var(--cols) * 0.4));
   line-height: var(--lh);
 }
-.bj-crt-grid pre { margin: 0; font: inherit; line-height: inherit; }
+.bj-crt-grid pre { font: inherit; }
 .bj-crt-row { height: var(--lh); overflow: hidden; white-space: pre; }
 .bj-crt-rule { opacity: 0.4; }
-.bj-crt-listing {
-  height: calc(var(--lh) * 6);
-  overflow-y: auto;
-  scroll-behavior: auto;
-}
-.bj-crt-io {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  height: calc(var(--lh) * 2);
-  overflow: hidden;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  max-height: none;
-}
-.bj-crt-output,
-.bj-crt-error { white-space: pre-wrap; word-break: break-all; }
-.bj-crt-error { margin: 0; }
-.bj-crt-prompt { margin-right: 0; }
-.bj-crt-caret { width: 1ch; height: var(--lh); margin: 0; vertical-align: top; }
 /* Centre the booklet on the window however wide it is before scaling. */
 .bj-manual-modal .bj-book { position: absolute; top: 50%; left: 50%; translate: -50% -50%; }
 
 /* Console drawing with labelled leader lines, like an engineering drawing. */
 .bj-sketch { margin: 0.6rem -0.4rem 0; }
-.bj-sketch svg { display: block; width: 100%; overflow: visible; }
+.bj-sketch svg { width: 100%; overflow: visible; }
 .bj-sketch image { opacity: 0.88; mix-blend-mode: multiply; }
 .bj-leader polyline {
   fill: none;
@@ -1701,26 +1543,14 @@ html:has(.bj-page) { overflow: hidden; }
   dominant-baseline: central;
 }
 .bj-sketch-caption { margin-top: 0.6rem; font-size: 0.78rem; text-align: center; opacity: 0.75; }
-.bj-manual-key { padding-left: 0; list-style: none; }
 .bj-manual-key li + li { margin-top: 0.55rem; }
 .bj-manual-key b { font-family: var(--font-sans); font-size: 0.8rem; }
 .bj-leaf-back .bj-manual-footer { margin-top: auto; }
 
-/* Rack stickers: name above tagline, always inside the cartridge end. */
-.bj-spine { min-width: 0; }
-.bj-spine-label {
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 0.15rem;
-  min-width: 0;
-  overflow: hidden;
-}
 .bj-spine-name,
-.bj-spine-hint { max-width: 100%; overflow: hidden; text-overflow: clip; }
+.bj-spine-hint { max-width: 100%; overflow: hidden; }
 
-/* Manual body text: soft grey, with near-black headings. */
-.bj-leaf { padding-top: 1.3rem; color: #57534d; }
+/* Manual body text is soft grey (see .bj-leaf), with near-black headings. */
 .bj-leaf h3,
 .bj-leaf h4,
 .bj-manual-title,
@@ -1728,116 +1558,21 @@ html:has(.bj-page) { overflow: hidden; }
 .bj-manual-key b { color: #1f1c19; }
 
 
-.bj-crt-listing { position: relative; }
-.bj-crt-listing pre { white-space: pre-wrap; word-break: break-all; }
-
 /* ------------------------------------------------------------------
    The manual's pages are printed in black and white on paper that has
    gone faintly warm with age. The cover on the desk keeps its colour.
    ------------------------------------------------------------------ */
 .bj-book {
-  --bj-red-ink: #2b2926;
   --bj-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.19 0 0 0 0 0.17 0 0 0 1.0 -0.43'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --bj-grime: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.011' numOctaves='4' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.3 0 0 0 0 0.28 0 0 0 0 0.25 0 0 0 1.5 -0.72'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
-}
-.bj-book .bj-leaf {
-  background:
-    var(--bj-grain),
-    var(--bj-grime) 0 0 / 640px 640px,
-    radial-gradient(ellipse at 50% 45%, transparent 55%, rgb(95 88 76 / 0.3) 100%),
-    #eeeae0;
-}
-.bj-book .bj-leaf-cover {
-  background:
-    radial-gradient(circle at 84% 86%, transparent 0 3.1rem, rgb(85 79 70 / 0.26) 3.2rem, rgb(85 79 70 / 0.07) 3.5rem, transparent 3.7rem),
-    var(--bj-grain),
-    var(--bj-grime) 0 0 / 640px 640px,
-    radial-gradient(ellipse at 50% 45%, transparent 55%, rgb(95 88 76 / 0.3) 100%),
-    #eeeae0;
-}
-.bj-book .bj-leaf[data-side="left"] { box-shadow: inset -14px 0 18px -10px rgb(60 56 50 / 0.35); }
-.bj-book .bj-leaf[data-side="right"],
-.bj-book .bj-leaf[data-side="single"] { box-shadow: inset 14px 0 18px -10px rgb(60 56 50 / 0.35); }
-.bj-book:not(.is-single) .bj-book-pages::after {
-  background: linear-gradient(90deg, transparent, rgb(60 56 50 / 0.28) 46%, rgb(30 28 25 / 0.45) 50%, rgb(60 56 50 / 0.28) 54%, transparent);
 }
 .bj-book .bj-stripes i { background: #2b2926; }
 .bj-book .bj-stripes i:nth-child(2) { background: #57534d; }
 .bj-book .bj-stripes i:nth-child(3) { background: #85817a; }
 .bj-book .bj-stripes i:nth-child(4) { background: #aeaaa2; }
-.bj-book .bj-manual-load {
-  background: linear-gradient(180deg, #4a4743, #2b2926);
-  box-shadow: 0 3px 0 #111, inset 0 1px 0 rgb(255 255 255 / 0.2);
-}
-.bj-book .bj-manual-load:active { box-shadow: 0 1px 0 #111; }
-.bj-book .bj-corner-next {
-  background:
-    linear-gradient(135deg, #f7f5ef 0%, #e6e2d8 35%, #c9c4b8 49.5%, transparent 50%),
-    linear-gradient(315deg, #bdb8ac 0%, #a8a397 50%, transparent 50%);
-  filter: drop-shadow(-3px -3px 3px rgb(40 36 30 / 0.35));
-}
-.bj-book .bj-corner-prev {
-  background:
-    linear-gradient(225deg, #f7f5ef 0%, #e6e2d8 35%, #c9c4b8 49.5%, transparent 50%),
-    linear-gradient(45deg, #bdb8ac 0%, #a8a397 50%, transparent 50%);
-  filter: drop-shadow(3px -3px 3px rgb(40 36 30 / 0.35));
-}
-.bj-book .bj-manual-table th,
-.bj-book .bj-manual-table td { border-bottom-color: rgb(43 41 38 / 0.3); }
-
-/* Cartridge editor: the title is written straight onto the coloured label band,
-   program and input are on lined paper below. */
-.bj-cart-sheet {
-  background:
-    linear-gradient(140deg, var(--cart-a), var(--cart-b)) top / 100% 4rem no-repeat,
-    #f6efdc;
-}
-.bj-sheet-head { height: 4rem; margin-bottom: 0.6rem; }
-.bj-sheet-head .fieldset { width: 100%; margin: 0; }
-.bj-field-title {
-  padding: 0;
-  border-bottom: 0;
-  color: var(--cart-ink);
-  font-size: 1.9rem;
-  text-shadow: 0 2px 0 rgb(0 0 0 / 0.25);
-}
-.bj-field-title::placeholder { color: var(--cart-ink); opacity: 0.55; }
-.bj-field-title:focus { border-bottom: 0; }
-.bj-field-input {
-  height: 1.5rem;
-  padding: 0 0.4rem;
-  border: 1px solid #d9ceb4;
-  border-radius: 0.25rem;
-  font-size: 0.9rem;
-  line-height: 1.5rem;
-  background: linear-gradient(180deg, transparent 0 calc(1.5rem - 1px), #e3d8bf calc(1.5rem - 1px) 1.5rem), #fbf6e8;
-  box-sizing: content-box;
-}
-.bj-field-source::placeholder,
-.bj-field-input::placeholder { color: #b3a789; }
-.bj-field-input { box-sizing: border-box; height: calc(1.5rem + 2px); }
-
-/* Section headings: upright, with a plain number on the title's baseline. */
-.bj-leaf h3 {
-  align-items: baseline;
-  gap: 0.75rem;
-  font-style: normal;
-  letter-spacing: 0.02em;
-}
-.bj-leaf h3 span {
-  display: inline;
-  width: auto;
-  height: auto;
-  border-radius: 0;
-  background: none;
-  color: inherit;
-  font-size: inherit;
-  font-variant-numeric: tabular-nums;
-}
 
 /* Cover contents, set like a printed table of contents. */
 .bj-manual-contents h3 { margin-bottom: 0.5rem; font-size: 0.95rem; }
-.bj-manual-contents ol { padding: 0; list-style: none; }
 .bj-manual-contents li { display: flex; align-items: baseline; gap: 0.6rem; }
 .bj-manual-contents li + li { margin-top: 0.35rem; }
 .bj-manual-contents li span { font-family: var(--font-sans); font-weight: 800; color: #1f1c19; font-variant-numeric: tabular-nums; }
@@ -1847,24 +1582,14 @@ html:has(.bj-page) { overflow: hidden; }
 
 /* The listing scrolls a line at a time beside a one-column, text-mode scrollbar. */
 .bj-crt-pane { display: flex; height: calc(var(--lh) * 6); }
-.bj-crt-pane .bj-crt-listing { flex: 1; height: 100%; white-space: normal; }
 .bj-crt-scrollbar {
   display: flex;
   flex-direction: column;
   width: 1ch;
   margin-left: 1ch; /* a blank column between the listing and the bar */
-  color: var(--bj-phosphor);
 }
 .bj-crt-scrollbar.is-idle { opacity: 0.35; }
-.bj-crt-scrollbar button {
-  height: var(--lh);
-  padding: 0;
-  font: inherit;
-  line-height: inherit;
-  color: inherit;
-  text-align: center;
-  cursor: pointer;
-}
+.bj-crt-scrollbar button { height: var(--lh); }
 .bj-crt-scrollbar button:hover { color: #04140a; background: var(--bj-phosphor); }
 .bj-crt-track {
   position: relative;
@@ -1889,6 +1614,7 @@ html:has(.bj-page) { overflow: hidden; }
 .bj-clutter img {
   position: absolute;
   max-width: none;
+  translate: -50% -50%;
   filter:
     drop-shadow(0 1px 1px rgb(0 0 0 / 0.45))
     drop-shadow(4px 8px 7px rgb(25 12 2 / 0.4));
@@ -1896,7 +1622,6 @@ html:has(.bj-page) { overflow: hidden; }
 /* Everything is drawn to one scale. The console is 30 cm wide (64rem), so 1 cm is about
    2.13rem: the cartridge is 8.7 cm, the booklet 10 × 13.5 cm. Each object is placed by its
    centre, and may run off the edge of view like things on a real desk. */
-.bj-clutter img { translate: -50% -50%; }
 .bj-notepad { left: 8rem; top: 4rem; width: 21.3rem; rotate: -8deg; }   /* 10 cm reporter's pad */
 .bj-pencil { left: 12rem; top: 10rem; width: 25.6rem; rotate: -35deg; } /* 12 cm, worn down */
 .bj-pencil,
@@ -1943,12 +1668,3 @@ html:has(.bj-page) { overflow: hidden; }
   letter-spacing: 0.02em;
 }
 
-
-/* The logotype block is exactly as tall as the stripes: the name's cap tops meet the stripes'
-   tops and the subtitle's baseline meets their feet. Trimming each line to cap height to
-   baseline keeps it exact whatever the font. */
-.bj-badge { grid-template-rows: auto auto; align-items: stretch; row-gap: 0; }
-.bj-badge-name { align-self: start; text-box: trim-both cap alphabetic; }
-.bj-badge-sub { align-self: end; margin-top: 0; line-height: 1; text-box: trim-both cap alphabetic; }
-.bj-badge-name { font-family: "Russo One", "Jost", sans-serif; font-weight: 400; font-synthesis: none; }
-.bj-badge-sub { font-family: var(--font-sans); }
