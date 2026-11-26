@@ -27,6 +27,32 @@ defmodule PersonalSiteWeb.BrainfuckLiveTest do
     assert has_element?(view, "#crt-status", "PAUSED")
   end
 
+  for {source, limit} <- [{"+[>+]", "TAPE LIMIT"}, {"+[.]", "OUTPUT LIMIT"}] do
+    test "#{source} runs into the #{limit} and stops with an error", %{conn: conn} do
+      {:ok, view, _html} = live(conn, ~p"/brainfuck")
+      view |> element("#inserted-cart") |> render_click()
+      view |> form("#cart-form", cart: %{source: unquote(source)}) |> render_submit()
+      view |> element(~s(button[aria-label="MAX frames per second"])) |> render_click()
+      view |> element("#run-button") |> render_click()
+
+      assert eventually(fn -> has_element?(view, "#crt-status", "ERROR") end)
+      assert has_element?(view, "#crt-error", unquote(limit))
+      assert has_element?(view, "#run-button[disabled]")
+    end
+  end
+
+  test "a program that loops forever without growing keeps running", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/brainfuck")
+    view |> element("#inserted-cart") |> render_click()
+    view |> form("#cart-form", cart: %{source: "+[>+<]"}) |> render_submit()
+    view |> element(~s(button[aria-label="MAX frames per second"])) |> render_click()
+    view |> element("#run-button") |> render_click()
+
+    # 300 steps, well past either test cap's worth of steps for a growing program.
+    assert eventually(fn -> steps(view) > 300 end)
+    assert has_element?(view, "#crt-status", "RUNNING")
+  end
+
   test "stepping reads the cartridge input one byte at a time", %{conn: conn} do
     {:ok, view, _html} = live(conn, ~p"/brainfuck")
     view |> element("#library-reverse") |> render_click()
@@ -87,6 +113,17 @@ defmodule PersonalSiteWeb.BrainfuckLiveTest do
         {:cont, nil}
       end
     end)
+  end
+
+  defp steps(view) do
+    view
+    |> element("#readout-step [role=img]")
+    |> render()
+    |> LazyHTML.from_fragment()
+    |> LazyHTML.attribute("aria-label")
+    |> hd()
+    |> String.replace_prefix("Step ", "")
+    |> String.to_integer()
   end
 
   defp eventually(check, attempts \\ 60) do

@@ -8,6 +8,12 @@ defmodule PersonalSiteWeb.BrainfuckLive do
   @tape_reach 14
   @output_tail 600
 
+  # A program may loop forever, but it may not grow forever: every touched cell and output
+  # byte lives in this process. 30,000 cells is the classic brainfuck tape. Tests set
+  # smaller caps.
+  @max_cells Application.compile_env(:personal_site, [__MODULE__, :max_cells], 30_000)
+  @max_output Application.compile_env(:personal_site, [__MODULE__, :max_output], 65_536)
+
   # {label, frames per second, steps per frame}
   @speeds [
     {"1", 1, 1},
@@ -365,19 +371,40 @@ defmodule PersonalSiteWeb.BrainfuckLive do
 
     case run_steps(machine, steps, count) do
       {:ok, machine, steps} ->
-        status =
-          cond do
-            Machine.halted?(machine) -> :halted
-            status == :running -> :running
-            true -> :paused
-          end
+        case limit_hit(machine) do
+          nil ->
+            status =
+              cond do
+                Machine.halted?(machine) -> :halted
+                status == :running -> :running
+                true -> :paused
+              end
 
-        socket |> assign(machine: machine, steps: steps, status: status) |> present()
+            socket |> assign(machine: machine, steps: steps, status: status) |> present()
+
+          message ->
+            socket
+            |> assign(machine: machine, steps: steps, status: :error, error: message)
+            |> present()
+        end
 
       {:error, machine, steps, message} ->
         socket
         |> assign(machine: machine, steps: steps, status: :error, error: message)
         |> present()
+    end
+  end
+
+  defp limit_hit(machine) do
+    cond do
+      map_size(machine.tape.data) > @max_cells ->
+        "tape limit: more than #{@max_cells} cells used"
+
+      byte_size(machine.output) > @max_output ->
+        "output limit: more than #{@max_output} bytes printed"
+
+      true ->
+        nil
     end
   end
 

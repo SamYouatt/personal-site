@@ -405,6 +405,8 @@ html:has(.bj-page) { overflow: hidden; }
   opacity: 0.6;
 }
 .bj-crt-error {
+  /* Last line of the bottom-anchored output area, so a screenful of output can't hide it. */
+  order: 1;
   color: #ffb8a0;
   text-shadow: 0 0 6px rgb(255 90 60 / 0.8);
 }
