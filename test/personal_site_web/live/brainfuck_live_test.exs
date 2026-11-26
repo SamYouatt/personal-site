@@ -15,6 +15,18 @@ defmodule PersonalSiteWeb.BrainfuckLiveTest do
     assert has_element?(view, "#run-button[disabled]")
   end
 
+  test "hiding the page pauses a running program and never resumes it", %{conn: conn} do
+    {:ok, view, _html} = live(conn, ~p"/brainfuck")
+    view |> element("#run-button") |> render_click()
+    assert has_element?(view, "#crt-status", "RUNNING")
+
+    # Sent by the CrtCursor hook when the tab is hidden, possibly more than once.
+    view |> element("#crt-listing") |> render_hook("pause", %{})
+    assert has_element?(view, "#crt-status", "PAUSED")
+    view |> element("#crt-listing") |> render_hook("pause", %{})
+    assert has_element?(view, "#crt-status", "PAUSED")
+  end
+
   test "stepping reads the cartridge input one byte at a time", %{conn: conn} do
     {:ok, view, _html} = live(conn, ~p"/brainfuck")
     view |> element("#library-reverse") |> render_click()

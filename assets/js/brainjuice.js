@@ -13,9 +13,16 @@ export const CrtCursor = {
     this.el.addEventListener("scrollend", () => this.scrollLines(0))
     this.el.nextElementSibling.querySelectorAll("[data-scroll]").forEach(arrow =>
       arrow.addEventListener("click", () => this.scrollLines(Number(arrow.dataset.scroll))))
+    // A program left running in a hidden tab would keep the server stepping for nobody.
+    this.onHidden = () => { if (document.hidden) this.pushEvent("pause", {}) }
+    document.addEventListener("visibilitychange", this.onHidden)
     this.paint()
   },
   updated() { this.paint() },
+  destroyed() {
+    document.removeEventListener("visibilitychange", this.onHidden)
+    cancelAnimationFrame(this.frame)
+  },
   line() { return parseFloat(getComputedStyle(this.el).lineHeight) },
   scrollLines(n) {
     const line = this.line()
@@ -61,7 +68,10 @@ export const CrtCursor = {
     this.before.data = this.chars.slice(0, at).join("")
     this.cursor.textContent = this.chars[at]
     this.after.data = this.chars.slice(at + 1).join("")
-    this.follow()
+    // Reading the cursor's position forces a layout, so do it once per frame, in step with
+    // the browser's own layout, however many updates arrive.
+    cancelAnimationFrame(this.frame)
+    this.frame = requestAnimationFrame(() => this.follow())
   },
   // Scroll whole lines only, so the listing stays on the screen's character grid.
   follow() {
@@ -83,7 +93,9 @@ export function initFitDesk() {
   cleanup()
   if (!document.querySelector(".bj-desk")) return
   const listeners = new AbortController()
+  let frame
   const fit = () => {
+    frame = null
     const desk = document.querySelector(".bj-desk")
     if (!desk) return
     const scale = Math.min(innerWidth / desk.offsetWidth, innerHeight / desk.offsetHeight, 1.3)
@@ -91,8 +103,10 @@ export function initFitDesk() {
   }
   fit()
   document.fonts?.ready.then(fit)
-  window.addEventListener("resize", fit, {signal: listeners.signal, passive: true})
-  cleanup = () => listeners.abort()
+  // Rescaling re-rasterises the whole desk, so do it at most once a frame while resizing.
+  const onResize = () => { frame ??= requestAnimationFrame(fit) }
+  window.addEventListener("resize", onResize, {signal: listeners.signal, passive: true})
+  cleanup = () => { listeners.abort(); cancelAnimationFrame(frame) }
 }
 
 // Shows the manual as a booklet: a two-page spread on wide screens, one page on narrow

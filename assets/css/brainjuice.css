@@ -357,7 +357,7 @@ html:has(.bj-page) { overflow: hidden; }
   padding: 1rem 1.4rem;
 }
 @media (prefers-reduced-motion: no-preference) {
-  .bj-crt:not(.is-off) .bj-crt-glass {
+  .bj-crt.is-running .bj-crt-glass {
     animation: bj-flicker 6s ease-in-out infinite;
   }
 }
@@ -450,7 +450,7 @@ html:has(.bj-page) { overflow: hidden; }
   box-shadow: 0 0 6px rgb(132 255 166 / 0.8);
 }
 @media (prefers-reduced-motion: no-preference) {
-  .bj-crt-caret {
+  .bj-crt.is-running .bj-crt-caret {
     animation: bj-blink 1.05s steps(1) infinite;
   }
 }
@@ -493,8 +493,9 @@ html:has(.bj-page) { overflow: hidden; }
 }
 .d-0 :is(.s-a,.s-b,.s-c,.s-d,.s-e,.s-f), .d-1 :is(.s-b,.s-c), .d-2 :is(.s-a,.s-b,.s-g,.s-e,.s-d), .d-3 :is(.s-a,.s-b,.s-g,.s-c,.s-d), .d-4 :is(.s-f,.s-g,.s-b,.s-c), .d-5 :is(.s-a,.s-f,.s-g,.s-c,.s-d), .d-6 :is(.s-a,.s-f,.s-g,.s-e,.s-d,.s-c), .d-7 :is(.s-a,.s-b,.s-c), .d-8 :is(.s-a,.s-b,.s-c,.s-d,.s-e,.s-f,.s-g), .d-9 :is(.s-a,.s-b,.s-c,.s-d,.s-f,.s-g), .d-\- :is(.s-g) {
   fill: #ff3d2b;
-  filter: drop-shadow(0 0 2px rgb(255 50 30 / 0.95)) drop-shadow(0 0 6px rgb(255 40 20 / 0.5));
 }
+/* One glow per digit rather than one per lit segment: the unlit segments are too faint to glow. */
+.bj-seg-digit { filter: drop-shadow(0 0 2px rgb(255 50 30 / 0.95)) drop-shadow(0 0 6px rgb(255 40 20 / 0.5)); }
 .bj-deck {
   display: flex;
   align-items: center;
@@ -946,7 +947,20 @@ html:has(.bj-page) { overflow: hidden; }
   background: var(--bj-dust) 0 0 / 160px 160px, linear-gradient(180deg, #3a3836, #151413);
 }
 .bj-cell, .bj-tape-leader {
-  background: var(--bj-grain) calc(var(--i, -1) * var(--cell) * -1) 0 / 180px 180px, linear-gradient(180deg, rgb(140 110 60 / 0.25), transparent 9%, transparent 91%, rgb(140 110 60 / 0.25)), #eadcb8;
+  background: linear-gradient(180deg, rgb(140 110 60 / 0.25), transparent 9%, transparent 91%, rgb(140 110 60 / 0.25));
+}
+/* The paper and its grain are one layer under all the cells, so a step repaints only the
+   cells that change. It spans 1060 cells and only moves every 500, and its grain is anchored
+   to cell 0 so the texture stays put on the paper as the tape slides. */
+.bj-tape::before {
+  --from: calc(round(down, var(--head), 500) - 530);
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--from) * var(--cell));
+  width: calc(var(--cell) * 1060);
+  background: var(--bj-grain) calc(var(--from) * var(--cell) * -1) 0 / 180px 180px, #eadcb8;
 }
 .bj-cart {
   background: var(--bj-dust) 0 0 / 200px 200px, linear-gradient(90deg, #4c4b4a, #6b6a68 12%, #656462 88%, #454443);
@@ -1060,16 +1074,32 @@ html:has(.bj-page) { overflow: hidden; }
 .bj-spool i {
   position: absolute;
   inset: 0.45rem 0;
-  background: linear-gradient(90deg, rgb(30 18 5 / 0.65), rgb(30 18 5 / 0.12) 30%, rgb(255 250 235 / 0.25) 42%, rgb(30 18 5 / 0.08) 58%, rgb(30 18 5 / 0.7)), repeating-linear-gradient(90deg, transparent 0 calc(var(--cell) - 1px), rgb(120 90 40 / 0.3) calc(var(--cell) - 1px) var(--cell)) 0 0 / var(--cell) 100%, #eadcb8;
+  overflow: hidden;
+  background: #eadcb8;
+}
+/* The wound tape's cell lines, one cell wider than the spool so sliding them a cell loops
+   seamlessly. They move by transform, so winding never repaints. */
+.bj-spool i::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc(100% + var(--cell));
+  background: repeating-linear-gradient(90deg, transparent 0 calc(var(--cell) - 1px), rgb(120 90 40 / 0.3) calc(var(--cell) - 1px) var(--cell)) 0 0 / var(--cell) 100%;
+}
+.bj-spool i::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgb(30 18 5 / 0.65), rgb(30 18 5 / 0.12) 30%, rgb(255 250 235 / 0.25) 42%, rgb(30 18 5 / 0.08) 58%, rgb(30 18 5 / 0.7));
 }
 @media (prefers-reduced-motion: no-preference) {
-  .bj-deck.is-running .bj-spool i {
+  .bj-deck.is-running .bj-spool i::before {
     animation: bj-wind 0.9s linear infinite;
   }
 }
 @keyframes bj-wind {
   to {
-    background-position: 0 0, calc(var(--cell) * -1) 0, 0 0;
+    transform: translateX(calc(var(--cell) * -1));
   }
 }
 .bj-knob-wrap {

@@ -174,6 +174,8 @@ defmodule PersonalSiteWeb.BrainfuckLive do
 
   def handle_event("toggle_run", _params, socket), do: {:noreply, socket}
 
+  def handle_event("pause", _params, socket), do: {:noreply, stop(socket)}
+
   def handle_event("reset", _params, socket) do
     {:noreply, socket |> stop() |> load(socket.assigns.cart)}
   end
@@ -873,7 +875,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
   defp crt(assigns) do
     ~H"""
     <div class="bj-crt-bezel">
-      <div class={["bj-crt", @editing? && "is-off"]}>
+      <div class={["bj-crt", @editing? && "is-off", @status == :running && "is-running"]}>
         <div class="bj-crt-glass">
           <div class="bj-crt-grid" style={"--cols: #{crt_cols()}"}>
             <%= if @editing? do %>
