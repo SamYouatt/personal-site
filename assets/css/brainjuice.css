@@ -1080,6 +1080,13 @@ html:has(.bj-page) { overflow: hidden; }
   pointer-events: none;
   background: radial-gradient(circle at 34% 28%, rgb(255 245 225 / 0.22), transparent 45%);
 }
+.bj-knob-dial .bj-knob {
+  cursor: grab;
+  touch-action: none;
+}
+.bj-knob-dial .bj-knob:active {
+  cursor: grabbing;
+}
 .bj-knob-cap {
   position: absolute;
   inset: 0.5rem;

@@ -1103,7 +1103,12 @@ defmodule PersonalSiteWeb.BrainfuckLive do
 
     ~H"""
     <div class="bj-knob-wrap">
-      <div class="bj-knob-dial" style={"--angle: #{@angle}deg"}>
+      <div
+        id="speed-dial"
+        class="bj-knob-dial"
+        style={"--angle: #{@angle}deg"}
+        phx-hook="SpeedDial"
+      >
         <button
           :for={{label, index, angle} <- @ticks}
           type="button"
@@ -1119,7 +1124,6 @@ defmodule PersonalSiteWeb.BrainfuckLive do
         </button>
         <button
           id="speed-knob"
-          data-sound="knob"
           type="button"
           class="bj-knob"
           phx-click="set_speed"

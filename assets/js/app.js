@@ -26,7 +26,7 @@ import {hooks as colocatedHooks} from "phoenix-colocated/personal_site"
 import topbar from "topbar"
 import {initChromaticWordmark} from "./chromatic_wordmark"
 import {initPhotoLightbox} from "./photo_lightbox"
-import {BootScreen, CrtCursor, ManualBook, Modal, PauseWhenHidden, TapeSound, initConsoleSounds, initFitDesk} from "./brainjuice"
+import {BootScreen, CrtCursor, ManualBook, Modal, PauseWhenHidden, SpeedDial, TapeSound, initConsoleSounds, initFitDesk} from "./brainjuice"
 
 initChromaticWordmark()
 window.addEventListener("phx:page-loading-stop", initChromaticWordmark)
@@ -41,7 +41,7 @@ const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute
 const liveSocket = new LiveSocket("/live", Socket, {
   longPollFallbackMs: 2500,
   params: {_csrf_token: csrfToken},
-  hooks: {...colocatedHooks, BootScreen, CrtCursor, ManualBook, Modal, PauseWhenHidden, TapeSound},
+  hooks: {...colocatedHooks, BootScreen, CrtCursor, ManualBook, Modal, PauseWhenHidden, SpeedDial, TapeSound},
 })
 
 // Show progress bar on live navigation and form submits

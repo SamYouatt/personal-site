@@ -125,6 +125,92 @@ export function initConsoleSounds() {
   })
 }
 
+export const SpeedDial = {
+  mounted() {
+    this.knob = this.el.querySelector("#speed-knob")
+
+    this.knob.addEventListener("pointerdown", event => this.grab(event))
+    this.knob.addEventListener("pointermove", event => this.turn(event))
+    this.knob.addEventListener("pointerup", () => this.release())
+    this.knob.addEventListener("pointercancel", () => this.release())
+
+    this.el.addEventListener("click", event => {
+      if (this.turned) {
+        event.stopPropagation()
+        this.turned = false
+        return
+      }
+
+      if (event.target.closest("#speed-knob")) playSound("detent")
+    }, true)
+  },
+
+  ticks() {
+    return [...this.el.querySelectorAll(".bj-knob-tick")]
+  },
+
+  currentIndex() {
+    return this.ticks().findIndex(tick => tick.classList.contains("is-active"))
+  },
+
+  grab(event) {
+    if (event.button !== 0) return
+
+    this.knob.setPointerCapture(event.pointerId)
+    this.index = this.currentIndex()
+    this.grabbed = {x: event.clientX, y: event.clientY}
+    this.knobAngle = this.tickAngles()[this.index]
+    this.pointerAngle = this.angleOf(event)
+    this.turned = false
+  },
+
+  turn(event) {
+    if (!this.grabbed) return
+
+    const moved = Math.hypot(event.clientX - this.grabbed.x, event.clientY - this.grabbed.y)
+    if (moved > 4) this.turned = true
+
+    const pointerAngle = this.angleOf(event)
+    if (pointerAngle === null) return
+
+    if (this.pointerAngle !== null) {
+      const turnedBy = ((pointerAngle - this.pointerAngle + 540) % 360) - 180
+      this.knobAngle = Math.max(-135, Math.min(135, this.knobAngle + turnedBy))
+    }
+    this.pointerAngle = pointerAngle
+
+    const tickAngles = this.tickAngles()
+    const distances = tickAngles.map(angle => Math.abs(angle - this.knobAngle))
+    const index = distances.indexOf(Math.min(...distances))
+    if (index === this.index) return
+
+    for (let i = 0; i < Math.abs(index - this.index); i++) playSound("detent", i * detentSpacing)
+
+    this.el.style.setProperty("--angle", `${tickAngles[index]}deg`)
+    this.pushEvent("set_speed", {index: String(index)})
+    this.index = index
+  },
+
+  release() {
+    this.grabbed = null
+  },
+
+  tickAngles() {
+    return this.ticks().map(tick => parseFloat(tick.style.getPropertyValue("--angle")))
+  },
+
+  angleOf(event) {
+    const knob = this.knob.getBoundingClientRect()
+    const dx = event.clientX - (knob.left + knob.width / 2)
+    const dy = event.clientY - (knob.top + knob.height / 2)
+
+    const tooCloseToCentre = Math.hypot(dx, dy) < knob.width / 6
+    if (tooCloseToCentre) return null
+
+    return Math.atan2(dx, -dy) * 180 / Math.PI
+  },
+}
+
 export const TapeSound = {
   mounted() {
     this.running = false
