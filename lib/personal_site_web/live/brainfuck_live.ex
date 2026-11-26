@@ -3,7 +3,6 @@ defmodule PersonalSiteWeb.BrainfuckLive do
 
   alias Brainjuice.{Machine, Parser}
 
-  @cell_px 48
   @crt_cols 72
   @tape_reach 14
   @output_tail 600
@@ -147,7 +146,6 @@ defmodule PersonalSiteWeb.BrainfuckLive do
         carts: @carts,
         speeds: @speeds,
         speed: @default_speed,
-        cell_px: @cell_px,
         overlay: nil,
         commands: @commands,
         techniques: @techniques,
@@ -177,21 +175,22 @@ defmodule PersonalSiteWeb.BrainfuckLive do
   def handle_event("pause", _params, socket), do: {:noreply, stop(socket)}
 
   def handle_event("reset", _params, socket) do
-    {:noreply, socket |> stop() |> load()}
+    {:noreply, socket |> stop() |> load(socket.assigns.machine.program)}
   end
 
-  def handle_event("speed", %{"index" => index}, socket) do
-    index = index |> String.to_integer() |> rem(length(@speeds))
-    {:noreply, assign(socket, :speed, index)}
+  def handle_event("set_speed", %{"index" => index}, socket) do
+    {:noreply, assign(socket, :speed, String.to_integer(index))}
   end
 
-  def handle_event("insert", %{"id" => id}, socket) do
+  def handle_event("insert_cart", %{"id" => id}, socket) do
     cart = Enum.find(@carts, &(&1.id == id))
     {:noreply, socket |> stop() |> insert_cart(cart)}
   end
 
-  def handle_event("open_cart", _params, socket) do
-    form = to_form(Map.take(stringify(socket.assigns.cart), ~w(name source input)), as: :cart)
+  def handle_event("open_editor", _params, %{assigns: %{cart: cart}} = socket) do
+    form =
+      to_form(%{"name" => cart.name, "source" => cart.source, "input" => cart.input}, as: :cart)
+
     {:noreply, socket |> stop() |> assign(overlay: {:editor, form, nil})}
   end
 
@@ -218,21 +217,18 @@ defmodule PersonalSiteWeb.BrainfuckLive do
     {:noreply, socket |> stop() |> insert_cart(cart) |> assign(overlay: nil)}
   end
 
-  def handle_event("edit_cart", %{"cart" => params}, socket) do
-    {:noreply, assign(socket, overlay: {:editor, to_form(params, as: :cart), nil})}
-  end
-
   def handle_event(
         "save_cart",
         %{"cart" => %{"name" => name, "source" => source, "input" => input} = params},
         socket
       ) do
-    cart = %{
-      socket.assigns.cart
-      | name: name |> String.trim() |> blank_to("Untitled"),
-        source: source,
-        input: input
-    }
+    name =
+      case String.trim(name) do
+        "" -> "Untitled"
+        name -> name
+      end
+
+    cart = %{socket.assigns.cart | name: name, source: source, input: input}
 
     case parse(source) do
       {:ok, program} ->
@@ -260,11 +256,20 @@ defmodule PersonalSiteWeb.BrainfuckLive do
   defp insert_cart(socket, cart), do: insert_cart(socket, cart, Parser.parse(cart.source))
 
   defp insert_cart(socket, cart, program) do
-    socket |> assign(cart: cart, program: program) |> load()
+    {chars, _bytes} =
+      cart.source
+      |> String.codepoints()
+      |> Enum.with_index()
+      |> Enum.map_reduce(0, fn {char, index}, byte -> {{byte, index}, byte + byte_size(char)} end)
+
+    char_at = Map.new(chars)
+    cursors = program.positions |> Tuple.to_list() |> Enum.map(&char_at[&1]) |> List.to_tuple()
+
+    socket |> assign(cart: cart, cursors: cursors) |> load(program)
   end
 
-  defp load(%{assigns: %{program: program, cart: cart}} = socket) do
-    machine = Machine.new(program, cart.input)
+  defp load(socket, program) do
+    machine = Machine.new(program, socket.assigns.cart.input)
 
     socket
     |> assign(
@@ -275,28 +280,18 @@ defmodule PersonalSiteWeb.BrainfuckLive do
     |> present()
   end
 
-  defp present(%{assigns: %{machine: machine, cart: cart}} = socket) do
+  defp present(%{assigns: %{machine: machine, cursors: cursors}} = socket) do
     head = machine.tape.head
 
     assign(socket,
-      cursor: cursor(machine, cart.source),
+      cursor: if(Machine.halted?(machine), do: nil, else: elem(cursors, machine.pc)),
       output: screen_text(machine.output),
       input: screen_text(machine.input),
       pc: machine.pc,
       head: head,
       cell: Brainjuice.Tape.read(machine.tape),
-      cells: tape_cells(head, machine.tape.data),
-      leader?: head - @tape_reach <= 0
+      cells: tape_cells(head, machine.tape.data)
     )
-  end
-
-  defp cursor(machine, source) do
-    if Machine.halted?(machine) do
-      nil
-    else
-      position = elem(machine.program.positions, machine.pc)
-      source |> binary_part(0, position) |> String.codepoints() |> length()
-    end
   end
 
   defp tape_cells(head, data) do
@@ -339,43 +334,34 @@ defmodule PersonalSiteWeb.BrainfuckLive do
   defp advance(socket, count) do
     %{machine: machine, steps: steps, status: status} = socket.assigns
 
-    case run_steps(machine, steps, count) do
-      {:ok, machine, steps} ->
-        case limit_hit(machine) do
-          nil ->
-            status =
-              cond do
-                Machine.halted?(machine) -> :halted
-                status == :running -> :running
-                true -> :paused
-              end
+    {machine, steps, status} =
+      case run_steps(machine, steps, count) do
+        {:ok, machine, steps} ->
+          status =
+            cond do
+              map_size(machine.tape.data) > @max_cells ->
+                {:error, "tape limit: more than #{@max_cells} cells used"}
 
-            socket |> assign(machine: machine, steps: steps, status: status) |> present()
+              byte_size(machine.output) > @max_output ->
+                {:error, "output limit: more than #{@max_output} bytes printed"}
 
-          message ->
-            socket
-            |> assign(machine: machine, steps: steps, status: {:error, message})
-            |> present()
-        end
+              Machine.halted?(machine) ->
+                :halted
 
-      {:error, machine, steps, message} ->
-        socket
-        |> assign(machine: machine, steps: steps, status: {:error, message})
-        |> present()
-    end
-  end
+              status == :running ->
+                :running
 
-  defp limit_hit(machine) do
-    cond do
-      map_size(machine.tape.data) > @max_cells ->
-        "tape limit: more than #{@max_cells} cells used"
+              true ->
+                :paused
+            end
 
-      byte_size(machine.output) > @max_output ->
-        "output limit: more than #{@max_output} bytes printed"
+          {machine, steps, status}
 
-      true ->
-        nil
-    end
+        {:error, machine, steps, message} ->
+          {machine, steps, {:error, message}}
+      end
+
+    socket |> assign(machine: machine, steps: steps, status: status) |> present()
   end
 
   defp run_steps(machine, steps, 0), do: {:ok, machine, steps}
@@ -394,11 +380,6 @@ defmodule PersonalSiteWeb.BrainfuckLive do
     end
   end
 
-  defp stringify(map), do: Map.new(map, fn {key, value} -> {to_string(key), value} end)
-
-  defp blank_to("", fallback), do: fallback
-  defp blank_to(value, _fallback), do: value
-
   @impl true
   def render(assigns) do
     assigns =
@@ -410,7 +391,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
     ~H"""
     <Layouts.app flash={@flash} bare>
       <div class="bj-table" aria-hidden="true"></div>
-      <div id="brainjuice" class="bj-page">
+      <div id="brainjuice" class="bj-page" phx-hook="PauseWhenHidden">
         <div class="bj-desk">
           <div class="bj-clutter" aria-hidden="true">
             <img class="bj-notepad" src={~p"/images/desk/notepad.webp"} alt="" />
@@ -425,7 +406,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
                 id="inserted-cart"
                 type="button"
                 class={["bj-cart bj-cart-inserted", "bj-cart-#{@cart.colour}", @editing? && "is-out"]}
-                phx-click="open_cart"
+                phx-click="open_editor"
                 aria-label={"Inspect the #{@cart.name} cartridge"}
               >
                 <span class="bj-cart-grip" aria-hidden="true"></span>
@@ -472,9 +453,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
               <.tape_deck
                 cells={@cells}
                 head={@head}
-                leader?={@leader?}
                 running?={@status == :running}
-                cell_px={@cell_px}
                 speed={Enum.at(@speeds, @speed)}
               />
 
@@ -487,7 +466,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
                     <span class="bj-print">Reset</span>
                   </div>
                   <div class="bj-pill-wrap">
-                    <button id="eject-button" type="button" class="bj-pill" phx-click="open_cart">
+                    <button id="eject-button" type="button" class="bj-pill" phx-click="open_editor">
                       <span class="sr-only">Inspect cartridge</span>
                     </button>
                     <span class="bj-print">Cart</span>
@@ -544,7 +523,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
                   id={"library-#{cart.id}"}
                   type="button"
                   class={["bj-spine", "bj-cart-#{cart.colour}"]}
-                  phx-click="insert"
+                  phx-click="insert_cart"
                   phx-value-id={cart.id}
                   aria-current={to_string(cart.id == @cart.id)}
                   aria-label={"Insert #{cart.name}"}
@@ -605,7 +584,6 @@ defmodule PersonalSiteWeb.BrainfuckLive do
           for={@form}
           id="cart-form"
           class="bj-cart-label bj-cart-sheet"
-          phx-change="edit_cart"
           phx-submit="save_cart"
         >
           <div class="bj-sheet-head">
@@ -651,16 +629,19 @@ defmodule PersonalSiteWeb.BrainfuckLive do
   attr :commands, :list, required: true
   attr :techniques, :list, required: true
 
-  @leaders [
-    {"Cartridge", {72, 6, "end"}, [{73, 6}, {75, 8.5}, {75, 20}]},
-    {"Status lights", {113, 6, "start"}, [{112, 6}, {110, 8.5}, {110, 32}]},
-    {"Screen", {22, 58, "end"}, [{23, 58}, {66, 58}]},
-    {"Tape deck", {22, 90, "end"}, [{23, 90}, {57, 90}]},
-    {"Readouts", {138, 56.5, "start"}, [{137, 56.5}, {118, 56.5}]},
-    {"Reset and Cart", {12, 141, "start"}, [{40.6, 137}, {40.6, 109.6}]},
-    {"Step and Run", {80, 141, "middle"}, [{80, 137}, {80, 111}]},
-    {"Speed dial", {119, 141, "middle"}, [{119, 137}, {119, 110}]}
-  ]
+  @leaders (for {label, text, points} <- [
+                  {"Cartridge", {72, 6, "end"}, [{73, 6}, {75, 8.5}, {75, 20}]},
+                  {"Status lights", {113, 6, "start"}, [{112, 6}, {110, 8.5}, {110, 32}]},
+                  {"Screen", {22, 58, "end"}, [{23, 58}, {66, 58}]},
+                  {"Tape deck", {22, 90, "end"}, [{23, 90}, {57, 90}]},
+                  {"Readouts", {138, 56.5, "start"}, [{137, 56.5}, {118, 56.5}]},
+                  {"Reset and Cart", {12, 141, "start"}, [{40.6, 137}, {40.6, 109.6}]},
+                  {"Step and Run", {80, 141, "middle"}, [{80, 137}, {80, 111}]},
+                  {"Speed dial", {119, 141, "middle"}, [{119, 137}, {119, 110}]}
+                ] do
+              {cx, cy} = List.last(points)
+              {label, text, Enum.map_join(points, " ", fn {x, y} -> "#{x},#{y}" end), {cx, cy}}
+            end)
 
   defp manual(assigns) do
     assigns =
@@ -738,13 +719,9 @@ defmodule PersonalSiteWeb.BrainfuckLive do
                   width="112"
                   height="112"
                 />
-                <g :for={{label, {tx, ty, anchor}, points} <- @leaders} class="bj-leader">
-                  <polyline points={Enum.map_join(points, " ", fn {x, y} -> "#{x},#{y}" end)} />
-                  <circle
-                    cx={points |> List.last() |> elem(0)}
-                    cy={points |> List.last() |> elem(1)}
-                    r="0.9"
-                  />
+                <g :for={{label, {tx, ty, anchor}, points, {cx, cy}} <- @leaders} class="bj-leader">
+                  <polyline points={points} />
+                  <circle cx={cx} cy={cy} r="0.9" />
                   <text x={tx} y={ty} text-anchor={anchor}>{label}</text>
                 </g>
               </svg>
@@ -831,14 +808,18 @@ defmodule PersonalSiteWeb.BrainfuckLive do
     """
   end
 
+  @wordmark_letters "Brainfuck System"
+                    |> String.graphemes()
+                    |> Enum.map(&if(&1 == " ", do: "\u00A0", else: &1))
+
   defp wordmark(assigns) do
+    assigns = assign(assigns, letters: @wordmark_letters)
+
     ~H"""
     <span class="bj-badge">
       <span class="bj-badge-name">Brainjuice</span>
       <span class="bj-badge-sub" aria-label="Brainfuck System">
-        <span :for={char <- String.graphemes("Brainfuck System")} aria-hidden="true">
-          {if char == " ", do: "\u00A0", else: char}
-        </span>
+        <span :for={char <- @letters} aria-hidden="true">{char}</span>
       </span>
       <span class="bj-stripes" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
     </span>
@@ -861,7 +842,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
   attr :cart, :map, required: true
   attr :status, :any, required: true
   attr :editing?, :boolean, required: true
-  attr :cursor, :integer, default: nil
+  attr :cursor, :integer, required: true
   attr :output, :string, required: true
   attr :input, :string, required: true
 
@@ -873,7 +854,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
           <div class="bj-crt-grid" style={"--cols: #{crt_cols()}"}>
             <%= if @editing? do %>
               <div :for={_ <- 1..5} class="bj-crt-row"></div>
-              <div class="bj-crt-row">{centred("NO CARTRIDGE")}</div>
+              <div class="bj-crt-row text-center">NO CARTRIDGE</div>
               <div :for={_ <- 1..6} class="bj-crt-row"></div>
             <% else %>
               <div id="crt-status" class="bj-crt-row">{status_line(@cart.name, @status)}</div>
@@ -926,12 +907,9 @@ defmodule PersonalSiteWeb.BrainfuckLive do
     String.pad_trailing(name, @crt_cols - String.length(status)) <> status
   end
 
-  defp centred(text),
-    do: String.duplicate(" ", div(@crt_cols - String.length(text), 2)) <> text
-
   defp screen_text(bytes) do
     bytes
-    |> tail(@output_tail)
+    |> binary_slice(-@output_tail..-1//1)
     |> :binary.bin_to_list()
     |> Enum.map(fn
       byte when byte in 32..126 or byte == ?\n -> byte
@@ -939,9 +917,6 @@ defmodule PersonalSiteWeb.BrainfuckLive do
     end)
     |> IO.iodata_to_binary()
   end
-
-  defp tail(bytes, max) when byte_size(bytes) <= max, do: bytes
-  defp tail(bytes, max), do: binary_part(bytes, byte_size(bytes) - max, max)
 
   defp status_text(:ready), do: "READY"
   defp status_text(:running), do: "RUNNING"
@@ -951,17 +926,17 @@ defmodule PersonalSiteWeb.BrainfuckLive do
 
   attr :cells, :list, required: true
   attr :head, :integer, required: true
-  attr :leader?, :boolean, required: true
   attr :running?, :boolean, required: true
-  attr :cell_px, :integer, required: true
   attr :speed, :any, required: true
 
   defp tape_deck(assigns) do
+    assigns = assign(assigns, leader?: assigns.head <= @tape_reach)
+
     ~H"""
     <div
       id="tape-deck"
       class={["bj-deck", @running? && "is-running"]}
-      style={"--cell: #{@cell_px}px; --head: #{@head}; --slide: #{slide_ms(@speed)}ms"}
+      style={"--head: #{@head}; --slide: #{slide_ms(@speed)}ms"}
     >
       <div class="bj-deck-window">
         <div class="bj-tape" aria-label={"Tape, head at cell #{@head}"}>
@@ -1018,8 +993,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
       <span class="bj-print bj-print-light">{@label}</span>
       <span class="bj-seg-window" role="img" aria-label={"#{@label} #{@value}"}>
         <svg
-          :for={{char, position} <- Enum.with_index(seg_chars(@value, @digits))}
-          :key={position}
+          :for={char <- seg_chars(@value, @digits)}
           class={"bj-seg-digit d-#{<<char>>}"}
           viewBox="0 0 12 20"
           aria-hidden="true"
@@ -1087,11 +1061,12 @@ defmodule PersonalSiteWeb.BrainfuckLive do
         <button
           :for={{label, index, angle} <- @ticks}
           type="button"
+          id={"speed-#{index}"}
           class={["bj-knob-tick", index == @speed && "is-active"]}
           style={"--angle: #{angle}deg"}
-          phx-click="speed"
+          phx-click="set_speed"
           phx-value-index={index}
-          aria-label={"#{label} frames per second"}
+          aria-label={"Speed #{label}"}
         >
           <span>{label}</span>
         </button>
@@ -1099,7 +1074,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
           id="speed-knob"
           type="button"
           class="bj-knob"
-          phx-click="speed"
+          phx-click="set_speed"
           phx-value-index={@next}
           aria-label="Next speed"
         >

@@ -453,6 +453,7 @@ html:has(.bj-page) { overflow: hidden; }
 }
 .bj-seg-digit { filter: drop-shadow(0 0 2px rgb(255 50 30 / 0.95)) drop-shadow(0 0 6px rgb(255 40 20 / 0.5)); }
 .bj-deck {
+  --cell: 48px;
   display: flex;
   align-items: center;
   gap: 0.8rem;

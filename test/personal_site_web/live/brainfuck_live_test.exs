@@ -7,7 +7,7 @@ defmodule PersonalSiteWeb.BrainfuckLiveTest do
     {:ok, view, _html} = live(conn, ~p"/brainfuck")
 
     view |> element("#library-hello") |> render_click()
-    view |> element(~s(button[aria-label="MAX frames per second"])) |> render_click()
+    view |> element("#speed-6") |> render_click()
     view |> element("#run-button") |> render_click()
 
     assert eventually(fn -> has_element?(view, "#crt-status", "HALTED") end)
@@ -20,8 +20,8 @@ defmodule PersonalSiteWeb.BrainfuckLiveTest do
     view |> element("#run-button") |> render_click()
     assert has_element?(view, "#crt-status", "RUNNING")
 
-    view |> element("#crt-listing") |> render_hook("pause", %{})
-    view |> element("#crt-listing") |> render_hook("pause", %{})
+    view |> element("#brainjuice") |> render_hook("pause", %{})
+    view |> element("#brainjuice") |> render_hook("pause", %{})
     paused_at = steps(view)
     Process.sleep(300)
 
@@ -34,7 +34,7 @@ defmodule PersonalSiteWeb.BrainfuckLiveTest do
       {:ok, view, _html} = live(conn, ~p"/brainfuck")
       view |> element("#inserted-cart") |> render_click()
       view |> form("#cart-form", cart: %{source: unquote(source)}) |> render_submit()
-      view |> element(~s(button[aria-label="MAX frames per second"])) |> render_click()
+      view |> element("#speed-6") |> render_click()
       view |> element("#run-button") |> render_click()
 
       assert eventually(fn -> has_element?(view, "#crt-status", "ERROR") end)
@@ -47,7 +47,7 @@ defmodule PersonalSiteWeb.BrainfuckLiveTest do
     {:ok, view, _html} = live(conn, ~p"/brainfuck")
     view |> element("#inserted-cart") |> render_click()
     view |> form("#cart-form", cart: %{source: "+[>+<]"}) |> render_submit()
-    view |> element(~s(button[aria-label="MAX frames per second"])) |> render_click()
+    view |> element("#speed-6") |> render_click()
     view |> element("#run-button") |> render_click()
 
     assert eventually(fn -> steps(view) > 300 end)
