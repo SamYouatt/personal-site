@@ -1002,25 +1002,16 @@ html:has(.bj-page) { overflow: hidden; }
 .bj-spool i::before {
   content: "";
   position: absolute;
-  inset: 0 auto 0 0;
-  width: calc(100% + var(--cell));
+  inset: 0;
   background: repeating-linear-gradient(90deg, transparent 0 calc(var(--cell) - 1px), rgb(120 90 40 / 0.3) calc(var(--cell) - 1px) var(--cell)) 0 0 / var(--cell) 100%;
+  background-position-x: calc(var(--head) * var(--cell) * -1);
+  transition: background-position-x var(--slide) cubic-bezier(0.25, 0.8, 0.3, 1);
 }
 .bj-spool i::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(90deg, rgb(30 18 5 / 0.65), rgb(30 18 5 / 0.12) 30%, rgb(255 250 235 / 0.25) 42%, rgb(30 18 5 / 0.08) 58%, rgb(30 18 5 / 0.7));
-}
-@media (prefers-reduced-motion: no-preference) {
-  .bj-deck.is-running .bj-spool i::before {
-    animation: bj-wind 0.9s linear infinite;
-  }
-}
-@keyframes bj-wind {
-  to {
-    transform: translateX(calc(var(--cell) * -1));
-  }
 }
 .bj-knob-wrap {
   display: flex;
