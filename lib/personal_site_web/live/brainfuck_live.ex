@@ -142,7 +142,8 @@ defmodule PersonalSiteWeb.BrainfuckLive do
       socket
       |> assign(
         page_title: "Brainfuck",
-        description: "A brainfuck debugger dressed up as an 8-bit games console.",
+        description: "Brainjuice, Brainfuck System",
+        preview_image: url(~p"/images/previews/brainfuck.jpg"),
         preload_fonts: [
           ~p"/fonts/russo-one/RussoOne-Regular.woff2",
           ~p"/fonts/jost/Jost-Variable.woff2",
