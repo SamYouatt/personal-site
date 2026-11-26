@@ -20,11 +20,13 @@ defmodule PersonalSiteWeb.BrainfuckLiveTest do
     view |> element("#run-button") |> render_click()
     assert has_element?(view, "#crt-status", "RUNNING")
 
-    # Sent by the CrtCursor hook when the tab is hidden, possibly more than once.
     view |> element("#crt-listing") |> render_hook("pause", %{})
-    assert has_element?(view, "#crt-status", "PAUSED")
     view |> element("#crt-listing") |> render_hook("pause", %{})
+    paused_at = steps(view)
+    Process.sleep(300)
+
     assert has_element?(view, "#crt-status", "PAUSED")
+    assert steps(view) == paused_at
   end
 
   for {source, limit} <- [{"+[>+]", "TAPE LIMIT"}, {"+[.]", "OUTPUT LIMIT"}] do
@@ -48,7 +50,6 @@ defmodule PersonalSiteWeb.BrainfuckLiveTest do
     view |> element(~s(button[aria-label="MAX frames per second"])) |> render_click()
     view |> element("#run-button") |> render_click()
 
-    # 300 steps, well past either test cap's worth of steps for a growing program.
     assert eventually(fn -> steps(view) > 300 end)
     assert has_element?(view, "#crt-status", "RUNNING")
   end
@@ -57,7 +58,6 @@ defmodule PersonalSiteWeb.BrainfuckLiveTest do
     {:ok, view, _html} = live(conn, ~p"/brainfuck")
     view |> element("#library-reverse") |> render_click()
 
-    # >,[>,]<[.<] reads the first byte on its second op.
     view |> element("#step-button") |> render_click()
     assert has_element?(view, "#crt-input", "brainjuice")
     view |> element("#step-button") |> render_click()

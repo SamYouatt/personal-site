@@ -1,9 +1,5 @@
-// Draws the cursor on the CRT listing. The server sends the listing once per cartridge and
-// then only a character index in data-cursor, so a frame moves one highlight instead of
-// resending the whole program.
 export const CrtCursor = {
   mounted() {
-    // Scroll by whole lines, like a terminal, so the listing never sits between rows.
     this.el.addEventListener("wheel", e => {
       e.preventDefault()
       const lines = e.deltaMode === 1 ? e.deltaY : e.deltaY / this.line()
@@ -13,7 +9,6 @@ export const CrtCursor = {
     this.el.addEventListener("scrollend", () => this.scrollLines(0))
     this.el.nextElementSibling.querySelectorAll("[data-scroll]").forEach(arrow =>
       arrow.addEventListener("click", () => this.scrollLines(Number(arrow.dataset.scroll))))
-    // A program left running in a hidden tab would keep the server stepping for nobody.
     this.onHidden = () => { if (document.hidden) this.pushEvent("pause", {}) }
     document.addEventListener("visibilitychange", this.onHidden)
     this.paint()
@@ -31,7 +26,6 @@ export const CrtCursor = {
     if (Math.abs(this.el.scrollTop - row * line) > 0.5) this.el.scrollTop = row * line
     this.drawBar()
   },
-  // The scrollbar's thumb is a whole number of rows tall and moves a row at a time.
   drawBar() {
     const line = this.line()
     const rows = Math.round(this.el.clientHeight / line)
@@ -68,12 +62,9 @@ export const CrtCursor = {
     this.before.data = this.chars.slice(0, at).join("")
     this.cursor.textContent = this.chars[at]
     this.after.data = this.chars.slice(at + 1).join("")
-    // Reading the cursor's position forces a layout, so do it once per frame, in step with
-    // the browser's own layout, however many updates arrive.
     cancelAnimationFrame(this.frame)
     this.frame = requestAnimationFrame(() => this.follow())
   },
-  // Scroll whole lines only, so the listing stays on the screen's character grid.
   follow() {
     const line = parseFloat(getComputedStyle(this.el).lineHeight)
     const row = Math.round(this.cursor.offsetTop / line)
@@ -86,9 +77,18 @@ export const CrtCursor = {
   },
 }
 
+export const Modal = {
+  mounted() {
+    this.opener = document.activeElement
+    this.el.addEventListener("close", () => this.pushEvent("close_overlay", {}))
+    this.el.addEventListener("click", e => { if (e.target === this.el) this.el.close() })
+    this.el.showModal()
+  },
+  destroyed() { this.opener?.focus({preventScroll: true}) },
+}
+
 let cleanup = () => {}
 
-// Scales the whole desk to fit the window, so the page reads as one scene with no scrolling.
 export function initFitDesk() {
   cleanup()
   if (!document.querySelector(".bj-desk")) return
@@ -103,14 +103,11 @@ export function initFitDesk() {
   }
   fit()
   document.fonts?.ready.then(fit)
-  // Rescaling re-rasterises the whole desk, so do it at most once a frame while resizing.
   const onResize = () => { frame ??= requestAnimationFrame(fit) }
   window.addEventListener("resize", onResize, {signal: listeners.signal, passive: true})
   cleanup = () => { listeners.abort(); cancelAnimationFrame(frame) }
 }
 
-// Shows the manual as a booklet: a two-page spread on wide screens, one page on narrow
-// ones, with pages that turn about the spine.
 export const ManualBook = {
   mounted() {
     this.pages = [...this.el.querySelectorAll(".bj-book-pages > .bj-leaf")]
@@ -142,7 +139,6 @@ export const ManualBook = {
     this.show(this.at)
   },
 
-  // Puts page `at` (and its facing page) on the spread.
   show(at, rightOverride) {
     const single = this.single()
     this.pages.forEach((page, i) => {
@@ -153,7 +149,6 @@ export const ManualBook = {
       if (side) page.dataset.side = side
       else delete page.dataset.side
     })
-    // A corner only curls up where there is a page to turn to.
     this.el.querySelector('[data-turn="-1"]').hidden = at <= 0
     this.el.querySelector('[data-turn="1"]').hidden = at + this.step() > this.pages.length - 1
   },
@@ -179,7 +174,6 @@ export const ManualBook = {
     leaf.className = "bj-turn"
     let front, back
     if (single) {
-      // Forward: the current page lifts away. Back: the previous page lays down over it.
       front = this.face(dir > 0 ? p(this.at) : p(next), "single")
       back = this.face(null, "left")
       this.show(dir > 0 ? next : this.at)
@@ -216,7 +210,6 @@ export const ManualBook = {
       this.busy = false
     }
     leaf.animate(frames.map(transform => ({transform})), timing).finished.then(finish, finish)
-    // Some browsers report the finish late or not at all when the tab is throttled.
     setTimeout(finish, timing.duration + 150)
   },
 }

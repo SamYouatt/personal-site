@@ -8,13 +8,9 @@ defmodule PersonalSiteWeb.BrainfuckLive do
   @tape_reach 14
   @output_tail 600
 
-  # A program may loop forever, but it may not grow forever: every touched cell and output
-  # byte lives in this process. 30,000 cells is the classic brainfuck tape. Tests set
-  # smaller caps.
   @max_cells Application.compile_env(:personal_site, [__MODULE__, :max_cells], 30_000)
   @max_output Application.compile_env(:personal_site, [__MODULE__, :max_output], 65_536)
 
-  # {label, frames per second, steps per frame}
   @speeds [
     {"1", 1, 1},
     {"2", 2, 1},
@@ -152,11 +148,9 @@ defmodule PersonalSiteWeb.BrainfuckLive do
         speeds: @speeds,
         speed: @default_speed,
         cell_px: @cell_px,
-        editing?: false,
-        manual?: false,
+        overlay: nil,
         commands: @commands,
         techniques: @techniques,
-        cart_error: nil,
         tick: 0
       )
       |> insert_cart(cart)
@@ -183,7 +177,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
   def handle_event("pause", _params, socket), do: {:noreply, stop(socket)}
 
   def handle_event("reset", _params, socket) do
-    {:noreply, socket |> stop() |> load(socket.assigns.cart)}
+    {:noreply, socket |> stop() |> load()}
   end
 
   def handle_event("speed", %{"index" => index}, socket) do
@@ -198,15 +192,15 @@ defmodule PersonalSiteWeb.BrainfuckLive do
 
   def handle_event("open_cart", _params, socket) do
     form = to_form(Map.take(stringify(socket.assigns.cart), ~w(name source input)), as: :cart)
-    {:noreply, socket |> stop() |> assign(editing?: true, form: form, cart_error: nil)}
+    {:noreply, socket |> stop() |> assign(overlay: {:editor, form, nil})}
   end
 
   def handle_event("open_manual", _params, socket) do
-    {:noreply, assign(socket, manual?: true)}
+    {:noreply, assign(socket, overlay: :manual)}
   end
 
-  def handle_event("close_manual", _params, socket) do
-    {:noreply, assign(socket, manual?: false)}
+  def handle_event("close_overlay", _params, socket) do
+    {:noreply, assign(socket, overlay: nil)}
   end
 
   def handle_event("load_technique", %{"index" => index}, socket) do
@@ -221,31 +215,31 @@ defmodule PersonalSiteWeb.BrainfuckLive do
       input: technique.input
     }
 
-    {:noreply, socket |> stop() |> insert_cart(cart) |> assign(manual?: false)}
-  end
-
-  def handle_event("close_cart", _params, socket) do
-    {:noreply, assign(socket, editing?: false, cart_error: nil)}
+    {:noreply, socket |> stop() |> insert_cart(cart) |> assign(overlay: nil)}
   end
 
   def handle_event("edit_cart", %{"cart" => params}, socket) do
-    {:noreply, assign(socket, form: to_form(params, as: :cart), cart_error: nil)}
+    {:noreply, assign(socket, overlay: {:editor, to_form(params, as: :cart), nil})}
   end
 
-  def handle_event("save_cart", %{"cart" => params}, socket) do
+  def handle_event(
+        "save_cart",
+        %{"cart" => %{"name" => name, "source" => source, "input" => input} = params},
+        socket
+      ) do
     cart = %{
       socket.assigns.cart
-      | name: String.trim(params["name"] || "") |> blank_to("Untitled"),
-        source: params["source"] || "",
-        input: params["input"] || ""
+      | name: name |> String.trim() |> blank_to("Untitled"),
+        source: source,
+        input: input
     }
 
-    case parse(cart.source) do
-      {:ok, _program} ->
-        {:noreply, socket |> insert_cart(cart) |> assign(editing?: false)}
+    case parse(source) do
+      {:ok, program} ->
+        {:noreply, socket |> insert_cart(cart, program) |> assign(overlay: nil)}
 
       {:error, message} ->
-        {:noreply, assign(socket, form: to_form(params, as: :cart), cart_error: message)}
+        {:noreply, assign(socket, overlay: {:editor, to_form(params, as: :cart), message})}
     end
   end
 
@@ -263,44 +257,22 @@ defmodule PersonalSiteWeb.BrainfuckLive do
 
   def handle_info({:tick, _stale}, socket), do: {:noreply, socket}
 
-  defp insert_cart(socket, cart) do
-    socket |> assign(cart: cart) |> load(cart)
+  defp insert_cart(socket, cart), do: insert_cart(socket, cart, Parser.parse(cart.source))
+
+  defp insert_cart(socket, cart, program) do
+    socket |> assign(cart: cart, program: program) |> load()
   end
 
-  defp load(socket, cart) do
-    case parse(cart.source) do
-      {:ok, program} ->
-        machine = Machine.new(program, cart.input)
+  defp load(%{assigns: %{program: program, cart: cart}} = socket) do
+    machine = Machine.new(program, cart.input)
 
-        socket
-        |> assign(
-          machine: machine,
-          steps: 0,
-          error: nil,
-          status: if(Machine.halted?(machine), do: :halted, else: :ready)
-        )
-        |> present()
-
-      {:error, message} ->
-        socket
-        |> assign(machine: nil, steps: 0, error: message, status: :error)
-        |> present()
-    end
-  end
-
-  # Boils the machine down to the small values the page shows, each in its own assign.
-  # LiveView only sends an assign that changed, so a frame carries just what moved.
-  defp present(%{assigns: %{machine: nil}} = socket) do
-    assign(socket,
-      cursor: nil,
-      output: "",
-      input: "",
-      pc: nil,
-      head: nil,
-      cell: nil,
-      cells: tape_cells(0, %{}),
-      leader?: true
+    socket
+    |> assign(
+      machine: machine,
+      steps: 0,
+      status: if(Machine.halted?(machine), do: :halted, else: :ready)
     )
+    |> present()
   end
 
   defp present(%{assigns: %{machine: machine, cart: cart}} = socket) do
@@ -318,7 +290,6 @@ defmodule PersonalSiteWeb.BrainfuckLive do
     )
   end
 
-  # The current op as a character index into the source, or nil once halted.
   defp cursor(machine, source) do
     if Machine.halted?(machine) do
       nil
@@ -362,9 +333,8 @@ defmodule PersonalSiteWeb.BrainfuckLive do
     assign(socket, tick: tick)
   end
 
-  defp advance(%{assigns: %{status: status}} = socket, _count)
-       when status in [:halted, :error],
-       do: socket
+  defp advance(%{assigns: %{status: :halted}} = socket, _count), do: socket
+  defp advance(%{assigns: %{status: {:error, _}}} = socket, _count), do: socket
 
   defp advance(socket, count) do
     %{machine: machine, steps: steps, status: status} = socket.assigns
@@ -384,13 +354,13 @@ defmodule PersonalSiteWeb.BrainfuckLive do
 
           message ->
             socket
-            |> assign(machine: machine, steps: steps, status: :error, error: message)
+            |> assign(machine: machine, steps: steps, status: {:error, message})
             |> present()
         end
 
       {:error, machine, steps, message} ->
         socket
-        |> assign(machine: machine, steps: steps, status: :error, error: message)
+        |> assign(machine: machine, steps: steps, status: {:error, message})
         |> present()
     end
   end
@@ -408,8 +378,6 @@ defmodule PersonalSiteWeb.BrainfuckLive do
     end
   end
 
-  # Brainjuice.Machine.step/1 raises on the tape's left edge and past the end of the program,
-  # so the page checks halted?/1 first and turns a raise into the console's error state.
   defp run_steps(machine, steps, 0), do: {:ok, machine, steps}
 
   defp run_steps(machine, steps, count) do
@@ -431,10 +399,14 @@ defmodule PersonalSiteWeb.BrainfuckLive do
   defp blank_to("", fallback), do: fallback
   defp blank_to(value, _fallback), do: value
 
-  ## Rendering
-
   @impl true
   def render(assigns) do
+    assigns =
+      assign(assigns,
+        editing?: match?({:editor, _, _}, assigns.overlay),
+        finished?: assigns.status == :halted or match?({:error, _}, assigns.status)
+      )
+
     ~H"""
     <Layouts.app flash={@flash} bare>
       <div class="bj-table" aria-hidden="true"></div>
@@ -468,11 +440,15 @@ defmodule PersonalSiteWeb.BrainfuckLive do
             <div class="bj-console">
               <div class="bj-top">
                 <.wordmark />
-                <div class="bj-leds" role="status" aria-label={"Console status: #{@status}"}>
+                <div
+                  class="bj-leds"
+                  role="status"
+                  aria-label={"Console status: #{status_text(@status)}"}
+                >
                   <.led label="PWR" colour="red" on />
                   <.led label="RUN" colour="green" on={@status == :running} />
                   <.led label="HLT" colour="amber" on={@status == :halted} />
-                  <.led label="ERR" colour="red" on={@status == :error} />
+                  <.led label="ERR" colour="red" on={match?({:error, _}, @status)} />
                 </div>
               </div>
 
@@ -480,7 +456,6 @@ defmodule PersonalSiteWeb.BrainfuckLive do
                 <.crt
                   cart={@cart}
                   status={@status}
-                  error={@error}
                   editing?={@editing?}
                   cursor={@cursor}
                   output={@output}
@@ -496,7 +471,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
 
               <.tape_deck
                 cells={@cells}
-                head={@head || 0}
+                head={@head}
                 leader?={@leader?}
                 running?={@status == :running}
                 cell_px={@cell_px}
@@ -527,7 +502,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
                         type="button"
                         class="bj-pad"
                         phx-click="step"
-                        disabled={@status in [:halted, :error]}
+                        disabled={@finished?}
                       >
                         <span class="sr-only">Step</span>
                       </button>
@@ -542,7 +517,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
                         class="bj-pad"
                         phx-click="toggle_run"
                         aria-pressed={to_string(@status == :running)}
-                        disabled={@status in [:halted, :error]}
+                        disabled={@finished?}
                       >
                         <span class="sr-only">Run / Pause</span>
                       </button>
@@ -600,78 +575,82 @@ defmodule PersonalSiteWeb.BrainfuckLive do
           </div>
         </div>
 
-        <.manual :if={@manual?} commands={@commands} techniques={@techniques} />
-
-        <div
-          :if={@editing?}
-          id="cart-editor"
-          class="bj-modal"
-          phx-window-keydown="close_cart"
-          phx-key="Escape"
-        >
-          <div class="bj-modal-backdrop" phx-click="close_cart"></div>
-          <div
-            class={["bj-cart bj-cart-big", "bj-cart-#{@cart.colour}"]}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Cartridge label"
-          >
-            <span class="bj-cart-grip" aria-hidden="true"></span>
-            <.form
-              for={@form}
-              id="cart-form"
-              class="bj-cart-label bj-cart-sheet"
-              phx-change="edit_cart"
-              phx-submit="save_cart"
-            >
-              <div class="bj-sheet-head">
-                <.input
-                  field={@form[:name]}
-                  type="text"
-                  class="bj-field bj-field-title"
-                  autocomplete="off"
-                  placeholder="Untitled"
-                  aria-label="Title"
-                />
-              </div>
-              <.input
-                field={@form[:source]}
-                type="textarea"
-                class="bj-field bj-field-source"
-                spellcheck="false"
-                rows="10"
-                placeholder="Program"
-                aria-label="Program"
-              />
-              <.input
-                field={@form[:input]}
-                type="text"
-                class="bj-field bj-field-input"
-                autocomplete="off"
-                spellcheck="false"
-                placeholder="Input"
-                aria-label="Input"
-              />
-              <p :if={@cart_error} id="cart-error" class="bj-stamp" role="alert">
-                Rejected: {@cart_error}
-              </p>
-              <div class="bj-sheet-actions">
-                <button type="submit" id="save-cart" class="bj-chunky">Insert cartridge</button>
-              </div>
-            </.form>
-          </div>
-        </div>
+        <%= case @overlay do %>
+          <% :manual -> %>
+            <.manual commands={@commands} techniques={@techniques} />
+          <% {:editor, form, error} -> %>
+            <.cart_editor cart={@cart} form={form} error={error} />
+          <% nil -> %>
+        <% end %>
       </div>
     </Layouts.app>
+    """
+  end
+
+  attr :cart, :map, required: true
+  attr :form, Phoenix.HTML.Form, required: true
+  attr :error, :string, required: true
+
+  defp cart_editor(assigns) do
+    ~H"""
+    <dialog
+      id="cart-editor"
+      class="bj-modal"
+      phx-hook="Modal"
+      aria-label="Cartridge label"
+    >
+      <div class={["bj-cart bj-cart-big", "bj-cart-#{@cart.colour}"]}>
+        <span class="bj-cart-grip" aria-hidden="true"></span>
+        <.form
+          for={@form}
+          id="cart-form"
+          class="bj-cart-label bj-cart-sheet"
+          phx-change="edit_cart"
+          phx-submit="save_cart"
+        >
+          <div class="bj-sheet-head">
+            <.input
+              field={@form[:name]}
+              type="text"
+              class="bj-field bj-field-title"
+              autocomplete="off"
+              placeholder="Untitled"
+              aria-label="Title"
+            />
+          </div>
+          <.input
+            field={@form[:source]}
+            type="textarea"
+            class="bj-field bj-field-source"
+            spellcheck="false"
+            rows="10"
+            placeholder="Program"
+            aria-label="Program"
+          />
+          <.input
+            field={@form[:input]}
+            type="text"
+            class="bj-field bj-field-input"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Input"
+            aria-label="Input"
+          />
+          <p :if={@error} id="cart-error" class="bj-stamp" role="alert">
+            Rejected: {@error}
+          </p>
+          <div class="bj-sheet-actions">
+            <button type="submit" id="save-cart" class="bj-chunky">Insert cartridge</button>
+          </div>
+        </.form>
+      </div>
+    </dialog>
     """
   end
 
   attr :commands, :list, required: true
   attr :techniques, :list, required: true
 
-  # Leader lines on the console drawing, in the figure's 160 × 146 viewBox, where the drawing
-  # fills x 24–136 and y 14–126. Each label sits at {x, y, anchor}, and its line runs from
-  # the label to a dot on the part.
   @leaders [
     {"Cartridge", {72, 6, "end"}, [{73, 6}, {75, 8.5}, {75, 20}]},
     {"Status lights", {113, 6, "start"}, [{112, 6}, {110, 8.5}, {110, 32}]},
@@ -704,22 +683,13 @@ defmodule PersonalSiteWeb.BrainfuckLive do
       )
 
     ~H"""
-    <div
+    <dialog
       id="manual"
       class="bj-modal bj-manual-modal"
-      phx-window-keydown="close_manual"
-      phx-key="Escape"
+      phx-hook="Modal"
+      aria-labelledby="manual-title"
     >
-      <div class="bj-modal-backdrop" phx-click="close_manual"></div>
-      <div
-        id="manual-book"
-        class="bj-book"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="manual-title"
-        phx-hook="ManualBook"
-        phx-update="ignore"
-      >
+      <div id="manual-book" class="bj-book" phx-hook="ManualBook" phx-update="ignore">
         <div class="bj-book-pages">
           <section class="bj-leaf bj-leaf-cover">
             <.wordmark />
@@ -857,11 +827,10 @@ defmodule PersonalSiteWeb.BrainfuckLive do
           <button type="button" class="bj-corner bj-corner-next" data-turn="1" aria-label="Next page"></button>
         </div>
       </div>
-    </div>
+    </dialog>
     """
   end
 
-  # The Brainjuice badge. The subtitle's letters are spread to the name's width.
   defp wordmark(assigns) do
     ~H"""
     <span class="bj-badge">
@@ -890,15 +859,12 @@ defmodule PersonalSiteWeb.BrainfuckLive do
   end
 
   attr :cart, :map, required: true
-  attr :status, :atom, required: true
-  attr :error, :string
+  attr :status, :any, required: true
   attr :editing?, :boolean, required: true
   attr :cursor, :integer, default: nil
   attr :output, :string, required: true
   attr :input, :string, required: true
 
-  # The CRT is a strict character grid, @crt_cols columns wide. The listing is drawn once
-  # per cartridge; each frame only moves the cursor (see the CrtCursor hook).
   defp crt(assigns) do
     ~H"""
     <div class="bj-crt-bezel">
@@ -937,7 +903,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
               </div>
               <div class="bj-crt-row bj-crt-rule" aria-hidden="true">{rule()}</div>
               <div class="bj-crt-io">
-                <pre :if={@error} id="crt-error" class="bj-crt-error">*** {String.upcase(@error)} ***</pre>
+                <pre :if={match?({:error, _}, @status)} id="crt-error" class="bj-crt-error">*** {@status |> elem(1) |> String.upcase()} ***</pre>
                 <pre id="crt-output" class="bj-crt-output"><span class="bj-crt-prompt">OUT&gt;</span>{@output}<span class="bj-crt-caret" aria-hidden="true"></span></pre>
               </div>
               <pre id="crt-input" class="bj-crt-row bj-crt-input"><span class="bj-crt-prompt">IN&lt; </span>{@input}</pre>
@@ -952,10 +918,8 @@ defmodule PersonalSiteWeb.BrainfuckLive do
   defp crt_cols, do: @crt_cols
   defp rule, do: String.duplicate("-", @crt_cols)
 
-  # Tabs and carriage returns become single spaces, keeping every character in one grid cell.
   defp screen_source(source), do: String.replace(source, ["\t", "\r"], " ")
 
-  # Cart name on the left, status ending on the last column.
   defp status_line(name, status) do
     status = status_text(status)
     name = name |> String.upcase() |> String.slice(0, @crt_cols - String.length(status) - 1)
@@ -983,7 +947,7 @@ defmodule PersonalSiteWeb.BrainfuckLive do
   defp status_text(:running), do: "RUNNING"
   defp status_text(:paused), do: "PAUSED"
   defp status_text(:halted), do: "HALTED"
-  defp status_text(:error), do: "ERROR"
+  defp status_text({:error, _}), do: "ERROR"
 
   attr :cells, :list, required: true
   attr :head, :integer, required: true
@@ -1033,7 +997,6 @@ defmodule PersonalSiteWeb.BrainfuckLive do
     """
   end
 
-  # The tape settles before the next frame, so the head lines up with the cell being read.
   defp slide_ms({_label, fps, _steps}), do: min(div(700, fps), 220)
 
   defp bits(value),
@@ -1046,14 +1009,14 @@ defmodule PersonalSiteWeb.BrainfuckLive do
 
   attr :id, :string, required: true
   attr :label, :string, required: true
-  attr :value, :any, required: true
+  attr :value, :integer, required: true
   attr :digits, :integer, required: true
 
   defp seven_seg(assigns) do
     ~H"""
     <div class="bj-seg" id={@id}>
       <span class="bj-print bj-print-light">{@label}</span>
-      <span class="bj-seg-window" role="img" aria-label={"#{@label} #{@value || "blank"}"}>
+      <span class="bj-seg-window" role="img" aria-label={"#{@label} #{@value}"}>
         <svg
           :for={{char, position} <- Enum.with_index(seg_chars(@value, @digits))}
           :key={position}
@@ -1069,8 +1032,6 @@ defmodule PersonalSiteWeb.BrainfuckLive do
     </div>
     """
   end
-
-  defp seg_chars(nil, digits), do: List.duplicate(?-, digits)
 
   defp seg_chars(value, digits) do
     value

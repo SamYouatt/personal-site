@@ -1,6 +1,4 @@
-/* Brainjuice: a brainfuck debugger built as a beige 8-bit games console. */
 
-/* VT323 (Google Fonts, latin subset), SIL Open Font License (see /fonts/vt323/OFL.txt). */
 @font-face {
   font-family: "VT323";
   src: url("/fonts/vt323/VT323-Regular.woff2") format("woff2");
@@ -9,8 +7,6 @@
   font-display: swap;
 }
 
-/* Michroma, Jost, Bungee, Russo One and Courier Prime (SIL Open Font License) and Tinos (Apache License 2.0), latin
-   subsets from Google Fonts. Licences are alongside each font under /fonts. */
 @font-face { font-family: "Michroma"; src: url("/fonts/michroma/Michroma-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "Jost"; src: url("/fonts/jost/Jost-Variable.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
 @font-face { font-family: "Bungee"; src: url("/fonts/bungee/Bungee-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
@@ -43,8 +39,6 @@
 }
 html:has(.bj-page) { overflow: hidden; }
 
-/* The desk holds the console, cartridges and booklet at a fixed size, and
-   initFitDesk scales the whole thing to fill the window. */
 .bj-desk {
   position: absolute;
   top: 50%;
@@ -176,7 +170,6 @@ html:has(.bj-page) { overflow: hidden; }
   text-transform: uppercase;
   text-shadow: 0 2px 0 rgb(0 0 0 / 0.25);
 }
-/* The inserted cartridge ends inside the slot housing rather than below it. */
 .bj-cart-inserted {
   position: absolute;
   bottom: 0.3rem;
@@ -213,9 +206,6 @@ html:has(.bj-page) { overflow: hidden; }
   gap: 1rem;
   flex-wrap: wrap;
 }
-/* The logotype block is exactly as tall as the stripes: the name's cap tops meet the stripes'
-   tops and the subtitle's baseline meets their feet. Trimming each line to cap height to
-   baseline keeps it exact whatever the font. */
 .bj-badge {
   display: grid;
   grid-template-columns: auto auto;
@@ -405,7 +395,6 @@ html:has(.bj-page) { overflow: hidden; }
   opacity: 0.6;
 }
 .bj-crt-error {
-  /* Last line of the bottom-anchored output area, so a screenful of output can't hide it. */
   order: 1;
   color: #ffb8a0;
   text-shadow: 0 0 6px rgb(255 90 60 / 0.8);
@@ -462,7 +451,6 @@ html:has(.bj-page) { overflow: hidden; }
 .d-0 :is(.s-a,.s-b,.s-c,.s-d,.s-e,.s-f), .d-1 :is(.s-b,.s-c), .d-2 :is(.s-a,.s-b,.s-g,.s-e,.s-d), .d-3 :is(.s-a,.s-b,.s-g,.s-c,.s-d), .d-4 :is(.s-f,.s-g,.s-b,.s-c), .d-5 :is(.s-a,.s-f,.s-g,.s-c,.s-d), .d-6 :is(.s-a,.s-f,.s-g,.s-e,.s-d,.s-c), .d-7 :is(.s-a,.s-b,.s-c), .d-8 :is(.s-a,.s-b,.s-c,.s-d,.s-e,.s-f,.s-g), .d-9 :is(.s-a,.s-b,.s-c,.s-d,.s-f,.s-g), .d-\- :is(.s-g) {
   fill: #ff3d2b;
 }
-/* One glow per digit rather than one per lit segment: the unlit segments are too faint to glow. */
 .bj-seg-digit { filter: drop-shadow(0 0 2px rgb(255 50 30 / 0.95)) drop-shadow(0 0 6px rgb(255 40 20 / 0.5)); }
 .bj-deck {
   display: flex;
@@ -687,17 +675,21 @@ html:has(.bj-page) { overflow: hidden; }
   border-radius: 2px;
 }
 .bj-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  display: grid;
-  place-items: center;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
   padding: 1rem;
+  border: 0;
+  background: none;
   overflow-y: auto;
 }
-.bj-modal-backdrop {
-  position: fixed;
-  inset: 0;
+.bj-modal:modal {
+  display: grid;
+  place-items: center;
+}
+.bj-modal::backdrop {
   background: rgb(24 22 20 / 0.6);
   backdrop-filter: blur(3px);
 }
@@ -715,8 +707,6 @@ html:has(.bj-page) { overflow: hidden; }
     opacity: 0;
   }
 }
-/* Cartridge editor: the title is written straight onto the coloured label band,
-   program and input are on lined paper below. */
 .bj-cart-sheet {
   gap: 0.6rem;
   padding: 0 1.1rem 1.1rem;
@@ -876,9 +866,6 @@ html:has(.bj-page) { overflow: hidden; }
 .bj-controls .bj-print-red, .bj-pill-wrap .bj-print {
   mask: var(--bj-chips) 0 0 / 120px 120px;
 }
-/* The paper and its grain are one layer under all the cells, so a step repaints only the
-   cells that change. It spans 1060 cells and only moves every 500, and its grain is anchored
-   to cell 0 so the texture stays put on the paper as the tape slides. */
 .bj-tape::before {
   --from: calc(round(down, var(--head), 500) - 530);
   content: "";
@@ -974,8 +961,6 @@ html:has(.bj-page) { overflow: hidden; }
   overflow: hidden;
   background: #eadcb8;
 }
-/* The wound tape's cell lines, one cell wider than the spool so sliding them a cell loops
-   seamlessly. They move by transform, so winding never repaints. */
 .bj-spool i::before {
   content: "";
   position: absolute;
@@ -1131,7 +1116,6 @@ html:has(.bj-page) { overflow: hidden; }
 .bj-spine[aria-current="true"] {
   visibility: hidden;
 }
-/* Rack stickers: name above tagline, always inside the cartridge end. */
 .bj-spine-label {
   display: flex;
   flex: 1;
@@ -1180,9 +1164,6 @@ html:has(.bj-page) { overflow: hidden; }
   transition: translate 180ms ease-out, scale 180ms ease-out;
 }
 .bj-booklet:hover { translate: -0.4rem -0.9rem; scale: 1.05; }
-/* The booklet's shadow is drawn by this wrapper, because the booklet's clip-path (its
-   dog-eared corner) would clip a filter on the booklet itself. Lifting it throws the
-   shadow further and softer. */
 .bj-booklet-lift {
   --rest:
     drop-shadow(0 1px 1px rgb(0 0 0 / 0.6))
@@ -1226,7 +1207,6 @@ html:has(.bj-page) { overflow: hidden; }
   line-height: 0.95;
   text-transform: uppercase;
 }
-/* The eight command keys as cover art. */
 .bj-booklet-keys {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1251,9 +1231,6 @@ html:has(.bj-page) { overflow: hidden; }
   mask: var(--bj-chips) 0 0 / 120px 120px;
 }
 
-/* ------------------------------------------------------------------
-   The open manual: a booklet of aged pages that turn.
-   ------------------------------------------------------------------ */
 .bj-manual-modal { overflow: hidden; }
 .bj-book {
   --pw: 25rem;
@@ -1270,8 +1247,6 @@ html:has(.bj-page) { overflow: hidden; }
   height: var(--ph);
   perspective: 2800px;
 }
-/* The book's shadow is a static layer behind the spread. A drop-shadow filter on the pages
-   would flatten the 3D page turn and redraw around the moving page on every frame. */
 .bj-book-pages::before {
   content: "";
   position: absolute;
@@ -1281,7 +1256,6 @@ html:has(.bj-page) { overflow: hidden; }
   box-shadow: 0 2px 3px rgb(0 0 0 / 0.45), 0 26px 50px rgb(0 0 0 / 0.55);
 }
 .bj-book.is-single .bj-book-pages { width: var(--pw); }
-/* Shadow in the gutter where the pages meet the staples. */
 .bj-book:not(.is-single) .bj-book-pages::after {
   content: "";
   position: absolute;
@@ -1308,7 +1282,6 @@ html:has(.bj-page) { overflow: hidden; }
   font-size: 0.86rem;
   line-height: 1.45;
   text-align: left;
-  /* One grime tile covers a whole page, so no repeat seam shows. */
   background:
     var(--bj-grain),
     var(--bj-grime) 0 0 / 640px 640px,
@@ -1333,7 +1306,6 @@ html:has(.bj-page) { overflow: hidden; }
   opacity: 0.6;
 }
 .bj-leaf-cover::after { content: none; }
-/* A coffee ring on the first spread, like every manual that lived by a console. */
 .bj-leaf-cover {
   background:
     radial-gradient(circle at 84% 86%, transparent 0 3.1rem, rgb(85 79 70 / 0.26) 3.2rem, rgb(85 79 70 / 0.07) 3.5rem, transparent 3.7rem),
@@ -1362,7 +1334,6 @@ html:has(.bj-page) { overflow: hidden; }
 .bj-turn-back { transform: rotateY(180deg); }
 .bj-turn .bj-leaf { left: 0; }
 
-/* Manual typography */
 .bj-manual-title {
   margin: 0.4rem 0 0.6rem;
   font-family: var(--font-sans);
@@ -1379,7 +1350,6 @@ html:has(.bj-page) { overflow: hidden; }
   margin-bottom: 1.2rem;
   border-bottom: 4px double #2e271e;
 }
-/* Section headings: upright, with a plain number on the title's baseline. */
 .bj-leaf h3 {
   display: flex;
   align-items: baseline;
@@ -1475,7 +1445,6 @@ html:has(.bj-page) { overflow: hidden; }
   opacity: 0.75;
 }
 
-/* Dog-eared page corners: curled up where there is a page to turn to. */
 .bj-corner {
   --size: 2.6rem;
   position: absolute;
@@ -1490,7 +1459,6 @@ html:has(.bj-page) { overflow: hidden; }
 .bj-corner-next {
   right: 0;
   border-bottom-right-radius: 4px;
-  /* The flap's paler underside above the fold, the page beneath in its shadow below it. */
   background:
     linear-gradient(135deg, #f7f5ef 0%, #e6e2d8 35%, #c9c4b8 49.5%, transparent 50%),
     linear-gradient(315deg, #bdb8ac 0%, #a8a397 50%, transparent 50%);
@@ -1505,11 +1473,6 @@ html:has(.bj-page) { overflow: hidden; }
   filter: drop-shadow(3px -3px 3px rgb(40 36 30 / 0.35));
 }
 
-/* ------------------------------------------------------------------
-   CRT character grid: 72 columns by 12 rows. The font is sized from the
-   screen's width so exactly --cols characters fit (VT323 is 0.4em wide),
-   and every block is a whole number of rows tall.
-   ------------------------------------------------------------------ */
 .bj-crt-grid {
   --lh: 1.15em;
   width: calc(var(--cols) * 1ch);
@@ -1519,10 +1482,8 @@ html:has(.bj-page) { overflow: hidden; }
 .bj-crt-grid pre { font: inherit; }
 .bj-crt-row { height: var(--lh); overflow: hidden; white-space: pre; }
 .bj-crt-rule { opacity: 0.4; }
-/* Centre the booklet on the window however wide it is before scaling. */
 .bj-manual-modal .bj-book { position: absolute; top: 50%; left: 50%; translate: -50% -50%; }
 
-/* Console drawing with labelled leader lines, like an engineering drawing. */
 .bj-sketch { margin: 0.6rem -0.4rem 0; }
 .bj-sketch svg { width: 100%; overflow: visible; }
 .bj-sketch image { opacity: 0.88; mix-blend-mode: multiply; }
@@ -1552,7 +1513,6 @@ html:has(.bj-page) { overflow: hidden; }
 .bj-spine-name,
 .bj-spine-hint { max-width: 100%; overflow: hidden; }
 
-/* Manual body text is soft grey (see .bj-leaf), with near-black headings. */
 .bj-leaf h3,
 .bj-leaf h4,
 .bj-manual-title,
@@ -1560,10 +1520,6 @@ html:has(.bj-page) { overflow: hidden; }
 .bj-manual-key b { color: #1f1c19; }
 
 
-/* ------------------------------------------------------------------
-   The manual's pages are printed in black and white on paper that has
-   gone faintly warm with age. The cover on the desk keeps its colour.
-   ------------------------------------------------------------------ */
 .bj-book {
   --bj-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.19 0 0 0 0 0.17 0 0 0 1.0 -0.43'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --bj-grime: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.011' numOctaves='4' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.3 0 0 0 0 0.28 0 0 0 0 0.25 0 0 0 1.5 -0.72'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
@@ -1573,7 +1529,6 @@ html:has(.bj-page) { overflow: hidden; }
 .bj-book .bj-stripes i:nth-child(3) { background: #85817a; }
 .bj-book .bj-stripes i:nth-child(4) { background: #aeaaa2; }
 
-/* Cover contents, set like a printed table of contents. */
 .bj-manual-contents h3 { margin-bottom: 0.5rem; font-size: 0.95rem; }
 .bj-manual-contents li { display: flex; align-items: baseline; gap: 0.6rem; }
 .bj-manual-contents li + li { margin-top: 0.35rem; }
@@ -1582,13 +1537,12 @@ html:has(.bj-page) { overflow: hidden; }
 .bj-manual-contents li i { flex: 1; border-bottom: 2px dotted currentColor; opacity: 0.45; translate: 0 -0.25em; }
 
 
-/* The listing scrolls a line at a time beside a one-column, text-mode scrollbar. */
 .bj-crt-pane { display: flex; height: calc(var(--lh) * 6); }
 .bj-crt-scrollbar {
   display: flex;
   flex-direction: column;
   width: 1ch;
-  margin-left: 1ch; /* a blank column between the listing and the bar */
+  margin-left: 1ch;
 }
 .bj-crt-scrollbar.is-idle { opacity: 0.35; }
 .bj-crt-scrollbar button { height: var(--lh); }
@@ -1607,11 +1561,6 @@ html:has(.bj-page) { overflow: hidden; }
   box-shadow: 0 0 6px rgb(132 255 166 / 0.7);
 }
 
-/* ------------------------------------------------------------------
-   Bits and bobs on the desk, photographed from above. They sit under
-   everything you can pick up, and cast shadows down and to the right
-   like the console does.
-   ------------------------------------------------------------------ */
 .bj-clutter { position: absolute; inset: 0; pointer-events: none; }
 .bj-clutter img {
   position: absolute;
@@ -1621,34 +1570,24 @@ html:has(.bj-page) { overflow: hidden; }
     drop-shadow(0 1px 1px rgb(0 0 0 / 0.45))
     drop-shadow(4px 8px 7px rgb(25 12 2 / 0.4));
 }
-/* Everything is drawn to one scale. The console is 30 cm wide (64rem), so 1 cm is about
-   2.13rem: the cartridge is 8.7 cm, the booklet 10 × 13.5 cm. Each object is placed by its
-   centre, and may run off the edge of view like things on a real desk. */
-.bj-notepad { left: 8rem; top: 4rem; width: 21.3rem; rotate: -8deg; }   /* 10 cm reporter's pad */
-.bj-pencil { left: 12rem; top: 10rem; width: 25.6rem; rotate: -35deg; } /* 12 cm, worn down */
+.bj-notepad { left: 8rem; top: 4rem; width: 21.3rem; rotate: -8deg; }
+.bj-pencil { left: 12rem; top: 10rem; width: 25.6rem; rotate: -35deg; }
 .bj-pencil,
 .bj-pen { filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.5)) drop-shadow(3px 6px 4px rgb(25 12 2 / 0.45)) !important; }
-.bj-mug {                                                               /* 9.5 cm mug, 13 cm with handle */
+.bj-mug {
   left: 10rem;
   top: 66rem;
   width: 27.7rem;
   rotate: 18deg;
   filter: drop-shadow(0 2px 2px rgb(0 0 0 / 0.5)) drop-shadow(14px 26px 22px rgb(25 12 2 / 0.5)) !important;
 }
-.bj-pen { left: 108rem; top: 9rem; width: 30rem; rotate: 20deg; }      /* 14 cm ballpoint */
-.bj-rubber { left: 104rem; top: 62rem; width: 10.7rem; rotate: -18deg; } /* 5 cm rubber */
+.bj-pen { left: 108rem; top: 9rem; width: 30rem; rotate: 20deg; }
+.bj-rubber { left: 104rem; top: 62rem; width: 10.7rem; rotate: -18deg; }
 
 @media (max-aspect-ratio: 4/5) {
   .bj-clutter { display: none; }
 }
 
-/* ------------------------------------------------------------------
-   Type, one face per surface:
-   - Michroma for everything pad-printed on the hardware, like 80s electronics.
-   - Russo One for the BRAINJUICE logotype, Bungee for cartridge titles.
-   - Jost (a Futura) for other labels and the manual's headings.
-   - Tinos (Times-metric) for the manual's body, Courier Prime for its listings.
-   ------------------------------------------------------------------ */
 .bj-page { --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif; }
 .bj-print,
 .bj-knob-tick,
@@ -1661,7 +1600,6 @@ html:has(.bj-page) { overflow: hidden; }
   letter-spacing: 0.08em;
 }
 
-/* Cartridge titles in Bungee, like arcade and game-pak label lettering. */
 .bj-cart-name,
 .bj-spine-name {
   font-family: "Bungee", "Jost", sans-serif;
